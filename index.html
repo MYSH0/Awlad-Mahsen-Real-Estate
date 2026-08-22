@@ -60,7 +60,7 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
 
-        /* شريط الإعلانات المتحرك (من اليمين تماماً إلى اليسار) */
+        /* شريط الإعلانات المتحرك */
         .marquee-bar {
             background: #e67e22;
             color: white;
@@ -81,12 +81,8 @@
         }
 
         @keyframes smoothMarqueeFromRight {
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
 
         .container {
@@ -95,7 +91,7 @@
             padding: 0 15px;
         }
 
-        /* التصميم الاحترافي الجديد لعنوان القسم */
+        /* عنوان القسم */
         .section-title-box {
             text-align: center;
             margin: 35px 0 30px 0;
@@ -134,7 +130,7 @@
         
         /* تنسيق السعر */
         .price-box {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -151,29 +147,29 @@
             text-decoration: line-through;
         }
 
-        /* شبكة تفاصيل الوحدة الجديدة */
+        /* شبكة تفاصيل الوحدة المتوافقة مع الموبايل والكمبيوتر */
         .property-details-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 12px;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
         .detail-item {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            padding: 10px 15px;
+            padding: 12px 15px;
             border-radius: 8px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 0.93rem;
+            gap: 12px;
+            font-size: 0.95rem;
             color: #475569;
             font-weight: bold;
         }
         .detail-item i {
             color: #2c5364;
-            font-size: 1.1rem;
-            min-width: 20px;
+            font-size: 1.15rem;
+            min-width: 22px;
             text-align: center;
         }
 
@@ -301,6 +297,7 @@
             font-size: 1.05rem;
             transition: 0.3s;
             box-shadow: 0 3px 8px rgba(37, 211, 102, 0.3);
+            margin-top: 20px;
         }
         .contact-btn:hover {
             background: #1ebe5d;
@@ -440,7 +437,7 @@
         </div>
     </header>
 
-    <!-- شريط الإعلانات المتحرك (من اليمين تماماً إلى اليسار) -->
+    <!-- شريط الإعلانات المتحرك -->
     <div class="marquee-bar">
         <div class="marquee-track">
             أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات
@@ -448,7 +445,7 @@
     </div>
 
     <div class="container">
-        <!-- العنوان الاحترافي الجديد -->
+        <!-- العنوان الاحترافي -->
         <div class="section-title-box">
             <h2 class="section-title">
                 <i class="fa-solid fa-building"></i> العقارات المتاحة حالياً
@@ -462,34 +459,6 @@
             <div class="price-box">
                 <span class="current-price">السعر: 850,000 ج.م</span>
                 <span class="old-price">900,000 ج.م</span>
-            </div>
-
-            <!-- تفاصيل الشقة الكاملة -->
-            <div class="property-details-grid">
-                <div class="detail-item">
-                    <i class="fa-solid fa-ruler-combined"></i>
-                    <span>المساحة: 120 متر</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-tag"></i>
-                    <span>سعر المتر: 7,080 ج.م</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-door-open"></i>
-                    <span>الغرف: 3 غرف وصالة</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-building-user"></i>
-                    <span>الدور: الثالث</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-money-bill-wave"></i>
-                    <span>الدفع: كاش فقط (غير متاح تقسيط)</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-paint-roller"></i>
-                    <span>التسليم: طوب أحمر أو متاح تشطيب (يبدأ متر التشطيب من 3,500 ج.م)</span>
-                </div>
             </div>
 
             <p class="property-desc">استمتع برؤية تفاصيل الشقة الأولى عبر صور المعرض أدناه أو من خلال الجولة الفيديو الموضحة، متوفرة بمساحات مميزة وتصميمات عصرية.</p>
@@ -528,13 +497,40 @@
                         <img src="MSI5.jpeg" alt="صورة 5" onclick="openImageModal(this.src)">
                     </div>
 
-                    <!-- أسهم التنقل -->
                     <button class="slider-btn prev-btn" onclick="changeSlide(1, 'property1')">&#10095;</button>
                     <button class="slider-btn next-btn" onclick="changeSlide(-1, 'property1')">&#10094;</button>
                 </div>
             </div>
 
-            <div style="margin-top: 20px;">
+            <!-- تفاصيل الشقة الكاملة تحت الفيديو والصور -->
+            <div class="property-details-grid">
+                <div class="detail-item">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <span>المساحة: 120 متر</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>سعر المتر: 7,080 ج.م</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>الغرف: 3 غرف وصالة</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-building-user"></i>
+                    <span>الدور: الثالث</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                    <span>الدفع: كاش فقط (غير متاح تقسيط)</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-paint-roller"></i>
+                    <span>التسليم: طوب أحمر أو متاح تشطيب (يبدأ متر التشطيب من 3,500 ج.م)</span>
+                </div>
+            </div>
+
+            <div>
                 <a href="https://wa.me/201032903926" class="contact-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
             </div>
         </div>
@@ -546,34 +542,6 @@
             <div class="price-box">
                 <span class="current-price">السعر: 950,000 ج.م</span>
                 <span class="old-price">1,000,000 ج.م</span>
-            </div>
-
-            <!-- تفاصيل الشقة الكاملة -->
-            <div class="property-details-grid">
-                <div class="detail-item">
-                    <i class="fa-solid fa-ruler-combined"></i>
-                    <span>المساحة: 140 متر</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-tag"></i>
-                    <span>سعر المتر: 6,785 ج.م</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-door-open"></i>
-                    <span>الغرف: 3 غرف وصالة واسعة</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-building-user"></i>
-                    <span>الدور: الرابع</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-money-bill-wave"></i>
-                    <span>الدفع: كاش فقط (غير متاح تقسيط)</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-paint-roller"></i>
-                    <span>التسليم: طوب أحمر أو متاح تشطيب (يبدأ متر التشطيب من 3,500 ج.م)</span>
-                </div>
             </div>
 
             <p class="property-desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة والباحثين عن الفخامة.</p>
@@ -612,13 +580,40 @@
                         <img src="MSI10.jpeg" alt="صورة 10" onclick="openImageModal(this.src)">
                     </div>
 
-                    <!-- أسهم التنقل -->
                     <button class="slider-btn prev-btn" onclick="changeSlide(1, 'property2')">&#10095;</button>
                     <button class="slider-btn next-btn" onclick="changeSlide(-1, 'property2')">&#10094;</button>
                 </div>
             </div>
 
-            <div style="margin-top: 20px;">
+            <!-- تفاصيل الشقة الكاملة تحت الفيديو والصور -->
+            <div class="property-details-grid">
+                <div class="detail-item">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <span>المساحة: 140 متر</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>سعر المتر: 6,785 ج.م</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>الغرف: 3 غرف وصالة واسعة</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-building-user"></i>
+                    <span>الدور: الرابع</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                    <span>الدفع: كاش فقط (غير متاح تقسيط)</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-paint-roller"></i>
+                    <span>التسليم: طوب أحمر أو متاح تشطيب (يبدأ متر التشطيب من 3,500 ج.م)</span>
+                </div>
+            </div>
+
+            <div>
                 <a href="https://wa.me/201032903926" class="contact-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
             </div>
         </div>
