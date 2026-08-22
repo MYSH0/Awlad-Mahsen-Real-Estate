@@ -60,34 +60,33 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
 
-        /* شريط الإعلانات الحديث المتوافق مع الهواتف والكمبيوتر (من اليمين لليسار) */
+        /* شريط الإعلانات الاحترافي (حركة من اليمين لليسار بشكل سلس ونظيف) */
         .marquee-bar {
             background: #e67e22;
             color: white;
-            padding: 10px 0;
-            font-size: 1rem;
+            padding: 12px 0;
+            font-size: 1.05rem;
             font-weight: bold;
             overflow: hidden;
             white-space: nowrap;
+            position: relative;
             box-shadow: inset 0 3px 6px rgba(0,0,0,0.15);
             width: 100%;
         }
+        
         .marquee-track {
             display: inline-block;
             white-space: nowrap;
-            /* الحركة من اليمين لليسار بسلاسة وثبات */
-            animation: marqueeAnimation 18s linear infinite;
+            padding-right: 100%; /* يبدأ من خارج الشاشة من اليمين تماماً */
+            animation: smoothMarquee 16s linear infinite;
         }
-        .marquee-track span {
-            display: inline-block;
-            padding-left: 80px;
-        }
-        @keyframes marqueeAnimation {
+
+        @keyframes smoothMarquee {
             0% {
-                transform: translateX(0%);
+                transform: translateX(0);
             }
             100% {
-                transform: translateX(-50%);
+                transform: translateX(100%);
             }
         }
 
@@ -401,11 +400,10 @@
         </div>
     </header>
 
-    <!-- شريط الإعلانات المتحرك (من اليمين لليسار وبشكل متناسق) -->
+    <!-- شريط الإعلانات المتحرك الاحترافي -->
     <div class="marquee-bar">
         <div class="marquee-track">
-            <span>أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات</span>
-            <span>أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات</span>
+            أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات
         </div>
     </div>
 
