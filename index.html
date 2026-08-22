@@ -128,9 +128,9 @@
             margin-bottom: 10px;
         }
         
-        /* تنسيق السعر */
+        /* تنسيق السعر والعنوان تحته */
         .price-box {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -145,6 +145,18 @@
             font-size: 1rem;
             color: #999;
             text-decoration: line-through;
+        }
+        .property-location-sub {
+            font-size: 0.98rem;
+            color: #555;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .property-location-sub i {
+            color: #e74c3c;
         }
 
         /* شبكة تفاصيل الوحدة المتوافقة مع الموبايل والكمبيوتر */
@@ -173,7 +185,7 @@
             text-align: center;
         }
 
-        /* تنسيق الـ Select الخاص باختيار الدور والاتجاه */
+        /* تنسيق الـ Select الخاص باختيار الدور والتسليم */
         .floor-select {
             width: 100%;
             padding: 6px 10px;
@@ -479,6 +491,11 @@
                 <span class="current-price" id="price1">السعر: 850,000 ج.م</span>
                 <span class="old-price">900,000 ج.م</span>
             </div>
+            
+            <!-- العنوان تحت السعر مباشرة -->
+            <div class="property-location-sub">
+                <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
+            </div>
 
             <p class="property-desc">استمتع برؤية تفاصيل الشقة الأولى عبر صور المعرض أدناه أو من خلال الجولة الفيديو الموضحة، متوفرة بمساحات مميزة وتصميمات عصرية.</p>
 
@@ -551,9 +568,15 @@
                     <i class="fa-solid fa-money-bill-wave"></i>
                     <span>الدفع: كاش فقط (غير متاح تقسيط)</span>
                 </div>
+                <!-- خانة التسليم التفاعلية (Select) -->
                 <div class="detail-item">
                     <i class="fa-solid fa-paint-roller"></i>
-                    <span>التسليم: طوب أحمر أو متاح تشطيب (يبدأ من 3,500 ج.م)</span>
+                    <div style="flex-grow: 1;">
+                        <select class="floor-select" id="finishSelect1" onchange="updatePropertyDetails('property1')">
+                            <option value="طوب أحمر">التسليم: طوب أحمر</option>
+                            <option value="تشطيب فاخر">التسليم: تشطيب فاخر (يبدأ من 3,500 ج.م)</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -569,6 +592,11 @@
             <div class="price-box">
                 <span class="current-price" id="price2">السعر: 950,000 ج.م</span>
                 <span class="old-price">1,000,000 ج.م</span>
+            </div>
+
+            <!-- العنوان تحت السعر مباشرة -->
+            <div class="property-location-sub">
+                <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
             </div>
 
             <p class="property-desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة والباحثين عن الفخامة.</p>
@@ -641,9 +669,15 @@
                     <i class="fa-solid fa-money-bill-wave"></i>
                     <span>الدفع: كاش فقط (غير متاح تقسيط)</span>
                 </div>
+                <!-- خانة التسليم التفاعلية (Select) -->
                 <div class="detail-item">
                     <i class="fa-solid fa-paint-roller"></i>
-                    <span>التسليم: طوب أحمر أو متاح تشطيب (يبدأ من 3,500 ج.م)</span>
+                    <div style="flex-grow: 1;">
+                        <select class="floor-select" id="finishSelect2" onchange="updatePropertyDetails('property2')">
+                            <option value="طوب أحمر">التسليم: طوب أحمر</option>
+                            <option value="تشطيب فاخر">التسليم: تشطيب فاخر (يبدأ من 3,500 ج.م)</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -679,11 +713,14 @@
             evt.currentTarget.classList.add('active');
         }
 
-        // دالة تحديث السعر والمساحة ورابط الواتساب حسب الاختيار في الـ Select
+        // دالة تحديث السعر والمساحة ونوع التسليم ورابط الواتساب حسب الاختيار في الـ Select
         function updatePropertyDetails(propertyId) {
             if (propertyId === 'property1') {
                 const selectEl = document.getElementById('floorSelect1');
+                const finishEl = document.getElementById('finishSelect1');
                 const selectVal = selectEl.value;
+                const finishVal = finishEl.value;
+                
                 const priceEl = document.getElementById('price1');
                 const spaceEl = document.getElementById('space1');
                 const meterEl = document.getElementById('meterPrice1');
@@ -718,13 +755,16 @@
                     meterEl.innerText = "سعر المتر: 6,923 ج.م";
                 }
 
-                // تحديث رابط الواتساب بالبيانات الجديدة تلقائياً
-                let message = `السلام عليكم، مهتم بالشقة الأولى (${selectVal}) - المساحة: ${currentSpaceText} - السعر: ${currentPriceText}`;
+                // تحديث رابط الواتساب بالبيانات الكاملة (الدور + المساحة + السعر + التسليم) تلقائياً
+                let message = `السلام عليكم، مهتم بالشقة الأولى (${selectVal}) - المساحة: ${currentSpaceText} - السعر: ${currentPriceText} - التسليم: ${finishVal}`;
                 whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
 
             } else if (propertyId === 'property2') {
                 const selectEl = document.getElementById('floorSelect2');
+                const finishEl = document.getElementById('finishSelect2');
                 const selectVal = selectEl.value;
+                const finishVal = finishEl.value;
+
                 const priceEl = document.getElementById('price2');
                 const spaceEl = document.getElementById('space2');
                 const meterEl = document.getElementById('meterPrice2');
@@ -753,8 +793,8 @@
                     meterEl.innerText = "سعر المتر: 6,758 ج.م";
                 }
 
-                // تحديث رابط الواتساب بالبيانات الجديدة تلقائياً
-                let message = `السلام عليكم، مهتم بالشقة الثانية (${selectVal}) - المساحة: ${currentSpaceText} - السعر: ${currentPriceText}`;
+                // تحديث رابط الواتساب بالبيانات الكاملة (الدور + المساحة + السعر + التسليم) تلقائياً
+                let message = `السلام عليكم، مهتم بالشقة الثانية (${selectVal}) - المساحة: ${currentSpaceText} - السعر: ${currentPriceText} - التسليم: ${finishVal}`;
                 whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
             }
         }
