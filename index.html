@@ -60,7 +60,7 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
 
-        /* شريط الإعلانات الاحترافي (من اليمين تماماً إلى اليسار) */
+        /* شريط الإعلانات المتحرك (من اليمين تماماً إلى اليسار) */
         .marquee-bar {
             background: #e67e22;
             color: white;
@@ -77,7 +77,6 @@
         .marquee-track {
             display: inline-block;
             white-space: nowrap;
-            /* يبدأ من خارج الشاشة من جهة اليمين ويتحرك ليسار الشاشة */
             animation: smoothMarqueeFromRight 18s linear infinite;
         }
 
@@ -95,15 +94,29 @@
             margin: 25px auto;
             padding: 0 15px;
         }
-        .section-title {
+
+        /* التصميم الاحترافي الجديد لعنوان القسم */
+        .section-title-box {
             text-align: center;
-            margin-bottom: 25px;
-            color: #1e3c72;
-            font-size: 1.6rem;
-            border-bottom: 3px solid #f1c40f;
-            display: inline-block;
-            padding-bottom: 5px;
+            margin: 35px 0 30px 0;
         }
+        .section-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 6px 15px rgba(30, 60, 114, 0.25);
+            border: 2px solid #f1c40f;
+        }
+        .section-title i {
+            color: #f1c40f;
+        }
+
         .property-card {
             background: white;
             border-radius: 12px;
@@ -373,6 +386,7 @@
             .property-info h3 { font-size: 1.6rem; }
             .current-price { font-size: 1.5rem; }
             .contact-btn { width: auto; display: inline-block; padding: 10px 25px; }
+            .section-title { font-size: 1.7rem; padding: 14px 35px; }
         }
     </style>
 </head>
@@ -400,7 +414,7 @@
         </div>
     </header>
 
-    <!-- شريط الإعلانات المتحرك (من اليمين لليسار تماماً) -->
+    <!-- شريط الإعلانات المتحرك (من اليمين تماماً إلى اليسار) -->
     <div class="marquee-bar">
         <div class="marquee-track">
             أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات
@@ -408,8 +422,11 @@
     </div>
 
     <div class="container">
-        <div style="text-align:center;">
-            <h2 class="section-title">العقارات المتاحة حالياً</h2>
+        <!-- العنوان الاحترافي الجديد -->
+        <div class="section-title-box">
+            <h2 class="section-title">
+                <i class="fa-solid fa-building"></i> العقارات المتاحة حالياً
+            </h2>
         </div>
 
         <!-- الشقة الأولى -->
