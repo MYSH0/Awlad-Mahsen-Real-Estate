@@ -169,7 +169,7 @@
         .slide img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* يحافظ على أبعاد الصورة كاملة وبدون قص */
+            object-fit: contain;
             cursor: pointer;
             background-color: #000;
         }
@@ -355,8 +355,8 @@
             <h3>الشقة الأولى - تشطيب فاخر</h3>
             
             <div class="price-box">
-                <span class="current-price">السعر: 850,000 جنيهاً</span>
-                <span class="old-price">900,000 جنيهاً</span>
+                <span class="current-price">السعر: 850,000 ج.م</span>
+                <span class="old-price">900,000 ج.م</span>
             </div>
 
             <p class="property-desc">استمتع برؤية تفاصيل الشقة الأولى عبر صور المعرض أدناه أو من خلال الجولة الفيديو الموضحة، متوفرة بمساحات مميزة وتصميمات عصرية.</p>
@@ -411,8 +411,8 @@
             <h3>الشقة الثانية - إطلالة وموقع متميز</h3>
             
             <div class="price-box">
-                <span class="current-price">السعر: 950,000 جنيهاً</span>
-                <span class="old-price">1,000,000 جنيهاً</span>
+                <span class="current-price">السعر: 950,000 ج.م</span>
+                <span class="old-price">1,000,000 ج.م</span>
             </div>
 
             <p class="property-desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة والباحثين عن الفخامة.</p>
@@ -515,13 +515,13 @@
 
         function changeSlide(n, propertyId) {
             showSlide(propertyId, n);
-            resetAutoSlide(propertyId); // إعادة ضبط العداد لو المستخدم داس على السهم بإيده
+            resetAutoSlide(propertyId);
         }
 
         function startAutoSlide(propertyId) {
             slideIntervals[propertyId] = setInterval(() => {
                 showSlide(propertyId, 1);
-            }, 3500); // تقلب كل 3.5 ثانية تلقائياً
+            }, 3500);
         }
 
         function resetAutoSlide(propertyId) {
@@ -529,7 +529,6 @@
             startAutoSlide(propertyId);
         }
 
-        // تشغيل السلايدر التلقائي أول ما الصفحة تفتح
         window.addEventListener('DOMContentLoaded', () => {
             startAutoSlide('property1');
             startAutoSlide('property2');
