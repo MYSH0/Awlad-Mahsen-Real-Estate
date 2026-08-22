@@ -133,29 +133,53 @@
 
         .property-media video {
             width: 100%;
-            max-height: 350px;
+            max-height: 380px;
             border-radius: 8px;
             background: #000;
             object-fit: cover;
         }
-        .images-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 8px;
+
+        /* تصميم السلايدر الاحترافي للصور */
+        .slider-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
-        .images-grid img {
+        .slide {
+            display: none;
+            text-align: center;
+        }
+        .slide img {
             width: 100%;
-            height: 85px;
+            height: 380px;
             object-fit: cover;
-            border-radius: 6px;
-            border: 1px solid #ddd;
             cursor: pointer;
+            display: block;
+        }
+        /* أسهم السلايدر */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 12px 16px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 4px;
             transition: 0.3s;
+            z-index: 10;
         }
-        .images-grid img:hover {
-            transform: scale(1.03);
-            border-color: #2a5298;
+        .slider-btn:hover {
+            background: rgba(42, 82, 152, 0.9);
         }
+        .prev-btn { right: 15px; }
+        .next-btn { left: 15px; }
 
         .contact-btn {
             display: block;
@@ -203,9 +227,7 @@
             font-weight: bold;
             cursor: pointer;
         }
-        .close-modal:hover {
-            color: #bbb;
-        }
+        .close-modal:hover { color: #bbb; }
 
         /* زرار الواتساب العائم الثابت */
         .floating-whatsapp {
@@ -275,7 +297,6 @@
             font-size: 0.95rem;
         }
 
-        /* تحسينات للشاشات الكبيرة */
         @media(min-width: 768px) {
             header h1 { font-size: 2.2rem; }
             .property-card { padding: 30px; }
@@ -312,22 +333,19 @@
         </div>
 
         <!-- الشقة الأولى -->
-        <div class="property-card">
+        <div class="property-card" id="property1">
             <h3>الشقة الأولى - تشطيب فاخر</h3>
             
-            <!-- السعر -->
             <div class="price-box">
                 <span class="current-price">السعر: 850,000 جنيهاً</span>
                 <span class="old-price">900,000 جنيهاً</span>
             </div>
 
-            <!-- الوصف -->
             <p class="property-desc">استمتع برؤية تفاصيل الشقة الأولى عبر صور المعرض أدناه أو من خلال الجولة الفيديو الموضحة، متوفرة بمساحات مميزة وتصميمات عصرية.</p>
 
-            <!-- تابات التبديل بين الفيديو والصور -->
             <div class="tabs-nav">
-                <button class="tab-btn active" onclick="openTab(event, 'video1')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
-                <button class="tab-btn" onclick="openTab(event, 'photos1')"><i class="fa-solid fa-images"></i> عرض الصور</button>
+                <button class="tab-btn active" onclick="openTab(event, 'video1', 'property1')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
+                <button class="tab-btn" onclick="openTab(event, 'photos1', 'property1')"><i class="fa-solid fa-images"></i> عرض الصور</button>
             </div>
 
             <!-- محتوى الفيديو -->
@@ -340,37 +358,50 @@
                 </div>
             </div>
 
-            <!-- محتوى الصور -->
+            <!-- محتوى السلايدر للصور -->
             <div id="photos1" class="tab-content">
-                <div class="images-grid">
-                    <img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)">
-                    <img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)">
-                    <img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)">
-                    <img src="MSI4.jpeg" alt="صورة 4" onclick="openImageModal(this.src)">
-                    <img src="MSI5.jpeg" alt="صورة 5" onclick="openImageModal(this.src)">
+                <div class="slider-container">
+                    <div class="slide fade">
+                        <img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)">
+                    </div>
+                    <div class="slide fade">
+                        <img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)">
+                    </div>
+                    <div class="slide fade">
+                        <img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)">
+                    </div>
+                    <div class="slide fade">
+                        <img src="MSI4.jpeg" alt="صورة 4" onclick="openImageModal(this.src)">
+                    </div>
+                    <div class="slide fade">
+                        <img src="MSI5.jpeg" alt="صورة 5" onclick="openImageModal(this.src)">
+                    </div>
+
+                    <!-- أسهم التنقل -->
+                    <button class="slider-btn prev-btn" onclick="moveSlide(1, 'property1')">&#10095;</button>
+                    <button class="slider-btn next-btn" onclick="moveSlide(-1, 'property1')">&#10094;</button>
                 </div>
             </div>
 
-            <a href="https://wa.me/201032903926" class="contact-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
+            <div style="margin-top: 20px;">
+                <a href="https://wa.me/201032903926" class="contact-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
+            </div>
         </div>
 
         <!-- الشقة الثانية -->
-        <div class="property-card">
+        <div class="property-card" id="property2">
             <h3>الشقة الثانية - إطلالة وموقع متميز</h3>
             
-            <!-- السعر -->
             <div class="price-box">
                 <span class="current-price">السعر: 950,000 جنيهاً</span>
                 <span class="old-price">1,000,000 جنيهاً</span>
             </div>
 
-            <!-- الوصف -->
             <p class="property-desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة والباحثين عن الفخامة.</p>
 
-            <!-- تابات التبديل بين الفيديو والصور -->
             <div class="tabs-nav">
-                <button class="tab-btn active" onclick="openTab(event, 'video2')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
-                <button class="tab-btn" onclick="openTab(event, 'photos2')"><i class="fa-solid fa-images"></i> عرض الصور</button>
+                <button class="tab-btn active" onclick="openTab(event, 'video2', 'property2')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
+                <button class="tab-btn" onclick="openTab(event, 'photos2', 'property2')"><i class="fa-solid fa-images"></i> عرض الصور</button>
             </div>
 
             <!-- محتوى الفيديو -->
@@ -383,18 +414,34 @@
                 </div>
             </div>
 
-            <!-- محتوى الصور -->
+            <!-- محتوى السلايدر للصور -->
             <div id="photos2" class="tab-content">
-                <div class="images-grid">
-                    <img src="MSI6.jpeg" alt="صورة 6" onclick="openImageModal(this.src)">
-                    <img src="MSI7.jpeg" alt="صورة 7" onclick="openImageModal(this.src)">
-                    <img src="MSI8.jpeg" alt="صورة 8" onclick="openImageModal(this.src)">
-                    <img src="MSI9.jpeg" alt="صورة 9" onclick="openImageModal(this.src)">
-                    <img src="MSI10.jpeg" alt="صورة 10" onclick="openImageModal(this.src)">
+                <div class="slider-container">
+                    <div class="slide fade">
+                        <img src="MSI6.jpeg" alt="صورة 6" onclick="openImageModal(this.src)">
+                    </div>
+                    <div class="slide fade">
+                        <img src="MSI7.jpeg" alt="صورة 7" onclick="openImageModal(this.src)">
+                    </div>
+                    <div class="slide fade">
+                        <img src="MSI8.jpeg" alt="صورة 8" onclick="openImageModal(this.src)">
+                    </div>
+                    <div class="slide fade">
+                        <img src="MSI9.jpeg" alt="صورة 9" onclick="openImageModal(this.src)">
+                    </div>
+                    <div class="slide fade">
+                        <img src="MSI10.jpeg" alt="صورة 10" onclick="openImageModal(this.src)">
+                    </div>
+
+                    <!-- أسهم التنقل -->
+                    <button class="slider-btn prev-btn" onclick="moveSlide(1, 'property2')">&#10095;</button>
+                    <button class="slider-btn next-btn" onclick="moveSlide(-1, 'property2')">&#10094;</button>
                 </div>
             </div>
 
-            <a href="https://wa.me/201032903926" class="contact-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
+            <div style="margin-top: 20px;">
+                <a href="https://wa.me/201032903926" class="contact-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
+            </div>
         </div>
 
     </div>
@@ -410,21 +457,52 @@
         <p style="margin-top:15px; font-size: 0.85rem; color: #888;">جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري</p>
     </footer>
 
-    <!-- سكريبت الجافاسكريبت للتابات وتكبير الصور -->
+    <!-- سكريبت الجافاسكريبت للتابات والسلايدر وتكبير الصور -->
     <script>
-        function openTab(evt, tabId) {
-            const card = evt.currentTarget.closest('.property-card');
-            const contents = card.querySelectorAll('.tab-content');
+        // نظام التابات
+        function openTab(evt, tabId, propertyId) {
+            const propertyCard = document.getElementById(propertyId);
+            const contents = propertyCard.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            const buttons = card.querySelectorAll('.tab-btn');
+            const buttons = propertyCard.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            document.getElementById(tabId).classList.add('active');
+            propertyCard.querySelector('#' + tabId).classList.add('active');
             evt.currentTarget.classList.add('active');
+
+            // لو فتح تاب الصور، شغل السلايدر بتاعها لو مش اشتغل
+            if(tabId.includes('photos')) {
+                showSlide(slideIndices[propertyId], propertyId);
+            }
         }
 
-        // دوال فتح وإغلاق نافذة تكبير الصور
+        // نظام السلايدر (عرض صورة بأسهم)
+        let slideIndices = { 'property1': 0, 'property2': 0 };
+        
+        function moveSlide(n, propertyId) {
+            slideIndices[propertyId] += n;
+            showSlide(slideIndices[propertyId], propertyId);
+        }
+
+        function showSlide(n, propertyId) {
+            const propertyCard = document.getElementById(propertyId);
+            let slides = propertyCard.querySelectorAll('.slide');
+            
+            if (n >= slides.length) { slideIndices[propertyId] = 0; }
+            if (n < 0) { slideIndices[propertyId] = slides.length - 1; }
+            
+            slides.forEach(slide => slide.style.display = "none");
+            slides[slideIndices[propertyId]].style.display = "block";
+        }
+
+        // تشغيل السلايدر لأول مرة لكل شقة
+        window.addEventListener('DOMContentLoaded', () => {
+            showSlide(0, 'property1');
+            showSlide(0, 'property2');
+        });
+
+        // دوال تكبير الصور (Lightbox)
         function openImageModal(imgSrc) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImg');
@@ -433,11 +511,9 @@
         }
 
         function closeImageModal() {
-            const modal = document.getElementById('imageModal');
-            modal.style.display = "none";
+            document.getElementById('imageModal').style.display = "none";
         }
 
-        // إغلاق النافذة لو المستخدم دبر برا الصورة
         window.onclick = function(event) {
             const modal = document.getElementById('imageModal');
             if (event.target == modal) {
