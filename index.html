@@ -713,8 +713,10 @@
             evt.currentTarget.classList.add('active');
         }
 
-        // دالة تحديث السعر والمساحة ونوع التسليم ورابط الواتساب حسب الاختيار في الـ Select
+        // دالة تحديث السعر والمساحة ونوع التسليم وعنوان الشقة ورابط الواتساب تلقائياً
         function updatePropertyDetails(propertyId) {
+            const propertyAddress = "شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة";
+
             if (propertyId === 'property1') {
                 const selectEl = document.getElementById('floorSelect1');
                 const finishEl = document.getElementById('finishSelect1');
@@ -755,8 +757,8 @@
                     meterEl.innerText = "سعر المتر: 6,923 ج.م";
                 }
 
-                // تحديث رابط الواتساب بالبيانات الكاملة (الدور + المساحة + السعر + التسليم) تلقائياً
-                let message = `السلام عليكم، مهتم بالشقة الأولى (${selectVal}) - المساحة: ${currentSpaceText} - السعر: ${currentPriceText} - التسليم: ${finishVal}`;
+                // تحديث رابط الواتساب ليشمل العنوان وكافة التفاصيل بدقة
+                let message = `السلام عليكم، مهتم بالشقة الأولى\n📍 العنوان: ${propertyAddress}\n🏢 الاختيار: ${selectVal}\n📏 المساحة: ${currentSpaceText}\n💰 السعر: ${currentPriceText}\n🛠️ التسليم: ${finishVal}`;
                 whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
 
             } else if (propertyId === 'property2') {
@@ -793,8 +795,8 @@
                     meterEl.innerText = "سعر المتر: 6,758 ج.م";
                 }
 
-                // تحديث رابط الواتساب بالبيانات الكاملة (الدور + المساحة + السعر + التسليم) تلقائياً
-                let message = `السلام عليكم، مهتم بالشقة الثانية (${selectVal}) - المساحة: ${currentSpaceText} - السعر: ${currentPriceText} - التسليم: ${finishVal}`;
+                // تحديث رابط الواتساب ليشمل العنوان وكافة التفاصيل بدقة
+                let message = `السلام عليكم، مهتم بالشقة الثانية\n📍 العنوان: ${propertyAddress}\n🏢 الاختيار: ${selectVal}\n📏 المساحة: ${currentSpaceText}\n💰 السعر: ${currentPriceText}\n🛠️ التسليم: ${finishVal}`;
                 whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
             }
         }
