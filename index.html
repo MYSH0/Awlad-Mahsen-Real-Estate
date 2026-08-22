@@ -60,7 +60,7 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
 
-        /* شريط الإعلانات الاحترافي (حركة من اليمين لليسار بشكل سلس ونظيف) */
+        /* شريط الإعلانات الاحترافي (من اليمين تماماً إلى اليسار) */
         .marquee-bar {
             background: #e67e22;
             color: white;
@@ -77,13 +77,13 @@
         .marquee-track {
             display: inline-block;
             white-space: nowrap;
-            padding-right: 100%; /* يبدأ من خارج الشاشة من اليمين تماماً */
-            animation: smoothMarquee 16s linear infinite;
+            /* يبدأ من خارج الشاشة من جهة اليمين ويتحرك ليسار الشاشة */
+            animation: smoothMarqueeFromRight 18s linear infinite;
         }
 
-        @keyframes smoothMarquee {
+        @keyframes smoothMarqueeFromRight {
             0% {
-                transform: translateX(0);
+                transform: translateX(100%);
             }
             100% {
                 transform: translateX(-100%);
@@ -400,7 +400,7 @@
         </div>
     </header>
 
-    <!-- شريط الإعلانات المتحرك الاحترافي -->
+    <!-- شريط الإعلانات المتحرك (من اليمين لليسار تماماً) -->
     <div class="marquee-bar">
         <div class="marquee-track">
             أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات
@@ -537,9 +537,8 @@
         <p style="margin-top:15px; font-size: 0.85rem; color: #888;">جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري</p>
     </footer>
 
-    <!-- سكريبت البرمجة (التابات + السلايدر التلقائي واليدوي + تكبير الصور) -->
+    <!-- سكريبت البرمجة -->
     <script>
-        // نظام التابات
         function openTab(evt, tabId, propertyId) {
             const propertyCard = document.getElementById(propertyId);
             const contents = propertyCard.querySelectorAll('.tab-content');
@@ -552,7 +551,6 @@
             evt.currentTarget.classList.add('active');
         }
 
-        // تخزين مؤشرات السلايدر لكل شقة
         let slideIndices = { 'property1': 0, 'property2': 0 };
         let slideIntervals = {};
 
@@ -596,7 +594,6 @@
             startAutoSlide('property2');
         });
 
-        // دوال تكبير الصور (Lightbox)
         function openImageModal(imgSrc) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImg');
