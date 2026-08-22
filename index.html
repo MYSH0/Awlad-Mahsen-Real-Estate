@@ -18,50 +18,85 @@
             color: #333;
             line-height: 1.6;
         }
+        
+        /* الهيدر وتصميم الألوان الاحترافي */
         header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             color: white;
-            padding: 25px 15px;
+            padding: 30px 15px 20px 15px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         .logo-container img {
-            width: 90px;
-            height: 90px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid white;
-            margin-bottom: 10px;
+            border: 3px solid #f1c40f;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
         header h1 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 5px;
+            letter-spacing: 0.5px;
         }
         header p {
-            font-size: 1rem;
+            font-size: 1.05rem;
             opacity: 0.9;
+            margin-bottom: 8px;
         }
+        
+        /* جملة الجذب التحفيزية */
+        .header-tagline {
+            display: inline-block;
+            background: #f1c40f;
+            color: #0f2027;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-top: 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+
+        /* شريط الإعلانات المتحرك (Marquee) */
+        .marquee-bar {
+            background: #e67e22;
+            color: white;
+            padding: 10px 0;
+            font-size: 1rem;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: inset 0 3px 6px rgba(0,0,0,0.15);
+        }
+        .marquee-bar marquee {
+            width: 100%;
+        }
+
         .container {
             max-width: 900px;
-            margin: 20px auto;
+            margin: 25px auto;
             padding: 0 15px;
         }
         .section-title {
             text-align: center;
             margin-bottom: 25px;
             color: #1e3c72;
-            font-size: 1.5rem;
-            border-bottom: 2px solid #2a5298;
+            font-size: 1.6rem;
+            border-bottom: 3px solid #f1c40f;
             display: inline-block;
             padding-bottom: 5px;
         }
         .property-card {
             background: white;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
             margin-bottom: 30px;
             overflow: hidden;
-            padding: 20px;
+            padding: 25px;
+            border-top: 4px solid #2c5364;
         }
         .property-info h3 {
             color: #1e3c72;
@@ -78,7 +113,7 @@
             flex-wrap: wrap;
         }
         .current-price {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             color: #e74c3c;
             font-weight: bold;
         }
@@ -92,7 +127,7 @@
         .property-desc {
             color: #555;
             margin-bottom: 20px;
-            font-size: 1rem;
+            font-size: 1.02rem;
         }
 
         /* أزرار التابات (Tabs) */
@@ -115,11 +150,11 @@
             transition: 0.3s;
         }
         .tab-btn.active {
-            background: #2a5298;
+            background: #2c5364;
             color: white;
         }
         .tab-btn:hover {
-            background: #d0d7de;
+            background: #cbd5e1;
         }
 
         /* محتوى التابات */
@@ -194,7 +229,7 @@
             z-index: 10;
         }
         .slider-btn:hover {
-            background: rgba(42, 82, 152, 0.9);
+            background: rgba(44, 83, 100, 0.9);
         }
         .prev-btn { right: 15px; }
         .next-btn { left: 15px; }
@@ -211,6 +246,7 @@
             font-weight: bold;
             font-size: 1.05rem;
             transition: 0.3s;
+            box-shadow: 0 3px 8px rgba(37, 211, 102, 0.3);
         }
         .contact-btn:hover {
             background: #1ebe5d;
@@ -272,11 +308,12 @@
         }
 
         footer {
-            background: #222;
+            background: #15202b;
             color: white;
             text-align: center;
-            padding: 30px 15px;
+            padding: 35px 15px;
             margin-top: 30px;
+            border-top: 3px solid #2c5364;
         }
         .footer-links {
             display: flex;
@@ -287,9 +324,9 @@
         }
         .footer-links a {
             color: white;
-            background: #333;
-            width: 40px;
-            height: 40px;
+            background: #22303c;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -297,12 +334,12 @@
             text-decoration: none;
             font-size: 1.1rem;
             transition: 0.3s;
-            border: 1px solid #444;
+            border: 1px solid #38444d;
         }
         .footer-links a:hover {
             transform: translateY(-3px);
-            background: #2a5298;
-            border-color: #2a5298;
+            background: #2c5364;
+            border-color: #2c5364;
         }
         .footer-links a.whatsapp:hover { background: #25D366; }
         .footer-links a.facebook:hover { background: #1877F2; }
@@ -311,12 +348,12 @@
 
         .footer-address {
             margin-top: 10px;
-            color: #ccc;
+            color: #cbd5e1;
             font-size: 0.95rem;
         }
 
         @media(min-width: 768px) {
-            header h1 { font-size: 2.2rem; }
+            header h1 { font-size: 2.3rem; }
             .property-card { padding: 30px; }
             .property-info h3 { font-size: 1.6rem; }
             .current-price { font-size: 1.5rem; }
@@ -343,7 +380,17 @@
         </div>
         <h1>أولاد محسن للتطوير العقاري</h1>
         <p>نمتلك أرقى الشقق السكنية لتناسب كافة الأذواق</p>
+        <div>
+            <span class="header-tagline"><i class="fa-solid fa-handshake"></i> اشتري العقار من غير سمسار</span>
+        </div>
     </header>
+
+    <!-- شريط الإعلانات المتحرك -->
+    <div class="marquee-bar">
+        <marquee behavior="scroll" direction="right" scrollamount="5">
+            أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات
+        </marquee>
+    </div>
 
     <div class="container">
         <div style="text-align:center;">
