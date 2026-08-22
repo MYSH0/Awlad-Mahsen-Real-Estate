@@ -151,6 +151,30 @@
             text-decoration: line-through;
         }
 
+        /* شريط تفاصيل المساحة وسعر المتر */
+        .property-details-grid {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .detail-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #475569;
+            font-weight: bold;
+        }
+        .detail-item i {
+            color: #2c5364;
+            font-size: 1.1rem;
+        }
+
         /* تنسيق الوصف */
         .property-desc {
             color: #555;
@@ -438,6 +462,18 @@
                 <span class="old-price">900,000 ج.م</span>
             </div>
 
+            <!-- تفاصيل المساحة وسعر المتر للشقة الأولى -->
+            <div class="property-details-grid">
+                <div class="detail-item">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <span>المساحة: 120 متر</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>سعر المتر: 7,080 ج.م</span>
+                </div>
+            </div>
+
             <p class="property-desc">استمتع برؤية تفاصيل الشقة الأولى عبر صور المعرض أدناه أو من خلال الجولة الفيديو الموضحة، متوفرة بمساحات مميزة وتصميمات عصرية.</p>
 
             <div class="tabs-nav">
@@ -492,6 +528,18 @@
             <div class="price-box">
                 <span class="current-price">السعر: 950,000 ج.م</span>
                 <span class="old-price">1,000,000 ج.م</span>
+            </div>
+
+            <!-- تفاصيل المساحة وسعر المتر للشقة الثانية -->
+            <div class="property-details-grid">
+                <div class="detail-item">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <span>المساحة: 140 متر</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>سعر المتر: 6,785 ج.م</span>
+                </div>
             </div>
 
             <p class="property-desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة والباحثين عن الفخامة.</p>
