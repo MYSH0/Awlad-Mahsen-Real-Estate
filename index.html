@@ -540,10 +540,10 @@
                     <i class="fa-solid fa-building-user"></i>
                     <div style="flex-grow: 1;">
                         <select class="floor-select" id="floorSelect1" onchange="updatePropertyDetails('property1')">
-                            <option value="third-front">الدور الثالث - أمامي (850,000 ج.م)</option>
-                            <option value="third-back">الدور الثالث - خلفي (820,000 ج.م)</option>
-                            <option value="fourth-side">الدور الرابع - واجهة (870,000 ج.م)</option>
-                            <option value="corner">الدور الخامس - ناصية (900,000 ج.م)</option>
+                            <option value="الدور الثالث - أمامي">الدور الثالث - أمامي (850,000 ج.م)</option>
+                            <option value="الدور الثالث - خلفي">الدور الثالث - خلفي (820,000 ج.م)</option>
+                            <option value="الدور الرابع - واجهة">الدور الرابع - واجهة (870,000 ج.م)</option>
+                            <option value="الدور الخامس - ناصية">الدور الخامس - ناصية (900,000 ج.م)</option>
                         </select>
                     </div>
                 </div>
@@ -558,7 +558,7 @@
             </div>
 
             <div>
-                <a href="https://wa.me/201032903926" class="contact-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
+                <a id="whatsappBtn1" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الأولى%20-%20الدور%20الثالث%20-%20أمامي%20بسعر%20850,000%20ج.م" class="contact-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
             </div>
         </div>
 
@@ -631,9 +631,9 @@
                     <i class="fa-solid fa-building-user"></i>
                     <div style="flex-grow: 1;">
                         <select class="floor-select" id="floorSelect2" onchange="updatePropertyDetails('property2')">
-                            <option value="fourth">الدور الرابع - مميز (950,000 ج.م)</option>
-                            <option value="second-front">الدور الثاني - أمامي (920,000 ج.م)</option>
-                            <option value="fifth-corner">الدور الخامس - ناصية بحري (980,000 ج.م)</option>
+                            <option value="الدور الرابع - مميز">الدور الرابع - مميز (950,000 ج.م)</option>
+                            <option value="الدور الثاني - أمامي">الدور الثاني - أمامي (920,000 ج.م)</option>
+                            <option value="الدور الخامس - ناصية بحري">الدور الخامس - ناصية بحري (980,000 ج.م)</option>
                         </select>
                     </div>
                 </div>
@@ -648,7 +648,7 @@
             </div>
 
             <div>
-                <a href="https://wa.me/201032903926" class="contact-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
+                <a id="whatsappBtn2" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الثانية%20-%20الدور%20الرابع%20-%20مميز%20بسعر%20950,000%20ج.م" class="contact-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
             </div>
         </div>
 
@@ -679,50 +679,83 @@
             evt.currentTarget.classList.add('active');
         }
 
-        // دالة تحديث السعر والمساحة حسب الاختيار في الـ Select
+        // دالة تحديث السعر والمساحة ورابط الواتساب حسب الاختيار في الـ Select
         function updatePropertyDetails(propertyId) {
             if (propertyId === 'property1') {
-                const selectVal = document.getElementById('floorSelect1').value;
+                const selectEl = document.getElementById('floorSelect1');
+                const selectVal = selectEl.value;
                 const priceEl = document.getElementById('price1');
                 const spaceEl = document.getElementById('space1');
                 const meterEl = document.getElementById('meterPrice1');
+                const whatsappBtn = document.getElementById('whatsappBtn1');
 
-                if (selectVal === 'third-front') {
-                    priceEl.innerText = "السعر: 850,000 ج.م";
-                    spaceEl.innerText = "المساحة: 120 متر";
+                let currentPriceText = "";
+                let currentSpaceText = "";
+
+                if (selectVal === 'الدور الثالث - أمامي') {
+                    currentPriceText = "850,000 ج.م";
+                    currentSpaceText = "120 متر";
+                    priceEl.innerText = "السعر: " + currentPriceText;
+                    spaceEl.innerText = "المساحة: " + currentSpaceText;
                     meterEl.innerText = "سعر المتر: 7,080 ج.م";
-                } else if (selectVal === 'third-back') {
-                    priceEl.innerText = "السعر: 820,000 ج.م";
-                    spaceEl.innerText = "المساحة: 120 متر";
+                } else if (selectVal === 'الدور الثالث - خلفي') {
+                    currentPriceText = "820,000 ج.م";
+                    currentSpaceText = "120 متر";
+                    priceEl.innerText = "السعر: " + currentPriceText;
+                    spaceEl.innerText = "المساحة: " + currentSpaceText;
                     meterEl.innerText = "سعر المتر: 6,833 ج.م";
-                } else if (selectVal === 'fourth-side') {
-                    priceEl.innerText = "السعر: 870,000 ج.م";
-                    spaceEl.innerText = "المساحة: 125 متر";
+                } else if (selectVal === 'الدور الرابع - واجهة') {
+                    currentPriceText = "870,000 ج.م";
+                    currentSpaceText = "125 متر";
+                    priceEl.innerText = "السعر: " + currentPriceText;
+                    spaceEl.innerText = "المساحة: " + currentSpaceText;
                     meterEl.innerText = "سعر المتر: 6,960 ج.م";
-                } else if (selectVal === 'corner') {
-                    priceEl.innerText = "السعر: 900,000 ج.م";
-                    spaceEl.innerText = "المساحة: 130 متر";
+                } else if (selectVal === 'الدور الخامس - ناصية') {
+                    currentPriceText = "900,000 ج.م";
+                    currentSpaceText = "130 متر";
+                    priceEl.innerText = "السعر: " + currentPriceText;
+                    spaceEl.innerText = "المساحة: " + currentSpaceText;
                     meterEl.innerText = "سعر المتر: 6,923 ج.م";
                 }
+
+                // تحديث رابط الواتساب بالبيانات الجديدة تلقائياً
+                let message = `السلام عليكم، مهتم بالشقة الأولى (${selectVal}) - المساحة: ${currentSpaceText} - السعر: ${currentPriceText}`;
+                whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
+
             } else if (propertyId === 'property2') {
-                const selectVal = document.getElementById('floorSelect2').value;
+                const selectEl = document.getElementById('floorSelect2');
+                const selectVal = selectEl.value;
                 const priceEl = document.getElementById('price2');
                 const spaceEl = document.getElementById('space2');
                 const meterEl = document.getElementById('meterPrice2');
+                const whatsappBtn = document.getElementById('whatsappBtn2');
 
-                if (selectVal === 'fourth') {
-                    priceEl.innerText = "السعر: 950,000 ج.م";
-                    spaceEl.innerText = "المساحة: 140 متر";
+                let currentPriceText = "";
+                let currentSpaceText = "";
+
+                if (selectVal === 'الدور الرابع - مميز') {
+                    currentPriceText = "950,000 ج.م";
+                    currentSpaceText = "140 متر";
+                    priceEl.innerText = "السعر: " + currentPriceText;
+                    spaceEl.innerText = "المساحة: " + currentSpaceText;
                     meterEl.innerText = "سعر المتر: 6,785 ج.م";
-                } else if (selectVal === 'second-front') {
-                    priceEl.innerText = "السعر: 920,000 ج.م";
-                    spaceEl.innerText = "المساحة: 140 متر";
+                } else if (selectVal === 'الدور الثاني - أمامي') {
+                    currentPriceText = "920,000 ج.م";
+                    currentSpaceText = "140 متر";
+                    priceEl.innerText = "السعر: " + currentPriceText;
+                    spaceEl.innerText = "المساحة: " + currentSpaceText;
                     meterEl.innerText = "سعر المتر: 6,570 ج.م";
-                } else if (selectVal === 'fifth-corner') {
-                    priceEl.innerText = "السعر: 980,000 ج.م";
-                    spaceEl.innerText = "المساحة: 145 متر";
+                } else if (selectVal === 'الدور الخامس - ناصية بحري') {
+                    currentPriceText = "980,000 ج.م";
+                    currentSpaceText = "145 متر";
+                    priceEl.innerText = "السعر: " + currentPriceText;
+                    spaceEl.innerText = "المساحة: " + currentSpaceText;
                     meterEl.innerText = "سعر المتر: 6,758 ج.م";
                 }
+
+                // تحديث رابط الواتساب بالبيانات الجديدة تلقائياً
+                let message = `السلام عليكم، مهتم بالشقة الثانية (${selectVal}) - المساحة: ${currentSpaceText} - السعر: ${currentPriceText}`;
+                whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
             }
         }
 
