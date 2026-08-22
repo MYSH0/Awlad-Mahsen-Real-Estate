@@ -60,7 +60,7 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
 
-        /* شريط الإعلانات المتحرك (Marquee) */
+        /* شريط الإعلانات الحديث المتوافق مع الهواتف والكمبيوتر (من الشمال لليمين) */
         .marquee-bar {
             background: #e67e22;
             color: white;
@@ -70,9 +70,25 @@
             overflow: hidden;
             white-space: nowrap;
             box-shadow: inset 0 3px 6px rgba(0,0,0,0.15);
-        }
-        .marquee-bar marquee {
             width: 100%;
+        }
+        .marquee-track {
+            display: inline-block;
+            white-space: nowrap;
+            /* السرعة والاتجاه مظبوطين بسلاسة */
+            animation: marqueeAnimation 12s linear infinite;
+        }
+        .marquee-track span {
+            display: inline-block;
+            padding-left: 60px;
+        }
+        @keyframes marqueeAnimation {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(0%);
+            }
         }
 
         .container {
@@ -385,12 +401,13 @@
         </div>
     </header>
 
-    <!-- شريط الإعلانات المتحرك -->
+    <!-- شريط الإعلانات المتحرك الحديث (من الشمال لليمين وبسرعة ممتازة) -->
     <div class="marquee-bar">
-    <marquee behavior="scroll" direction="left" scrollamount="10">
-        أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات
-    </marquee>
-</div>
+        <div class="marquee-track">
+            <span>أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات</span>
+            <span>أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات</span>
+        </div>
+    </div>
 
     <div class="container">
         <div style="text-align:center;">
