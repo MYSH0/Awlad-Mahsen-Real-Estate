@@ -173,6 +173,25 @@
             text-align: center;
         }
 
+        /* تنسيق الـ Select الخاص باختيار الدور والاتجاه */
+        .floor-select {
+            width: 100%;
+            padding: 6px 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background-color: #fff;
+            color: #1e3c72;
+            font-weight: bold;
+            font-size: 0.95rem;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .floor-select:focus {
+            border-color: #2c5364;
+            box-shadow: 0 0 5px rgba(44, 83, 100, 0.3);
+        }
+
         /* تنسيق الوصف */
         .property-desc {
             color: #555;
@@ -457,11 +476,11 @@
             <h3>الشقة الأولى - تشطيب فاخر</h3>
             
             <div class="price-box">
-                <span class="current-price">السعر: 850,000 ج.م</span>
+                <span class="current-price" id="price1">السعر: 850,000 ج.م</span>
                 <span class="old-price">900,000 ج.م</span>
             </div>
 
-            <p class="property-desc">استمتع برؤية تفاصيل الشقة الأولى عبر صور المعرض أدناه أو من خلال الجولة الفيديو الموضحة، متوفرة بمساحات مميزة وتصميمات عصرية.</p>
+            <p class="property-desc">استمتع برؤية تفاصيل الشقة الأولى عبر صور المعرض أدناه أو من خلال الجولة الفيديو الموضحة، متوفرة بمساحات مميزة وتصميمات عصرية[cite: 1].</p>
 
             <div class="tabs-nav">
                 <button class="tab-btn active" onclick="openTab(event, 'video1', 'property1')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
@@ -473,7 +492,7 @@
                 <div class="property-media">
                     <video controls>
                         <source src="MSV1.mp4" type="video/mp4">
-                        متصفحك لا يدعم عرض الفيديو
+                        متصفحك لا يدعم عرض الفيديو[cite: 1]
                     </video>
                 </div>
             </div>
@@ -506,27 +525,35 @@
             <div class="property-details-grid">
                 <div class="detail-item">
                     <i class="fa-solid fa-ruler-combined"></i>
-                    <span>المساحة: 120 متر</span>
+                    <span id="space1">المساحة: 120 متر</span>
                 </div>
                 <div class="detail-item">
                     <i class="fa-solid fa-tag"></i>
-                    <span>سعر المتر: 7,080 ج.م</span>
+                    <span id="meterPrice1">سعر المتر: 7,080 ج.م</span>
                 </div>
                 <div class="detail-item">
                     <i class="fa-solid fa-door-open"></i>
                     <span>الغرف: 3 غرف وصالة</span>
                 </div>
+                <!-- خانة الدور التفاعلية (Select) -->
                 <div class="detail-item">
                     <i class="fa-solid fa-building-user"></i>
-                    <span>الدور: الثالث</span>
+                    <div style="flex-grow: 1;">
+                        <select class="floor-select" id="floorSelect1" onchange="updatePropertyDetails('property1')">
+                            <option value="third-front">الدور الثالث - أمامي (850,000 ج.م)</option>
+                            <option value="third-back">الدور الثالث - خلفي (820,000 ج.م)</option>
+                            <option value="fourth-side">الدور الرابع - واجهة (870,000 ج.م)</option>
+                            <option value="corner">الدور الخامس - ناصية (900,000 ج.م)</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="detail-item">
                     <i class="fa-solid fa-money-bill-wave"></i>
-                    <span>الدفع: كاش فقط (غير متاح تقسيط)</span>
+                    <span>الدفع: كاش فقط (غير متاح تقسيط)[cite: 1]</span>
                 </div>
                 <div class="detail-item">
                     <i class="fa-solid fa-paint-roller"></i>
-                    <span>التسليم: طوب أحمر أو متاح تشطيب (يبدأ متر التشطيب من 3,500 ج.م)</span>
+                    <span>التسليم: طوب أحمر أو متاح تشطيب (يبدأ من 3,500 ج.م)[cite: 1]</span>
                 </div>
             </div>
 
@@ -537,14 +564,14 @@
 
         <!-- الشقة الثانية -->
         <div class="property-card" id="property2">
-            <h3>الشقة الثانية - إطلالة وموقع متميز</h3>
+            <h3>الشقة الثانية - إطلالة وموقع متميز[cite: 1]</h3>
             
             <div class="price-box">
-                <span class="current-price">السعر: 950,000 ج.م</span>
-                <span class="old-price">1,000,000 ج.م</span>
+                <span class="current-price" id="price2">السعر: 950,000 ج.م</span>
+                <span class="old-price">1,000,000 ج.م[cite: 1]</span>
             </div>
 
-            <p class="property-desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة والباحثين عن الفخامة.</p>
+            <p class="property-desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة والباحثين عن الفخامة[cite: 1].</p>
 
             <div class="tabs-nav">
                 <button class="tab-btn active" onclick="openTab(event, 'video2', 'property2')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
@@ -556,7 +583,7 @@
                 <div class="property-media">
                     <video controls>
                         <source src="MSV2.mp4" type="video/mp4">
-                        متصفحك لا يدعم عرض الفيديو
+                        متصفحك لا يدعم عرض الفيديو[cite: 1]
                     </video>
                 </div>
             </div>
@@ -589,27 +616,34 @@
             <div class="property-details-grid">
                 <div class="detail-item">
                     <i class="fa-solid fa-ruler-combined"></i>
-                    <span>المساحة: 140 متر</span>
+                    <span id="space2">المساحة: 140 متر</span>
                 </div>
                 <div class="detail-item">
                     <i class="fa-solid fa-tag"></i>
-                    <span>سعر المتر: 6,785 ج.م</span>
+                    <span id="meterPrice2">سعر المتر: 6,785 ج.م[cite: 1]</span>
                 </div>
                 <div class="detail-item">
                     <i class="fa-solid fa-door-open"></i>
-                    <span>الغرف: 3 غرف وصالة واسعة</span>
+                    <span>الغرف: 3 غرف وصالة واسعة[cite: 1]</span>
                 </div>
+                <!-- خانة الدور التفاعلية (Select) -->
                 <div class="detail-item">
                     <i class="fa-solid fa-building-user"></i>
-                    <span>الدور: الرابع</span>
+                    <div style="flex-grow: 1;">
+                        <select class="floor-select" id="floorSelect2" onchange="updatePropertyDetails('property2')">
+                            <option value="fourth">الدور الرابع - مميز (950,000 ج.م)</option>
+                            <option value="second-front">الدور الثاني - أمامي (920,000 ج.م)</option>
+                            <option value="fifth-corner">الدور الخامس - ناصية بحري (980,000 ج.م)</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="detail-item">
                     <i class="fa-solid fa-money-bill-wave"></i>
-                    <span>الدفع: كاش فقط (غير متاح تقسيط)</span>
+                    <span>الدفع: كاش فقط (غير متاح تقسيط)[cite: 1]</span>
                 </div>
                 <div class="detail-item">
                     <i class="fa-solid fa-paint-roller"></i>
-                    <span>التسليم: طوب أحمر أو متاح تشطيب (يبدأ متر التشطيب من 3,500 ج.م)</span>
+                    <span>التسليم: طوب أحمر أو متاح تشطيب (يبدأ من 3,500 ج.م)[cite: 1]</span>
                 </div>
             </div>
 
@@ -627,8 +661,8 @@
             <a href="https://www.facebook.com/share/1EPFC1xrhz/?mibextid=wwXIfr" class="facebook" target="_blank" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/my7sin_27?igsi=MTRvM3Ezdmc0MzJ6dQ%3D%3D&utm_source=qr" class="instagram" target="_blank" title="انستجرام"><i class="fa-brands fa-instagram"></i></a>
         </div>
-        <p class="footer-address"><i class="fa-solid fa-location-dot" style="color:#ff4757; margin-left: 5px;"></i> العنوان: المرج القديمة، ميدان أبو طالب، شارع الورشة الرئيسي، أولاد محسن للعقارات</p>
-        <p style="margin-top:15px; font-size: 0.85rem; color: #888;">جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري</p>
+        <p class="footer-address"><i class="fa-solid fa-location-dot" style="color:#ff4757; margin-left: 5px;"></i> العنوان: المرج القديمة، ميدان أبو طالب، شارع الورشة الرئيسي، أولاد محسن للعقارات[cite: 1]</p>
+        <p style="margin-top:15px; font-size: 0.85rem; color: #888;">جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري[cite: 1]</p>
     </footer>
 
     <!-- سكريبت البرمجة -->
@@ -641,8 +675,56 @@
             const buttons = propertyCard.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
+            propertyCard.querySelector('#' + tabId).classList.add('icon-tab' ? '' : 'active'); // Safe query
             propertyCard.querySelector('#' + tabId).classList.add('active');
             evt.currentTarget.classList.add('active');
+        }
+
+        // دالة تحديث السعر والمساحة حسب الاختيار في الـ Select
+        function updatePropertyDetails(propertyId) {
+            if (propertyId === 'property1') {
+                const selectVal = document.getElementById('floorSelect1').value;
+                const priceEl = document.getElementById('price1');
+                const spaceEl = document.getElementById('space1');
+                const meterEl = document.getElementById('meterPrice1');
+
+                if (selectVal === 'third-front') {
+                    priceEl.innerText = "السعر: 850,000 ج.م";
+                    spaceEl.innerText = "المساحة: 120 متر";
+                    meterEl.innerText = "سعر المتر: 7,080 ج.م";
+                } else if (selectVal === 'third-back') {
+                    priceEl.innerText = "السعر: 820,000 ج.م";
+                    spaceEl.innerText = "المساحة: 120 متر";
+                    meterEl.innerText = "سعر المتر: 6,833 ج.م";
+                } else if (selectVal === 'fourth-side') {
+                    priceEl.innerText = "السعر: 870,000 ج.م";
+                    spaceEl.innerText = "المساحة: 125 متر";
+                    meterEl.innerText = "سعر المتر: 6,960 ج.م";
+                } else if (selectVal === 'corner') {
+                    priceEl.innerText = "السعر: 900,000 ج.م";
+                    spaceEl.innerText = "المساحة: 130 متر";
+                    meterEl.innerText = "سعر المتر: 6,923 ج.م";
+                }
+            } else if (propertyId === 'property2') {
+                const selectVal = document.getElementById('floorSelect2').value;
+                const priceEl = document.getElementById('price2');
+                const spaceEl = document.getElementById('space2');
+                const meterEl = document.getElementById('meterPrice2');
+
+                if (selectVal === 'fourth') {
+                    priceEl.innerText = "السعر: 950,000 ج.م";
+                    spaceEl.innerText = "المساحة: 140 متر";
+                    meterEl.innerText = "سعر المتر: 6,785 ج.م";
+                } else if (selectVal === 'second-front') {
+                    priceEl.innerText = "السعر: 920,000 ج.م";
+                    spaceEl.innerText = "المساحة: 140 متر";
+                    meterEl.innerText = "سعر المتر: 6,570 ج.م";
+                } else if (selectVal === 'fifth-corner') {
+                    priceEl.innerText = "السعر: 980,000 ج.م";
+                    spaceEl.innerText = "المساحة: 145 متر";
+                    meterEl.innerText = "سعر المتر: 6,758 ج.م";
+                }
+            }
         }
 
         let slideIndices = { 'property1': 0, 'property2': 0 };
