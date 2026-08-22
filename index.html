@@ -151,28 +151,30 @@
             text-decoration: line-through;
         }
 
-        /* شريط تفاصيل المساحة وسعر المتر */
+        /* شبكة تفاصيل الوحدة الجديدة */
         .property-details-grid {
-            display: flex;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
         }
         .detail-item {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            padding: 8px 15px;
+            padding: 10px 15px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.95rem;
+            font-size: 0.93rem;
             color: #475569;
             font-weight: bold;
         }
         .detail-item i {
             color: #2c5364;
             font-size: 1.1rem;
+            min-width: 20px;
+            text-align: center;
         }
 
         /* تنسيق الوصف */
@@ -462,7 +464,7 @@
                 <span class="old-price">900,000 ج.م</span>
             </div>
 
-            <!-- تفاصيل المساحة وسعر المتر للشقة الأولى -->
+            <!-- تفاصيل الشقة الكاملة -->
             <div class="property-details-grid">
                 <div class="detail-item">
                     <i class="fa-solid fa-ruler-combined"></i>
@@ -471,6 +473,22 @@
                 <div class="detail-item">
                     <i class="fa-solid fa-tag"></i>
                     <span>سعر المتر: 7,080 ج.م</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>الغرف: 3 غرف وصالة</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-building-user"></i>
+                    <span>الدور: الثالث</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                    <span>الدفع: كاش فقط (غير متاح تقسيط)</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-paint-roller"></i>
+                    <span>التسليم: طوب أحمر أو متاح تشطيب (يبدأ متر التشطيب من 3,500 ج.م)</span>
                 </div>
             </div>
 
@@ -530,7 +548,7 @@
                 <span class="old-price">1,000,000 ج.م</span>
             </div>
 
-            <!-- تفاصيل المساحة وسعر المتر للشقة الثانية -->
+            <!-- تفاصيل الشقة الكاملة -->
             <div class="property-details-grid">
                 <div class="detail-item">
                     <i class="fa-solid fa-ruler-combined"></i>
@@ -539,6 +557,22 @@
                 <div class="detail-item">
                     <i class="fa-solid fa-tag"></i>
                     <span>سعر المتر: 6,785 ج.م</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-door-open"></i>
+                    <span>الغرف: 3 غرف وصالة واسعة</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-building-user"></i>
+                    <span>الدور: الرابع</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                    <span>الدفع: كاش فقط (غير متاح تقسيط)</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-paint-roller"></i>
+                    <span>التسليم: طوب أحمر أو متاح تشطيب (يبدأ متر التشطيب من 3,500 ج.م)</span>
                 </div>
             </div>
 
