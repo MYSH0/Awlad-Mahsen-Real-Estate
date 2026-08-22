@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أولاد محسن للتطوير العقاري</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .logo-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            margin-bottom: 10px;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1e3c72;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #2a5298;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .property-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        @media(min-width: 768px) {
+            .property-card {
+                flex-direction: row;
+            }
+        }
+        .property-media {
+            flex: 1;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+        .property-media video {
+            width: 100%;
+            height: 100%;
+            max-height: 350px;
+            object-fit: cover;
+        }
+        .property-info {
+            flex: 1;
+            padding: 25px;
+        }
+        .property-info h3 {
+            color: #1e3c72;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .property-info p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .images-grid img {
+            width: 100%;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            transition: 0.3s;
+        }
+        .images-grid img:hover {
+            transform: scale(1.05);
+            border-color: #2a5298;
+        }
+        .contact-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .contact-btn:hover {
+            background: #1ebe5d;
+        }
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="MSLOGO.jpeg" alt="لوجو أولاد محسن">
+        </div>
+        <h1>أولاد محسن للتطوير العقاري</h1>
+        <p>نمتلك أرقى الشقق السكنية لتناسب كافة الأذواق</p>
+    </header>
+
+    <div class="container">
+        <h2 style="text-align:center;"><span class="section-title">العققار المتاحة حالياً</span></h2>
+
+        <!-- الشقة الأولى -->
+        <div class="property-card">
+            <div class="property-media">
+                <video controls>
+                    <source src="MSV1.mp4" type="video/mp4">
+                    متصفحك لا يدعم عرض الفيديو
+                </video>
+            </div>
+            <div class="property-info">
+                <h3>الشقة الأولى - تشطيب فاخر</h3>
+                <p>استمتع برؤية تفاصيل الشقة الأولى عبر صور المعرض أدناه أو من خلال الجولة الفيديو الموضحة، متوفرة بمساحات مميزة وتصميمات عصرية.</p>
+                <div class="images-grid">
+                    <img src="MSI1.jpeg" alt="صورة 1">
+                    <img src="MSI2.jpeg" alt="صورة 2">
+                    <img src="MSI3.jpeg" alt="صورة 3">
+                    <img src="MSI4.jpeg" alt="صورة 4">
+                    <img src="MSI5.jpeg" alt="صورة 5">
+                </div>
+                <a href="https://wa.me/200000000000" class="contact-btn" target="_blank">تواصل عبر واتساب</a>
+            </div>
+        </div>
+
+        <!-- الشقة الثانية -->
+        <div class="property-card">
+            <div class="property-media">
+                <video controls>
+                    <source src="MSV2.mp4" type="video/mp4">
+                    متصفحك لا يدعم عرض الفيديو
+                </video>
+            </div>
+            <div class="property-info">
+                <h3>الشقة الثانية - إطلالة وموقع متميز</h3>
+                <p>تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة والباحثين عن الفخامة.</p>
+                <div class="images-grid">
+                    <img src="MSI6.jpeg" alt="صورة 6">
+                    <img src="MSI7.jpeg" alt="صورة 7">
+                    <img src="MSI8.jpeg" alt="صورة 8">
+                    <img src="MSI9.jpeg" alt="صورة 9">
+                    <img src="MSI10.jpeg" alt="صورة 10">
+                </div>
+                <a href="https://wa.me/200000000000" class="contact-btn" target="_blank">تواصل عبر واتساب</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري</p>
+    </footer>
+
+</body>
+</html>
