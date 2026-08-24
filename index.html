@@ -59,7 +59,7 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
 
-        /* شريط الإعلانات المتحرك */
+        /* شريط الإعلانات المتحرك (يبدأ من اليمين ويتحرك إلى الشمال) */
         .marquee-bar {
             background: #e67e22;
             color: white;
@@ -75,9 +75,10 @@
         .marquee-track {
             display: inline-block;
             white-space: nowrap;
-            animation: smoothMarqueeFromRight 18s linear infinite;
+            /* يبدأ من اليمين (100%) ويتحرك لليسار (-100%) */
+            animation: smoothMarqueeRightToLeft 18s linear infinite;
         }
-        @keyframes smoothMarqueeFromRight {
+        @keyframes smoothMarqueeRightToLeft {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
@@ -155,7 +156,7 @@
             color: #e74c3c;
         }
 
-        /* تنسيق صندوق المواصفات العالمي الجديد (Structured Specs Box) */
+        /* صندوق المواصفات العالمي المنظم */
         .specs-container {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -202,7 +203,6 @@
             font-weight: bold;
         }
 
-        /* تنسيق الـ Select المدمج داخل المواصفات */
         .modern-select {
             width: 100%;
             padding: 6px 8px;
@@ -227,7 +227,6 @@
             font-size: 1.02rem;
         }
 
-        /* أزرار التابات (Tabs) */
         .tabs-nav {
             display: flex;
             gap: 8px;
@@ -270,7 +269,6 @@
             object-fit: contain;
         }
 
-        /* سلايدر الصور */
         .slider-container {
             position: relative;
             width: 100%;
@@ -326,7 +324,6 @@
         .prev-btn { right: 15px; }
         .next-btn { left: 15px; }
 
-        /* أزرار التواصل تحت الشقة */
         .property-actions {
             display: flex;
             gap: 12px;
@@ -370,7 +367,6 @@
         }
         .call-btn:hover { background: #006699; }
         
-        /* نافذة تكبير الصورة (Lightbox) */
         .modal {
             display: none;
             position: fixed;
@@ -401,7 +397,6 @@
         }
         .close-modal:hover { color: #bbb; }
 
-        /* زر الواتساب العائم */
         .floating-whatsapp {
             position: fixed;
             bottom: 20px;
@@ -546,11 +541,8 @@
                 </div>
             </div>
 
-            <!-- صندوق المواصفات العالمي المنظم (Structured Specs Box) -->
             <div class="specs-container">
                 <div class="specs-grid">
-                    
-                    <!-- المساحة -->
                     <div class="spec-item">
                         <i class="fa-solid fa-ruler-combined"></i>
                         <div class="spec-content">
@@ -559,7 +551,6 @@
                         </div>
                     </div>
 
-                    <!-- سعر المتر -->
                     <div class="spec-item">
                         <i class="fa-solid fa-tag"></i>
                         <div class="spec-content">
@@ -568,7 +559,6 @@
                         </div>
                     </div>
 
-                    <!-- التقسيمة الداخلية (عدد الغرف) -->
                     <div class="spec-item">
                         <i class="fa-solid fa-door-open"></i>
                         <div class="spec-content">
@@ -577,7 +567,6 @@
                         </div>
                     </div>
 
-                    <!-- الدور والتوجيه (تفاعلي Select) -->
                     <div class="spec-item">
                         <i class="fa-solid fa-building-user"></i>
                         <div class="spec-content">
@@ -591,7 +580,6 @@
                         </div>
                     </div>
 
-                    <!-- نظام الدفع -->
                     <div class="spec-item">
                         <i class="fa-solid fa-money-bill-wave"></i>
                         <div class="spec-content">
@@ -600,7 +588,6 @@
                         </div>
                     </div>
 
-                    <!-- نوع التسليم (تفاعلي Select) -->
                     <div class="spec-item">
                         <i class="fa-solid fa-paint-roller"></i>
                         <div class="spec-content">
@@ -611,11 +598,9 @@
                             </select>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <!-- أزرار التواصل -->
             <div class="property-actions">
                 <a id="whatsappBtn1" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الأولى" class="contact-btn" target="_blank">
                     <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
@@ -667,11 +652,8 @@
                 </div>
             </div>
 
-            <!-- صندوق المواصفات العالمي المنظم (Structured Specs Box) -->
             <div class="specs-container">
                 <div class="specs-grid">
-                    
-                    <!-- المساحة -->
                     <div class="spec-item">
                         <i class="fa-solid fa-ruler-combined"></i>
                         <div class="spec-content">
@@ -680,7 +662,6 @@
                         </div>
                     </div>
 
-                    <!-- سعر المتر -->
                     <div class="spec-item">
                         <i class="fa-solid fa-tag"></i>
                         <div class="spec-content">
@@ -689,7 +670,6 @@
                         </div>
                     </div>
 
-                    <!-- التقسيمة الداخلية (عدد الغرف) -->
                     <div class="spec-item">
                         <i class="fa-solid fa-door-open"></i>
                         <div class="spec-content">
@@ -698,7 +678,6 @@
                         </div>
                     </div>
 
-                    <!-- الدور والتوجيه (تفاعلي Select) -->
                     <div class="spec-item">
                         <i class="fa-solid fa-building-user"></i>
                         <div class="spec-content">
@@ -711,7 +690,6 @@
                         </div>
                     </div>
 
-                    <!-- نظام الدفع -->
                     <div class="spec-item">
                         <i class="fa-solid fa-money-bill-wave"></i>
                         <div class="spec-content">
@@ -720,7 +698,6 @@
                         </div>
                     </div>
 
-                    <!-- نوع التسليم (تفاعلي Select) -->
                     <div class="spec-item">
                         <i class="fa-solid fa-paint-roller"></i>
                         <div class="spec-content">
@@ -731,11 +708,9 @@
                             </select>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <!-- أزرار التواصل -->
             <div class="property-actions">
                 <a id="whatsappBtn2" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الثانية" class="contact-btn" target="_blank">
                     <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
