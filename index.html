@@ -47,7 +47,6 @@
             margin-bottom: 8px;
         }
         
-        /* جملة الجذب التحفيزية */
         .header-tagline {
             display: inline-block;
             background: #f1c40f;
@@ -73,13 +72,11 @@
             box-shadow: inset 0 3px 6px rgba(0,0,0,0.15);
             width: 100%;
         }
-        
         .marquee-track {
             display: inline-block;
             white-space: nowrap;
             animation: smoothMarqueeFromRight 18s linear infinite;
         }
-
         @keyframes smoothMarqueeFromRight {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
@@ -128,7 +125,6 @@
             margin-bottom: 10px;
         }
         
-        /* تنسيق السعر والعنوان تحته */
         .price-box {
             margin-bottom: 10px;
             display: flex;
@@ -159,52 +155,72 @@
             color: #e74c3c;
         }
 
-        /* شبكة تفاصيل الوحدة المتوافقة مع الموبايل والكمبيوتر */
-        .property-details-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 12px;
-            margin: 20px 0;
-        }
-        .detail-item {
+        /* تنسيق صندوق المواصفات العالمي الجديد (Structured Specs Box) */
+        .specs-container {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            padding: 12px 15px;
-            border-radius: 8px;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 20px 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+        }
+        .spec-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 0.95rem;
-            color: #475569;
-            font-weight: bold;
+            background: #ffffff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #edf2f7;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
-        .detail-item i {
+        .spec-item i {
             color: #2c5364;
-            font-size: 1.15rem;
-            min-width: 22px;
+            font-size: 1.2rem;
+            min-width: 25px;
             text-align: center;
         }
+        .spec-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .spec-label {
+            font-size: 0.8rem;
+            color: #718096;
+            margin-bottom: 3px;
+            font-weight: bold;
+        }
+        .spec-value {
+            font-size: 0.95rem;
+            color: #2d3748;
+            font-weight: bold;
+        }
 
-        /* تنسيق الـ Select الخاص باختيار الدور والتسليم */
-        .floor-select {
+        /* تنسيق الـ Select المدمج داخل المواصفات */
+        .modern-select {
             width: 100%;
-            padding: 6px 10px;
+            padding: 6px 8px;
             border: 1px solid #cbd5e1;
             border-radius: 6px;
             background-color: #fff;
             color: #1e3c72;
             font-weight: bold;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             outline: none;
             cursor: pointer;
             transition: 0.3s;
         }
-        .floor-select:focus {
+        .modern-select:focus {
             border-color: #2c5364;
             box-shadow: 0 0 5px rgba(44, 83, 100, 0.3);
         }
 
-        /* تنسيق الوصف */
         .property-desc {
             color: #555;
             margin-bottom: 20px;
@@ -238,7 +254,6 @@
             background: #cbd5e1;
         }
 
-        /* محتوى التابات */
         .tab-content {
             display: none;
             margin-bottom: 20px;
@@ -255,7 +270,7 @@
             object-fit: contain;
         }
 
-        /* تصميم السلايدر الاحترافي المتناسق للصور */
+        /* سلايدر الصور */
         .slider-container {
             position: relative;
             width: 100%;
@@ -289,8 +304,6 @@
             cursor: pointer;
             background-color: #000;
         }
-
-        /* أسهم السلايدر */
         .slider-btn {
             position: absolute;
             top: 50%;
@@ -309,13 +322,11 @@
             transition: 0.3s;
             z-index: 10;
         }
-        .slider-btn:hover {
-            background: rgba(44, 83, 100, 0.9);
-        }
+        .slider-btn:hover { background: rgba(44, 83, 100, 0.9); }
         .prev-btn { right: 15px; }
         .next-btn { left: 15px; }
 
-        /* حاوية أزرار التواصل تحت كل شقة (واتساب + اتصال) */
+        /* أزرار التواصل تحت الشقة */
         .property-actions {
             display: flex;
             gap: 12px;
@@ -339,9 +350,7 @@
             justify-content: center;
             gap: 8px;
         }
-        .contact-btn:hover {
-            background: #1ebe5d;
-        }
+        .contact-btn:hover { background: #1ebe5d; }
         .call-btn {
             flex: 1;
             text-align: center;
@@ -359,11 +368,9 @@
             justify-content: center;
             gap: 8px;
         }
-        .call-btn:hover {
-            background: #006699;
-        }
+        .call-btn:hover { background: #006699; }
         
-        /* نافذة تكبير الصورة (Lightbox Modal) */
+        /* نافذة تكبير الصورة (Lightbox) */
         .modal {
             display: none;
             position: fixed;
@@ -394,7 +401,7 @@
         }
         .close-modal:hover { color: #bbb; }
 
-        /* زرار الواتساب العائم الثابت */
+        /* زر الواتساب العائم */
         .floating-whatsapp {
             position: fixed;
             bottom: 20px;
@@ -456,30 +463,19 @@
         .footer-links a.facebook:hover { background: #1877F2; }
         .footer-links a.instagram:hover { background: #E4405F; }
         .footer-links a.phone:hover { background: #0088cc; }
-
         .footer-address {
             margin-top: 10px;
             color: #cbd5e1;
             font-size: 0.95rem;
         }
-
-        @media(min-width: 768px) {
-            header h1 { font-size: 2.3rem; }
-            .property-card { padding: 30px; }
-            .property-info h3 { font-size: 1.6rem; }
-            .current-price { font-size: 1.5rem; }
-            .section-title { font-size: 1.7rem; padding: 14px 35px; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- زرار الواتساب العائم الثابت -->
     <a href="https://wa.me/201032903926" class="floating-whatsapp" target="_blank" title="تواصل معنا عبر الواتساب">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- نافذة تكبير الصورة المنبثقة -->
     <div id="imageModal" class="modal">
         <span class="close-modal" onclick="closeImageModal()">&times;</span>
         <img class="modal-content" id="modalImg">
@@ -496,7 +492,6 @@
         </div>
     </header>
 
-    <!-- شريط الإعلانات المتحرك -->
     <div class="marquee-bar">
         <div class="marquee-track">
             أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات
@@ -504,7 +499,6 @@
     </div>
 
     <div class="container">
-        <!-- العنوان الاحترافي -->
         <div class="section-title-box">
             <h2 class="section-title">
                 <i class="fa-solid fa-building"></i> العقارات المتاحة حالياً
@@ -513,26 +507,24 @@
 
         <!-- الشقة الأولى -->
         <div class="property-card" id="property1">
-            <h3>الشقة الأولى - تشطيب فاخر</h3>
+            <h3>الشقة الأولى - تصميم عائلي فاخر</h3>
             
             <div class="price-box">
                 <span class="current-price" id="price1">السعر: 850,000 ج.م</span>
                 <span class="old-price">900,000 ج.م</span>
             </div>
             
-            <!-- العنوان تحت السعر مباشرة -->
             <div class="property-location-sub">
                 <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
             </div>
 
-            <p class="property-desc">استمتع برؤية تفاصيل الشقة الأولى عبر صور المعرض أدناه أو من خلال الجولة الفيديو الموضحة، متوفرة بمساحات مميزة وتصميمات عصرية.</p>
+            <p class="property-desc">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، شاهد صور المعرض والفيديو التفصيلي للوحدة.</p>
 
             <div class="tabs-nav">
                 <button class="tab-btn active" onclick="openTab(event, 'video1', 'property1')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
                 <button class="tab-btn" onclick="openTab(event, 'photos1', 'property1')"><i class="fa-solid fa-images"></i> عرض الصور</button>
             </div>
 
-            <!-- محتوى الفيديو -->
             <div id="video1" class="tab-content active">
                 <div class="property-media">
                     <video controls>
@@ -542,75 +534,90 @@
                 </div>
             </div>
 
-            <!-- محتوى السلايدر للصور -->
             <div id="photos1" class="tab-content">
                 <div class="slider-container" data-slider>
-                    <div class="slide active-slide">
-                        <img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)">
-                    </div>
-                    <div class="slide">
-                        <img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)">
-                    </div>
-                    <div class="slide">
-                        <img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)">
-                    </div>
-                    <div class="slide">
-                        <img src="MSI4.jpeg" alt="صورة 4" onclick="openImageModal(this.src)">
-                    </div>
-                    <div class="slide">
-                        <img src="MSI5.jpeg" alt="صورة 5" onclick="openImageModal(this.src)">
-                    </div>
-
+                    <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI4.jpeg" alt="صورة 4" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI5.jpeg" alt="صورة 5" onclick="openImageModal(this.src)"></div>
                     <button class="slider-btn prev-btn" onclick="changeSlide(1, 'property1')">&#10095;</button>
                     <button class="slider-btn next-btn" onclick="changeSlide(-1, 'property1')">&#10094;</button>
                 </div>
             </div>
 
-            <!-- تفاصيل الشقة الكاملة تحت الفيديو والصور -->
-            <div class="property-details-grid">
-                <div class="detail-item">
-                    <i class="fa-solid fa-ruler-combined"></i>
-                    <span id="space1">المساحة: 120 متر</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-tag"></i>
-                    <span id="meterPrice1">سعر المتر: 7,080 ج.م</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-door-open"></i>
-                    <span>الغرف: 3 غرف وصالة</span>
-                </div>
-                <!-- خانة الدور التفاعلية (Select) -->
-                <div class="detail-item">
-                    <i class="fa-solid fa-building-user"></i>
-                    <div style="flex-grow: 1;">
-                        <select class="floor-select" id="floorSelect1" onchange="updatePropertyDetails('property1')">
-                            <option value="الدور الثالث - أمامي">الدور الثالث - أمامي (850,000 ج.م)</option>
-                            <option value="الدور الثالث - خلفي">الدور الثالث - خلفي (820,000 ج.م)</option>
-                            <option value="الدور الرابع - واجهة">الدور الرابع - واجهة (870,000 ج.م)</option>
-                            <option value="الدور الخامس - ناصية">الدور الخامس - ناصية (900,000 ج.م)</option>
-                        </select>
+            <!-- صندوق المواصفات العالمي المنظم (Structured Specs Box) -->
+            <div class="specs-container">
+                <div class="specs-grid">
+                    
+                    <!-- المساحة -->
+                    <div class="spec-item">
+                        <i class="fa-solid fa-ruler-combined"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">المساحة الإجمالية</span>
+                            <span class="spec-value" id="space1">120 متر</span>
+                        </div>
                     </div>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-money-bill-wave"></i>
-                    <span>الدفع: كاش فقط (غير متاح تقسيط)</span>
-                </div>
-                <!-- خانة التسليم التفاعلية (Select) -->
-                <div class="detail-item">
-                    <i class="fa-solid fa-paint-roller"></i>
-                    <div style="flex-grow: 1;">
-                        <select class="floor-select" id="finishSelect1" onchange="updatePropertyDetails('property1')">
-                            <option value="طوب أحمر">التسليم: طوب أحمر</option>
-                            <option value="تشطيب فاخر">التسليم: تشطيب فاخر (يبدأ من 3,500 ج.م)</option>
-                        </select>
+
+                    <!-- سعر المتر -->
+                    <div class="spec-item">
+                        <i class="fa-solid fa-tag"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">سعر المتر التقديري</span>
+                            <span class="spec-value" id="meterPrice1">7,080 ج.م</span>
+                        </div>
                     </div>
+
+                    <!-- التقسيمة الداخلية (عدد الغرف) -->
+                    <div class="spec-item">
+                        <i class="fa-solid fa-door-open"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">التفاصيل الداخلية</span>
+                            <span class="spec-value">3 غرف + ريسبشن ومطبخ وحمام</span>
+                        </div>
+                    </div>
+
+                    <!-- الدور والتوجيه (تفاعلي Select) -->
+                    <div class="spec-item">
+                        <i class="fa-solid fa-building-user"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">الدور والاتجاه</span>
+                            <select class="modern-select" id="floorSelect1" onchange="updatePropertyDetails('property1')">
+                                <option value="الدور الثالث - أمامي">الدور الثالث - أمامي (850,000 ج.م)</option>
+                                <option value="الدور الثالث - خلفي">الدور الثالث - خلفي (820,000 ج.م)</option>
+                                <option value="الدور الرابع - واجهة">الدور الرابع - واجهة (870,000 ج.م)</option>
+                                <option value="الدور الخامس - ناصية">الدور الخامس - ناصية (900,000 ج.م)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- نظام الدفع -->
+                    <div class="spec-item">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">طريقة الدفع</span>
+                            <span class="spec-value" style="color: #e74c3c;">كاش فقط (غير متاح تقسيط)</span>
+                        </div>
+                    </div>
+
+                    <!-- نوع التسليم (تفاعلي Select) -->
+                    <div class="spec-item">
+                        <i class="fa-solid fa-paint-roller"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">حالة التسليم</span>
+                            <select class="modern-select" id="finishSelect1" onchange="updatePropertyDetails('property1')">
+                                <option value="طوب أحمر">طوب أحمر</option>
+                                <option value="تشطيب فاخر">تشطيب فاخر (يبدأ من 3,500 ج.م للمتر)</option>
+                            </select>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- أزرار التواصل (واتساب + اتصال هاتفياً) -->
+            <!-- أزرار التواصل -->
             <div class="property-actions">
-                <a id="whatsappBtn1" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الأولى%20-%20الدور%20الثالث%20-%20أمامي%20بسعر%20850,000%20ج.م" class="contact-btn" target="_blank">
+                <a id="whatsappBtn1" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الأولى" class="contact-btn" target="_blank">
                     <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
                 </a>
                 <a href="tel:01032903926" class="call-btn">
@@ -628,19 +635,17 @@
                 <span class="old-price">1,000,000 ج.م</span>
             </div>
 
-            <!-- العنوان تحت السعر مباشرة -->
             <div class="property-location-sub">
                 <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
             </div>
 
-            <p class="property-desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة والباحثين عن الفخامة.</p>
+            <p class="property-desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
 
             <div class="tabs-nav">
                 <button class="tab-btn active" onclick="openTab(event, 'video2', 'property2')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
                 <button class="tab-btn" onclick="openTab(event, 'photos2', 'property2')"><i class="fa-solid fa-images"></i> عرض الصور</button>
             </div>
 
-            <!-- محتوى الفيديو -->
             <div id="video2" class="tab-content active">
                 <div class="property-media">
                     <video controls>
@@ -650,74 +655,89 @@
                 </div>
             </div>
 
-            <!-- محتوى السلايدر للصور -->
             <div id="photos2" class="tab-content">
                 <div class="slider-container" data-slider>
-                    <div class="slide active-slide">
-                        <img src="MSI6.jpeg" alt="صورة 6" onclick="openImageModal(this.src)">
-                    </div>
-                    <div class="slide">
-                        <img src="MSI7.jpeg" alt="صورة 7" onclick="openImageModal(this.src)">
-                    </div>
-                    <div class="slide">
-                        <img src="MSI8.jpeg" alt="صورة 8" onclick="openImageModal(this.src)">
-                    </div>
-                    <div class="slide">
-                        <img src="MSI9.jpeg" alt="صورة 9" onclick="openImageModal(this.src)">
-                    </div>
-                    <div class="slide">
-                        <img src="MSI10.jpeg" alt="صورة 10" onclick="openImageModal(this.src)">
-                    </div>
-
+                    <div class="slide active-slide"><img src="MSI6.jpeg" alt="صورة 6" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI7.jpeg" alt="صورة 7" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI8.jpeg" alt="صورة 8" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI9.jpeg" alt="صورة 9" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI10.jpeg" alt="صورة 10" onclick="openImageModal(this.src)"></div>
                     <button class="slider-btn prev-btn" onclick="changeSlide(1, 'property2')">&#10095;</button>
                     <button class="slider-btn next-btn" onclick="changeSlide(-1, 'property2')">&#10094;</button>
                 </div>
             </div>
 
-            <!-- تفاصيل الشقة الكاملة تحت الفيديو والصور -->
-            <div class="property-details-grid">
-                <div class="detail-item">
-                    <i class="fa-solid fa-ruler-combined"></i>
-                    <span id="space2">المساحة: 140 متر</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-tag"></i>
-                    <span id="meterPrice2">سعر المتر: 6,785 ج.م</span>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-door-open"></i>
-                    <span>الغرف: 3 غرف وصالة واسعة</span>
-                </div>
-                <!-- خانة الدور التفاعلية (Select) -->
-                <div class="detail-item">
-                    <i class="fa-solid fa-building-user"></i>
-                    <div style="flex-grow: 1;">
-                        <select class="floor-select" id="floorSelect2" onchange="updatePropertyDetails('property2')">
-                            <option value="الدور الرابع - مميز">الدور الرابع - مميز (950,000 ج.م)</option>
-                            <option value="الدور الثاني - أمامي">الدور الثاني - أمامي (920,000 ج.م)</option>
-                            <option value="الدور الخامس - ناصية بحري">الدور الخامس - ناصية بحري (980,000 ج.م)</option>
-                        </select>
+            <!-- صندوق المواصفات العالمي المنظم (Structured Specs Box) -->
+            <div class="specs-container">
+                <div class="specs-grid">
+                    
+                    <!-- المساحة -->
+                    <div class="spec-item">
+                        <i class="fa-solid fa-ruler-combined"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">المساحة الإجمالية</span>
+                            <span class="spec-value" id="space2">140 متر</span>
+                        </div>
                     </div>
-                </div>
-                <div class="detail-item">
-                    <i class="fa-solid fa-money-bill-wave"></i>
-                    <span>الدفع: كاش فقط (غير متاح تقسيط)</span>
-                </div>
-                <!-- خانة التسليم التفاعلية (Select) -->
-                <div class="detail-item">
-                    <i class="fa-solid fa-paint-roller"></i>
-                    <div style="flex-grow: 1;">
-                        <select class="floor-select" id="finishSelect2" onchange="updatePropertyDetails('property2')">
-                            <option value="طوب أحمر">التسليم: طوب أحمر</option>
-                            <option value="تشطيب فاخر">التسليم: تشطيب فاخر (يبدأ من 3,500 ج.م)</option>
-                        </select>
+
+                    <!-- سعر المتر -->
+                    <div class="spec-item">
+                        <i class="fa-solid fa-tag"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">سعر المتر التقديري</span>
+                            <span class="spec-value" id="meterPrice2">6,785 ج.م</span>
+                        </div>
                     </div>
+
+                    <!-- التقسيمة الداخلية (عدد الغرف) -->
+                    <div class="spec-item">
+                        <i class="fa-solid fa-door-open"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">التفاصيل الداخلية</span>
+                            <span class="spec-value">4 غرف + ريسبشن كبير ومطبخ وحمام</span>
+                        </div>
+                    </div>
+
+                    <!-- الدور والتوجيه (تفاعلي Select) -->
+                    <div class="spec-item">
+                        <i class="fa-solid fa-building-user"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">الدور والاتجاه</span>
+                            <select class="modern-select" id="floorSelect2" onchange="updatePropertyDetails('property2')">
+                                <option value="الدور الرابع - مميز">الدور الرابع - مميز (950,000 ج.م)</option>
+                                <option value="الدور الثاني - أمامي">الدور الثاني - أمامي (920,000 ج.م)</option>
+                                <option value="الدور الخامس - ناصية بحري">الدور الخامس - ناصية بحري (980,000 ج.م)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- نظام الدفع -->
+                    <div class="spec-item">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">طريقة الدفع</span>
+                            <span class="spec-value" style="color: #e74c3c;">كاش فقط (غير متاح تقسيط)</span>
+                        </div>
+                    </div>
+
+                    <!-- نوع التسليم (تفاعلي Select) -->
+                    <div class="spec-item">
+                        <i class="fa-solid fa-paint-roller"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">حالة التسليم</span>
+                            <select class="modern-select" id="finishSelect2" onchange="updatePropertyDetails('property2')">
+                                <option value="طوب أحمر">طوب أحمر</option>
+                                <option value="تشطيب فاخر">تشطيب فاخر (يبدأ من 3,500 ج.م للمتر)</option>
+                            </select>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- أزرار التواصل (واتساب + اتصال هاتفياً) -->
+            <!-- أزرار التواصل -->
             <div class="property-actions">
-                <a id="whatsappBtn2" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الثانية%20-%20الدور%20الرابع%20-%20مميز%20بسعر%20950,000%20ج.م" class="contact-btn" target="_blank">
+                <a id="whatsappBtn2" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الثانية" class="contact-btn" target="_blank">
                     <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
                 </a>
                 <a href="tel:01032903926" class="call-btn">
@@ -739,7 +759,6 @@
         <p style="margin-top:15px; font-size: 0.85rem; color: #888;">جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري</p>
     </footer>
 
-    <!-- سكريبت البرمجة -->
     <script>
         function openTab(evt, tabId, propertyId) {
             const propertyCard = document.getElementById(propertyId);
@@ -753,7 +772,6 @@
             evt.currentTarget.classList.add('active');
         }
 
-        // دالة تحديث السعر والمساحة ونوع التسليم وعنوان الشقة ورابط الواتساب تلقائياً
         function updatePropertyDetails(propertyId) {
             const propertyAddress = "شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة";
 
@@ -775,29 +793,28 @@
                     currentPriceText = "850,000 ج.م";
                     currentSpaceText = "120 متر";
                     priceEl.innerText = "السعر: " + currentPriceText;
-                    spaceEl.innerText = "المساحة: " + currentSpaceText;
-                    meterEl.innerText = "سعر المتر: 7,080 ج.م";
+                    spaceEl.innerText = currentSpaceText;
+                    meterEl.innerText = "7,080 ج.م";
                 } else if (selectVal === 'الدور الثالث - خلفي') {
                     currentPriceText = "820,000 ج.م";
                     currentSpaceText = "120 متر";
                     priceEl.innerText = "السعر: " + currentPriceText;
-                    spaceEl.innerText = "المساحة: " + currentSpaceText;
-                    meterEl.innerText = "سعر المتر: 6,833 ج.م";
+                    spaceEl.innerText = currentSpaceText;
+                    meterEl.innerText = "6,833 ج.م";
                 } else if (selectVal === 'الدور الرابع - واجهة') {
                     currentPriceText = "870,000 ج.م";
                     currentSpaceText = "125 متر";
                     priceEl.innerText = "السعر: " + currentPriceText;
-                    spaceEl.innerText = "المساحة: " + currentSpaceText;
-                    meterEl.innerText = "سعر المتر: 6,960 ج.م";
+                    spaceEl.innerText = currentSpaceText;
+                    meterEl.innerText = "6,960 ج.م";
                 } else if (selectVal === 'الدور الخامس - ناصية') {
                     currentPriceText = "900,000 ج.م";
                     currentSpaceText = "130 متر";
                     priceEl.innerText = "السعر: " + currentPriceText;
-                    spaceEl.innerText = "المساحة: " + currentSpaceText;
-                    meterEl.innerText = "سعر المتر: 6,923 ج.م";
+                    spaceEl.innerText = currentSpaceText;
+                    meterEl.innerText = "6,923 ج.م";
                 }
 
-                // تحديث رابط الواتساب ليشمل العنوان وكافة التفاصيل بدقة
                 let message = `السلام عليكم، مهتم بالشقة الأولى\n📍 العنوان: ${propertyAddress}\n🏢 الاختيار: ${selectVal}\n📏 المساحة: ${currentSpaceText}\n💰 السعر: ${currentPriceText}\n🛠️ التسليم: ${finishVal}`;
                 whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
 
@@ -819,23 +836,22 @@
                     currentPriceText = "950,000 ج.م";
                     currentSpaceText = "140 متر";
                     priceEl.innerText = "السعر: " + currentPriceText;
-                    spaceEl.innerText = "المساحة: " + currentSpaceText;
-                    meterEl.innerText = "سعر المتر: 6,785 ج.م";
+                    spaceEl.innerText = currentSpaceText;
+                    meterEl.innerText = "6,785 ج.م";
                 } else if (selectVal === 'الدور الثاني - أمامي') {
                     currentPriceText = "920,000 ج.م";
                     currentSpaceText = "140 متر";
                     priceEl.innerText = "السعر: " + currentPriceText;
-                    spaceEl.innerText = "المساحة: " + currentSpaceText;
-                    meterEl.innerText = "سعر المتر: 6,570 ج.م";
+                    spaceEl.innerText = currentSpaceText;
+                    meterEl.innerText = "6,570 ج.م";
                 } else if (selectVal === 'الدور الخامس - ناصية بحري') {
                     currentPriceText = "980,000 ج.م";
                     currentSpaceText = "145 متر";
                     priceEl.innerText = "السعر: " + currentPriceText;
-                    spaceEl.innerText = "المساحة: " + currentSpaceText;
-                    meterEl.innerText = "سعر المتر: 6,758 ج.م";
+                    spaceEl.innerText = currentSpaceText;
+                    meterEl.innerText = "6,758 ج.م";
                 }
 
-                // تحديث رابط الواتساب ليشمل العنوان وكافة التفاصيل بدقة
                 let message = `السلام عليكم، مهتم بالشقة الثانية\n📍 العنوان: ${propertyAddress}\n🏢 الاختيار: ${selectVal}\n📏 المساحة: ${currentSpaceText}\n💰 السعر: ${currentPriceText}\n🛠️ التسليم: ${finishVal}`;
                 whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
             }
@@ -847,17 +863,11 @@
         function showSlide(propertyId, n) {
             const propertyCard = document.getElementById(propertyId);
             const slides = propertyCard.querySelectorAll('.slide');
-            
             if (slides.length === 0) return;
 
             slideIndices[propertyId] += n;
-            
-            if (slideIndices[propertyId] >= slides.length) {
-                slideIndices[propertyId] = 0;
-            }
-            if (slideIndices[propertyId] < 0) {
-                slideIndices[propertyId] = slides.length - 1;
-            }
+            if (slideIndices[propertyId] >= slides.length) slideIndices[propertyId] = 0;
+            if (slideIndices[propertyId] < 0) slideIndices[propertyId] = slides.length - 1;
 
             slides.forEach(slide => slide.classList.remove('active-slide'));
             slides[slideIndices[propertyId]].classList.add('active-slide');
@@ -869,9 +879,7 @@
         }
 
         function startAutoSlide(propertyId) {
-            slideIntervals[propertyId] = setInterval(() => {
-                showSlide(propertyId, 1);
-            }, 3500);
+            slideIntervals[propertyId] = setInterval(() => { showSlide(propertyId, 1); }, 3500);
         }
 
         function resetAutoSlide(propertyId) {
@@ -897,11 +905,8 @@
 
         window.onclick = function(event) {
             const modal = document.getElementById('imageModal');
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+            if (event.target == modal) modal.style.display = "none";
         }
     </script>
-
 </body>
 </html>
