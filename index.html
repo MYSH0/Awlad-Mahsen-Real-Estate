@@ -17,10 +17,10 @@
             background-color: #f4f6f9;
             color: #333;
             line-height: 1.6;
-            padding-top: 70px; /* مسافة أعلى الصفحة عشان المحتوى ميتدزش تحت الشريط الثابت */
+            padding-top: 60px; /* مسافة أعلى الصفحة تناسب الشريط الثابت في سطر واحد */
         }
         
-        /* الشريط العلوي الثابت والاحترافي (Top Bar / Header) */
+        /* الشريط العلوي الثابت والاحترافي (Top Bar / Header) في سطر واحد */
         .top-bar {
             position: fixed;
             top: 0;
@@ -28,26 +28,29 @@
             width: 100%;
             background: #0b141b;
             color: #cbd5e1;
-            padding: 8px 20px;
+            padding: 6px 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             z-index: 2000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            white-space: nowrap;
         }
 
         .top-bar-socials {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             align-items: center;
+            flex: 1;
+            justify-content: flex-start; /* التواصل على اليمين */
         }
         .top-bar-socials a {
             color: #cbd5e1;
             text-decoration: none;
             transition: 0.3s;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
         .top-bar-socials a.whatsapp:hover { color: #25D366; }
         .top-bar-socials a.facebook:hover { color: #1877F2; }
@@ -60,10 +63,11 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            flex: 0 0 auto;
         }
         .top-bar-logo img {
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #f1c40f;
@@ -75,48 +79,60 @@
 
         .top-bar-options {
             display: flex;
-            gap: 12px;
+            gap: 6px;
             align-items: center;
+            flex: 1;
+            justify-content: flex-end; /* اللغة والعملة على اليسار */
         }
         .lang-switcher, .global-btn {
             background: rgba(255,255,255,0.1);
             border: 1px solid rgba(255,255,255,0.2);
             color: white;
-            padding: 4px 10px;
+            padding: 3px 6px;
             border-radius: 4px;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: 0.3s;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 3px;
         }
         .lang-switcher:hover, .global-btn:hover {
             background: #2c5364;
             border-color: #2c5364;
         }
 
-        /* تنسيق الشريط العلوي للموبايل */
+        /* تنسيق الشريط العلوي للموبايل ليبقى في سطر واحد بدون نزول أسطر */
         @media (max-width: 768px) {
             body {
-                padding-top: 115px; /* زيادة المساحة في الموبايل لأن الشريط هيبقى سطرين */
+                padding-top: 55px;
             }
             .top-bar {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 8px;
-                padding: 8px 10px;
-            }
-            .top-bar-logo {
-                order: 1;
+                padding: 4px 6px;
             }
             .top-bar-socials {
-                order: 2;
-                gap: 15px;
+                gap: 5px;
+            }
+            .top-bar-socials span {
+                display: none; /* إخفاء كلمة "تواصل:" في الموبايل لتوفير مساحة للأيقونات واللوجو */
+            }
+            .top-bar-socials a {
+                font-size: 0.85rem;
+            }
+            .top-bar-logo img {
+                width: 32px;
+                height: 32px;
             }
             .top-bar-options {
-                order: 3;
+                gap: 4px;
+            }
+            .lang-switcher, .global-btn {
+                padding: 2px 4px;
+                font-size: 0.7rem;
+            }
+            .global-btn {
+                display: none; /* إخفاء العملة في الموبايل الضيق لتجنب الزحمة وجعل الشريط نظيفاً في سطر واحد */
             }
         }
 
@@ -582,11 +598,11 @@
 </head>
 <body>
 
-    <!-- الشريط العلوي الثابت مع اللوجو في المنتصف -->
+    <!-- الشريط العلوي الثابت في سطر واحد (تواصل يمين، لوجو وسط، لغة يسار) -->
     <div class="top-bar">
         <!-- التواصل على اليمين -->
         <div class="top-bar-socials">
-            <span id="t-contact" style="font-size: 0.85rem; color: #94a3b8;">تواصل:</span>
+            <span id="t-contact" style="font-size: 0.8rem; color: #94a3b8;">تواصل:</span>
             <a href="https://wa.me/201032903926" class="whatsapp" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
             <a href="https://www.facebook.com/share/1EPFC1xrhz/?mibextid=wwXIfr" class="facebook" target="_blank" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/my7sin_27?igsi=MTRvM3Ezdmc0MzJ6dQ%3D%3D&utm_source=qr" class="instagram" target="_blank" title="انستجرام"><i class="fa-brands fa-instagram"></i></a>
