@@ -545,7 +545,7 @@
             </h2>
         </div>
 
-        <!-- الشقة الأولى (كارت مختصر في الصفحة الرئيسية) -->
+        <!-- الشقة الأولى -->
         <div class="property-card">
             <h3 data-key="prop1Title">الشقة الأولى - تصميم عائلي فاخر</h3>
             
@@ -567,7 +567,7 @@
             </div>
 
             <div class="property-actions">
-                <button class="details-btn" onclick="openPropertyModal()">
+                <button class="details-btn" onclick="openPropertyModal('propertyModal1', 'slider1')">
                     <i class="fa-solid fa-circle-info"></i> <span data-key="detailsBtnText">عرض تفاصيل الشقة والمعرض</span>
                 </button>
                 <a href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الأولى" class="contact-btn" target="_blank">
@@ -601,20 +601,23 @@
             </div>
 
             <div class="property-actions">
+                <button class="details-btn" onclick="openPropertyModal('propertyModal2', 'slider2')">
+                    <i class="fa-solid fa-circle-info"></i> <span data-key="detailsBtnText">عرض تفاصيل الشقة والمعرض</span>
+                </button>
                 <a href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الثانية" class="contact-btn" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> <span data-key="whatsappText">تواصل عبر واتساب</span>
+                    <i class="fa-brands fa-whatsapp"></i> <span data-key="whatsappText">واتساب</span>
                 </a>
                 <a href="tel:01032903926" class="call-btn">
-                    <i class="fa-solid fa-phone"></i> <span data-key="callText">تواصل هاتفياً</span>
+                    <i class="fa-solid fa-phone"></i> <span data-key="callText">اتصال</span>
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- نافذة تفاصيل الشقة الأولى المنبثقة (Modal) -->
-    <div id="propertyModal" class="property-modal">
+    <!-- نافذة تفاصيل الشقة الأولى المنبثقة (Modal 1) -->
+    <div id="propertyModal1" class="property-modal">
         <div class="property-modal-content">
-            <span class="close-property-modal" onclick="closePropertyModal()">&times;</span>
+            <span class="close-property-modal" onclick="closePropertyModal('propertyModal1')">&times;</span>
             
             <h2 style="color: #1e3c72; font-size: 1.6rem; margin-bottom: 10px;">الشقة الأولى - تصميم عائلي فاخر</h2>
             
@@ -645,16 +648,16 @@
                 </div>
             </div>
 
-            <!-- محتوى الصور (Slider) -->
+            <!-- محتوى الصور (Slider 1) -->
             <div id="photos1" class="tab-content">
-                <div class="slider-container" data-slider>
+                <div class="slider-container" id="slider1">
                     <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
                     <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
                     <div class="slide"><img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)"></div>
                     <div class="slide"><img src="MSI4.jpeg" alt="صورة 4" onclick="openImageModal(this.src)"></div>
                     <div class="slide"><img src="MSI5.jpeg" alt="صورة 5" onclick="openImageModal(this.src)"></div>
-                    <button class="slider-btn prev-btn" onclick="changeSlide(1)">&#10095;</button>
-                    <button class="slider-btn next-btn" onclick="changeSlide(-1)">&#10094;</button>
+                    <button class="slider-btn prev-btn" onclick="changeSlide('slider1', 1)">&#10095;</button>
+                    <button class="slider-btn next-btn" onclick="changeSlide('slider1', -1)">&#10094;</button>
                 </div>
             </div>
 
@@ -732,6 +735,124 @@
         </div>
     </div>
 
+    <!-- نافذة تفاصيل الشقة الثانية المنبثقة (Modal 2) -->
+    <div id="propertyModal2" class="property-modal">
+        <div class="property-modal-content">
+            <span class="close-property-modal" onclick="closePropertyModal('propertyModal2')">&times;</span>
+            
+            <h2 style="color: #1e3c72; font-size: 1.6rem; margin-bottom: 10px;">الشقة الثانية - إطلالة وموقع متميز</h2>
+            
+            <div class="price-box">
+                <span class="current-price" id="price2">السعر: 950,000 ج.م</span>
+                <span class="old-price">1,000,000 ج.م</span>
+            </div>
+            
+            <div class="property-location-sub">
+                <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
+            </div>
+
+            <p style="color: #555; margin-bottom: 15px; font-size: 0.95rem;">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
+
+            <!-- التبويبات (فيديو / صور) -->
+            <div class="tabs-nav">
+                <button class="tab-btn active" onclick="openTab(event, 'video2')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
+                <button class="tab-btn" onclick="openTab(event, 'photos2')"><i class="fa-solid fa-images"></i> عرض الصور</button>
+            </div>
+
+            <!-- محتوى الفيديو -->
+            <div id="video2" class="tab-content active">
+                <div class="property-media">
+                    <video controls>
+                        <source src="MSV2.mp4" type="video/mp4">
+                        متصفحك لا يدعم عرض الفيديو
+                    </video>
+                </div>
+            </div>
+
+            <!-- محتوى الصور (Slider 2) -->
+            <div id="photos2" class="tab-content">
+                <div class="slider-container" id="slider2">
+                    <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)"></div>
+                    <button class="slider-btn prev-btn" onclick="changeSlide('slider2', 1)">&#10095;</button>
+                    <button class="slider-btn next-btn" onclick="changeSlide('slider2', -1)">&#10094;</button>
+                </div>
+            </div>
+
+            <!-- المواصفات والاختيارات -->
+            <div class="specs-container">
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <i class="fa-solid fa-ruler-combined"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">المساحة الإجمالية</span>
+                            <span class="spec-value" id="space2">140 متر</span>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <i class="fa-solid fa-tag"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">سعر المتر التقديري</span>
+                            <span class="spec-value" id="meterPrice2">6,785 ج.م</span>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <i class="fa-solid fa-door-open"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">التفاصيل الداخلية</span>
+                            <span class="spec-value">4 غرف + ريسبشن ومطبخ وحمام</span>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <i class="fa-solid fa-building-user"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">الدور والاتجاه</span>
+                            <select class="modern-select" id="floorSelect2" onchange="updatePropertyDetails2()">
+                                <option value="الدور الثاني - أمامي">الدور الثاني - أمامي (950,000 ج.م)</option>
+                                <option value="الدور الثالث - ناصية">الدور الثالث - ناصية (980,000 ج.م)</option>
+                                <option value="الدور الأخير - واجهة">الدور الأخير - واجهة (920,000 ج.م)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">طريقة الدفع</span>
+                            <span class="spec-value" style="color: #e74c3c;">كاش فقط (غير متاح تقسيط)</span>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <i class="fa-solid fa-paint-roller"></i>
+                        <div class="spec-content">
+                            <span class="spec-label">حالة التسليم</span>
+                            <select class="modern-select" id="finishSelect2" onchange="updatePropertyDetails2()">
+                                <option value="طوب أحمر">طوب أحمر</option>
+                                <option value="تشطيب فاخر">تشطيب فاخر (يبدأ من 3,500 ج.م للمتر)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- أزرار التواصل داخل المودال -->
+            <div class="property-actions">
+                <a id="whatsappBtn2" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الثانية" class="contact-btn" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
+                </a>
+                <a href="tel:01032903926" class="call-btn">
+                    <i class="fa-solid fa-phone"></i> تواصل هاتفياً
+                </a>
+            </div>
+
+        </div>
+    </div>
+
     <!-- نافذة تكبير الصورة (Image Modal) -->
     <div id="imageModal" class="img-modal">
         <span class="close-img-modal" onclick="closeImageModal()">&times;</span>
@@ -752,41 +873,47 @@
 
     <!-- أكواد الجافاسكريبت للتحكم بالنافذة والترجمة والمعرض -->
     <script>
+        let slideIntervals = {};
+
         // التحكم في فتح وغلق نافذة تفاصيل الشقة
-        function openPropertyModal() {
-            document.getElementById('propertyModal').style.display = 'block';
-            startAutoSlide();
+        function openPropertyModal(modalId, sliderId) {
+            document.getElementById(modalId).style.display = 'block';
+            startAutoSlide(sliderId);
         }
-        function closePropertyModal() {
-            document.getElementById('propertyModal').style.display = 'none';
-            clearInterval(slideInterval);
+        function closePropertyModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            // استخراج معرف السلايدر المرتبط وإيقافه
+            const sliderId = modalId === 'propertyModal1' ? 'slider1' : 'slider2';
+            if (slideIntervals[sliderId]) {
+                clearInterval(slideIntervals[sliderId]);
+            }
         }
 
         // إغلاق النافذة عند الضغط خارجها
         window.onclick = function(event) {
-            const modal = document.getElementById('propertyModal');
+            const modal1 = document.getElementById('propertyModal1');
+            const modal2 = document.getElementById('propertyModal2');
             const imgModal = document.getElementById('imageModal');
-            if (event.target == modal) {
-                closePropertyModal();
-            }
-            if (event.target == imgModal) {
-                closeImageModal();
-            }
+            if (event.target == modal1) { closePropertyModal('propertyModal1'); }
+            if (event.target == modal2) { closePropertyModal('propertyModal2'); }
+            if (event.target == imgModal) { closeImageModal(); }
         }
 
         // التبويبات (فيديو / صور)
         function openTab(evt, tabId) {
-            const contents = document.querySelectorAll('.tab-content');
+            // تحديد الحاوية الأب للتابات لنضمن التبديل داخل المودال الصحيح فقط
+            const modalContent = evt.currentTarget.closest('.property-modal-content');
+            const contents = modalContent.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            const buttons = document.querySelectorAll('.tab-btn');
+            const buttons = modalContent.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            document.getElementById(tabId).classList.add('active');
+            modalContent.querySelector('#' + tabId).classList.add('active');
             evt.currentTarget.classList.add('active');
         }
 
-        // تحديث تفاصيل الشقة والأسعار حسب الدور المختار
+        // تحديث تفاصيل الشقة الأولى
         function updatePropertyDetails() {
             const selectEl = document.getElementById('floorSelect1');
             const finishEl = document.getElementById('finishSelect1');
@@ -802,64 +929,87 @@
             let currentSpaceText = "";
 
             if (selectVal.includes('الدور الثالث - أمامي')) {
-                currentPriceText = "850,000 EGP";
-                currentSpaceText = "120 متر";
-                priceEl.innerText = "السعر: 850,000 ج.م";
-                spaceEl.innerText = currentSpaceText;
-                meterEl.innerText = "7,080 ج.م";
+                currentPriceText = "850,000 EGP"; currentSpaceText = "120 متر";
+                priceEl.innerText = "السعر: 850,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "7,080 ج.م";
             } else if (selectVal.includes('الدور الثالث - خلفي')) {
-                currentPriceText = "820,000 EGP";
-                currentSpaceText = "120 متر";
-                priceEl.innerText = "السعر: 820,000 ج.م";
-                spaceEl.innerText = currentSpaceText;
-                meterEl.innerText = "6,833 ج.م";
+                currentPriceText = "820,000 EGP"; currentSpaceText = "120 متر";
+                priceEl.innerText = "السعر: 820,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "6,833 ج.م";
             } else if (selectVal.includes('الدور الرابع - واجهة')) {
-                currentPriceText = "870,000 EGP";
-                currentSpaceText = "125 متر";
-                priceEl.innerText = "السعر: 870,000 ج.م";
-                spaceEl.innerText = currentSpaceText;
-                meterEl.innerText = "6,960 ج.م";
+                currentPriceText = "870,000 EGP"; currentSpaceText = "125 متر";
+                priceEl.innerText = "السعر: 870,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "6,960 ج.م";
             } else if (selectVal.includes('الدور الخامس - ناصية')) {
-                currentPriceText = "900,000 EGP";
-                currentSpaceText = "130 متر";
-                priceEl.innerText = "السعر: 900,000 ج.م";
-                spaceEl.innerText = currentSpaceText;
-                meterEl.innerText = "6,923 ج.م";
+                currentPriceText = "900,000 EGP"; currentSpaceText = "130 متر";
+                priceEl.innerText = "السعر: 900,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "6,923 ج.م";
             }
 
             let message = `السلام عليكم، مهتم بالشقة الأولى\n📍 العنوان: شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة\n🏢 الاختيار: ${selectVal}\n📏 المساحة: ${currentSpaceText}\n💰 السعر: ${currentPriceText}\n🛠️ التسليم: ${finishVal}`;
             whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
         }
 
-        // معرض الصور المتحرك (Slider)
-        let slideIndex = 0;
-        let slideInterval;
+        // تحديث تفاصيل الشقة الثانية
+        function updatePropertyDetails2() {
+            const selectEl = document.getElementById('floorSelect2');
+            const finishEl = document.getElementById('finishSelect2');
+            const selectVal = selectEl.value;
+            const finishVal = finishEl.value;
+            
+            const priceEl = document.getElementById('price2');
+            const spaceEl = document.getElementById('space2');
+            const meterEl = document.getElementById('meterPrice2');
+            const whatsappBtn = document.getElementById('whatsappBtn2');
 
-        function showSlide(n) {
-            const slides = document.querySelectorAll('.slide');
+            let currentPriceText = "";
+            let currentSpaceText = "";
+
+            if (selectVal.includes('الدور الثاني - أمامي')) {
+                currentPriceText = "950,000 EGP"; currentSpaceText = "140 متر";
+                priceEl.innerText = "السعر: 950,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "6,785 ج.م";
+            } else if (selectVal.includes('الدور الثالث - ناصية')) {
+                currentPriceText = "980,000 EGP"; currentSpaceText = "145 متر";
+                priceEl.innerText = "السعر: 980,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "6,758 ج.م";
+            } else if (selectVal.includes('الدور الأخير - واجهة')) {
+                currentPriceText = "920,000 EGP"; currentSpaceText = "140 متر";
+                priceEl.innerText = "السعر: 920,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "6,571 ج.م";
+            }
+
+            let message = `السلام عليكم، مهتم بالشقة الثانية\n📍 العنوان: شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة\n🏢 الاختيار: ${selectVal}\n📏 المساحة: ${currentSpaceText}\n💰 السعر: ${currentPriceText}\n🛠️ التسليم: ${finishVal}`;
+            whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
+        }
+
+        // معرض الصور المتحرك (Slider) لكل سلايدر مستقل
+        function showSlide(sliderId, n) {
+            const slider = document.getElementById(sliderId);
+            if (!slider) return;
+            const slides = slider.querySelectorAll('.slide');
             if (slides.length === 0) return;
+
+            // تخزين مؤشر الصورة الحالي لكل سلايدر
+            if (!slider.dataset.index) slider.dataset.index = 0;
+            let slideIndex = parseInt(slider.dataset.index);
 
             slideIndex += n;
             if (slideIndex >= slides.length) slideIndex = 0;
             if (slideIndex < 0) slideIndex = slides.length - 1;
 
+            slider.dataset.index = slideIndex;
+
             slides.forEach(slide => slide.classList.remove('active-slide'));
             slides[slideIndex].classList.add('active-slide');
         }
 
-        function changeSlide(n) {
-            showSlide(n);
-            resetAutoSlide();
+        function changeSlide(sliderId, n) {
+            showSlide(sliderId, n);
+            resetAutoSlide(sliderId);
         }
 
-        function startAutoSlide() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(() => { showSlide(1); }, 3500);
+        function startAutoSlide(sliderId) {
+            if (slideIntervals[sliderId]) clearInterval(slideIntervals[sliderId]);
+            slideIntervals[sliderId] = setInterval(() => { showSlide(sliderId, 1); }, 3500);
         }
 
-        function resetAutoSlide() {
-            clearInterval(slideInterval);
-            startAutoSlide();
+        function resetAutoSlide(sliderId) {
+            if (slideIntervals[sliderId]) clearInterval(slideIntervals[sliderId]);
+            startAutoSlide(sliderId);
         }
 
         // تكبير الصورة الفردية في معرض الصور
