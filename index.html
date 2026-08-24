@@ -19,6 +19,59 @@
             line-height: 1.6;
         }
         
+        /* الشريط العلوي الاحترافي (Top Bar) */
+        .top-bar {
+            background: #0b141b;
+            color: #cbd5e1;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .top-bar-socials {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .top-bar-socials a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+        .top-bar-socials a.whatsapp:hover { color: #25D366; }
+        .top-bar-socials a.facebook:hover { color: #1877F2; }
+        .top-bar-socials a.instagram:hover { color: #E4405F; }
+        .top-bar-socials a.phone:hover { color: #0088cc; }
+
+        .top-bar-options {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .lang-switcher, .global-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .lang-switcher:hover, .global-btn:hover {
+            background: #2c5364;
+            border-color: #2c5364;
+        }
+
         /* الهيدر وتصميم الألوان الاحترافي */
         header {
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
@@ -59,7 +112,7 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
 
-        /* شريط الإعلانات المتحرك (يبدأ من اليمين ويتحرك إلى الشمال) */
+        /* شريط الإعلانات المتحرك (من اليمين لليسار) */
         .marquee-bar {
             background: #e67e22;
             color: white;
@@ -75,7 +128,6 @@
         .marquee-track {
             display: inline-block;
             white-space: nowrap;
-            /* يبدأ من اليمين (100%) ويتحرك لليسار (-100%) */
             animation: smoothMarqueeRightToLeft 18s linear infinite;
         }
         @keyframes smoothMarqueeRightToLeft {
@@ -466,6 +518,21 @@
     </style>
 </head>
 <body>
+
+    <!-- الشريط العلوي الاحترافي -->
+    <div class="top-bar">
+        <div class="top-bar-socials">
+            <span style="font-size: 0.85rem; color: #94a3b8; margin-left: 5px;">تواصل معنا:</span>
+            <a href="https://wa.me/201032903926" class="whatsapp" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/share/1EPFC1xrhz/?mibextid=wwXIfr" class="facebook" target="_blank" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/my7sin_27?igsi=MTRvM3Ezdmc0MzJ6dQ%3D%3D&utm_source=qr" class="instagram" target="_blank" title="انستجرام"><i class="fa-brands fa-instagram"></i></a>
+            <a href="tel:01032903926" class="phone" title="اتصل بنا"><i class="fa-solid fa-phone"></i></a>
+        </div>
+        <div class="top-bar-options">
+            <span class="global-btn"><i class="fa-solid fa-globe"></i> مصر (EGP ج.م)</span>
+            <button class="lang-switcher" onclick="alert('خاصية تغيير اللغة ستتوفر قريباً!')"><i class="fa-solid fa-language"></i> English</button>
+        </div>
+    </div>
 
     <a href="https://wa.me/201032903926" class="floating-whatsapp" target="_blank" title="تواصل معنا عبر الواتساب">
         <i class="fa-brands fa-whatsapp"></i>
