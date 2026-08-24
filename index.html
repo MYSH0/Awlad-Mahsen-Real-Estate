@@ -189,31 +189,51 @@
 
         .section-title-box {
             text-align: center;
-            margin: 35px 0 20px 0;
+            margin: 35px 0 15px 0;
         }
-        .section-title {
+
+        /* زرار "العقارات المتاحة حالياً" القابل للضغط لإظهار الفلترة */
+        .section-title-btn {
             display: inline-flex;
             align-items: center;
             gap: 12px;
             background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
-            padding: 12px 30px;
+            padding: 14px 32px;
             border-radius: 50px;
             font-size: 1.5rem;
             font-weight: bold;
             box-shadow: 0 6px 15px rgba(30, 60, 114, 0.25);
             border: 2px solid #f1c40f;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .section-title i { color: #f1c40f; }
+        .section-title-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 60, 114, 0.35);
+        }
+        .section-title-btn i.fa-building { color: #f1c40f; }
+        .section-title-btn i.arrow-icon { font-size: 1.1rem; transition: transform 0.3s ease; margin-right: 5px; }
+        .section-title-btn.active i.arrow-icon { transform: rotate(180deg); }
 
-        /* أزرار الفلترة الجديدة */
+        /* أزرار الفلترة تظهر وتخفى عند الضغط على العنوان */
         .filter-buttons-container {
-            display: flex;
+            display: none;
             justify-content: center;
             gap: 10px;
+            margin-top: 15px;
             margin-bottom: 30px;
             flex-wrap: wrap;
+            animation: fadeInDown 0.3s ease;
         }
+        .filter-buttons-container.show {
+            display: flex;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .filter-btn {
             background: #ffffff;
             color: #1e3c72;
@@ -298,7 +318,7 @@
             color: #1e3c72;
         }
 
-        /* تصميم كارت السعر الجديد الفاخر والمطور حسب الطلب */
+        /* تصميم كارت السعر المطابق */
         .price-badge-modern {
             background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
             border: 2px solid #cbd5e1;
@@ -311,7 +331,6 @@
             flex-shrink: 0;
         }
 
-        /* نسبة الخصم على الشمال */
         .price-badge-modern .discount-tag {
             background: linear-gradient(135deg, #ff4757, #ff6b81);
             color: #ffffff;
@@ -329,7 +348,6 @@
             align-items: flex-start;
         }
 
-        /* السعر المعروض الكبير في الأعلى */
         .price-badge-modern .new-price {
             font-size: 1.55rem;
             font-weight: 900;
@@ -344,7 +362,6 @@
             color: #475569;
         }
 
-        /* السعر المشطوب تحت السعر المعروض */
         .price-badge-modern .old-price {
             font-size: 0.88rem;
             color: #94a3b8;
@@ -383,7 +400,7 @@
             border-radius: 8px;
             font-size: 0.95rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             border: 1px solid #e2e8f0;
         }
         .property-location-badge i { 
@@ -391,7 +408,7 @@
             font-size: 1.1rem;
         }
 
-        /* تصنيف العقار المضاف تحت الموقع أو الوصف */
+        /* اسم التصنيف بدون كلمة تصنيف حسب الطلب */
         .property-category-indicator {
             display: inline-flex;
             align-items: center;
@@ -699,13 +716,16 @@
     <!-- المحتوى الرئيسي -->
     <div class="container">
         <div class="section-title-box">
-            <h2 class="section-title">
-                <i class="fa-solid fa-building"></i> <span data-key="sectionTitle">العقارات المتاحة حالياً</span>
-            </h2>
+            <!-- زر العقارات المتاحة حالياً (عند الضغط عليه تظهر أزرار الفلترة) -->
+            <button class="section-title-btn" id="mainFilterToggleBtn" onclick="toggleFilterMenu()">
+                <i class="fa-solid fa-building"></i> 
+                <span data-key="sectionTitle">العقارات المتاحة حالياً</span>
+                <i class="fa-solid fa-chevron-down arrow-icon"></i>
+            </button>
         </div>
 
-        <!-- أزرار الفلترة (التصنيفات) -->
-        <div class="filter-buttons-container">
+        <!-- أزرار الفلترة (تظهر وتخفى عند الضغط على العنوان أعلاه) -->
+        <div class="filter-buttons-container" id="filterMenu">
             <button class="filter-btn active" onclick="filterProperties('all', this)">الكل</button>
             <button class="filter-btn" onclick="filterProperties('apartments', this)">شقق تمليك للبيع</button>
             <button class="filter-btn" onclick="filterProperties('shops', this)">محلات تمليك للبيع</button>
@@ -725,7 +745,7 @@
                         <i class="fa-solid fa-building-shield"></i> <span data-key="prop1Title">الشقة الأولى - تصميم عائلي فاخر</span>
                     </a>
                 </div>
-                <!-- كارت السعر المطابق للطلب: السعر المعروض بالأعلى، تحته المشطوب، والنسبة على الشمال -->
+                <!-- كارت السعر المطابق -->
                 <div class="price-badge-modern">
                     <div class="price-content">
                         <span class="new-price">820,000 <small>ج.م</small></span>
@@ -740,7 +760,8 @@
             </div>
 
             <div>
-                <span class="property-category-indicator"><i class="fa-solid fa-tag"></i> تصنيف: شقق تمليك للبيع</span>
+                <!-- تم إزالة كلمة "تصنيف:" وبقت واضحة مباشرة -->
+                <span class="property-category-indicator"><i class="fa-solid fa-tag"></i> شقق تمليك للبيع</span>
             </div>
 
             <p class="property-desc-text" data-key="prop1Desc">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، اضغط على زر التفاصيل لمشاهدة المعرض الكامل، الفيديو، واختيار الدور المناسب.</p>
@@ -772,7 +793,7 @@
                         <i class="fa-solid fa-building-shield"></i> <span data-key="prop2Title">الشقة الثانية - إطلالة وموقع متميز</span>
                     </a>
                 </div>
-                <!-- كارت السعر المطابق للطلب: السعر المعروض بالأعلى، تحته المشطوب، والنسبة على الشمال -->
+                <!-- كارت السعر المطابق -->
                 <div class="price-badge-modern">
                     <div class="price-content">
                         <span class="new-price">920,000 <small>ج.م</small></span>
@@ -787,7 +808,8 @@
             </div>
 
             <div>
-                <span class="property-category-indicator"><i class="fa-solid fa-tag"></i> تصنيف: شقق تمليك للبيع</span>
+                <!-- تم إزالة كلمة "تصنيف:" وبقت واضحة مباشرة -->
+                <span class="property-category-indicator"><i class="fa-solid fa-tag"></i> شقق تمليك للبيع</span>
             </div>
 
             <p class="property-desc-text" data-key="prop2Desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
@@ -1063,29 +1085,32 @@
     <script>
         let slideIntervals = {};
 
+        // فتح وإغلاق قائمة الفلترة عند الضغط على زر "العقارات المتاحة حالياً"
+        function toggleFilterMenu() {
+            const menu = document.getElementById('filterMenu');
+            const btn = document.getElementById('mainFilterToggleBtn');
+            menu.classList.toggle('show');
+            btn.classList.toggle('active');
+        }
+
         // وظيفة فلترة العقارات (شقق ومحلات)
         function filterProperties(category, btnElement) {
-            // تحديث الأزرار النشطة
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
 
-            // إحضار كروت العقارات ورسالة المحلات
             const properties = document.querySelectorAll('.property-card');
             const noShopsMsg = document.getElementById('noShopsMsg');
-            let visibleCount = 0;
 
             properties.forEach(card => {
                 const cardCategory = card.getAttribute('data-category');
                 if (category === 'all' || cardCategory === category) {
                     card.style.display = 'block';
-                    visibleCount++;
                 } else {
                     card.style.display = 'none';
                 }
             });
 
-            // إظهار أو إخفاء رسالة المحلات لو تم اختيار المحلات ومفيش محلات معروضة
             if (category === 'shops') {
                 noShopsMsg.style.display = 'block';
             } else {
