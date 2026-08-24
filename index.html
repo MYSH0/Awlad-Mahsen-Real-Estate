@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="htmlTag">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,7 +112,7 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
 
-        /* شريط الإعلانات المتحرك (من اليمين لليسار) */
+        /* شريط الإعلانات المتحرك */
         .marquee-bar {
             background: #e67e22;
             color: white;
@@ -134,6 +134,14 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
+        /* تعديل اتجاه الأنشطة المتحركة في الإنجليزية */
+        html[dir="ltr"] .marquee-track {
+            animation: smoothMarqueeLeftToRight 18s linear infinite;
+        }
+        @keyframes smoothMarqueeLeftToRight {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
 
         .container {
             max-width: 900px;
@@ -141,7 +149,6 @@
             padding: 0 15px;
         }
 
-        /* عنوان القسم */
         .section-title-box {
             text-align: center;
             margin: 35px 0 30px 0;
@@ -208,7 +215,6 @@
             color: #e74c3c;
         }
 
-        /* صندوق المواصفات العالمي المنظم */
         .specs-container {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -373,8 +379,11 @@
             z-index: 10;
         }
         .slider-btn:hover { background: rgba(44, 83, 100, 0.9); }
-        .prev-btn { right: 15px; }
-        .next-btn { left: 15px; }
+        /* انعكاس اتجاه أزرار السلايدر حسب اللغة */
+        html[dir="rtl"] .prev-btn { right: 15px; }
+        html[dir="rtl"] .next-btn { left: 15px; }
+        html[dir="ltr"] .prev-btn { left: 15px; }
+        html[dir="ltr"] .next-btn { right: 15px; }
 
         .property-actions {
             display: flex;
@@ -447,6 +456,10 @@
             font-weight: bold;
             cursor: pointer;
         }
+        html[dir="ltr"] .close-modal {
+            right: 35px;
+            left: auto;
+        }
         .close-modal:hover { color: #bbb; }
 
         .floating-whatsapp {
@@ -466,6 +479,10 @@
             z-index: 1000;
             transition: 0.3s;
             text-decoration: none;
+        }
+        html[dir="ltr"] .floating-whatsapp {
+            right: 20px;
+            left: auto;
         }
         .floating-whatsapp:hover {
             background-color: #1ebe5d;
@@ -522,15 +539,15 @@
     <!-- الشريط العلوي الاحترافي -->
     <div class="top-bar">
         <div class="top-bar-socials">
-            <span style="font-size: 0.85rem; color: #94a3b8; margin-left: 5px;">تواصل معنا:</span>
+            <span id="t-contact" style="font-size: 0.85rem; color: #94a3b8; margin-left: 5px;">تواصل معنا:</span>
             <a href="https://wa.me/201032903926" class="whatsapp" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
             <a href="https://www.facebook.com/share/1EPFC1xrhz/?mibextid=wwXIfr" class="facebook" target="_blank" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/my7sin_27?igsi=MTRvM3Ezdmc0MzJ6dQ%3D%3D&utm_source=qr" class="instagram" target="_blank" title="انستجرام"><i class="fa-brands fa-instagram"></i></a>
             <a href="tel:01032903926" class="phone" title="اتصل بنا"><i class="fa-solid fa-phone"></i></a>
         </div>
         <div class="top-bar-options">
-            <span class="global-btn"><i class="fa-solid fa-globe"></i> مصر (EGP ج.م)</span>
-            <button class="lang-switcher" onclick="alert('خاصية تغيير اللغة ستتوفر قريباً!')"><i class="fa-solid fa-language"></i> English</button>
+            <span class="global-btn" id="t-region"><i class="fa-solid fa-globe"></i> مصر (EGP ج.م)</span>
+            <button class="lang-switcher" id="langBtn" onclick="toggleLanguage()"><i class="fa-solid fa-language"></i> English</button>
         </div>
     </div>
 
@@ -547,15 +564,15 @@
         <div class="logo-container">
             <img src="MSLOGO.jpeg" alt="لوجو أولاد محسن">
         </div>
-        <h1>أولاد محسن للتطوير العقاري</h1>
-        <p>نمتلك أرقى الشقق السكنية لتناسب كافة الأذواق</p>
+        <h1 data-key="headerTitle">أولاد محسن للتطوير العقاري</h1>
+        <p data-key="headerSub">نمتلك أرقى الشقق السكنية لتناسب كافة الأذواق</p>
         <div>
-            <span class="header-tagline"><i class="fa-solid fa-handshake"></i> اشتري العقار من غير سمسار</span>
+            <span class="header-tagline" data-key="headerTag"><i class="fa-solid fa-handshake"></i> اشتري العقار من غير سمسار</span>
         </div>
     </header>
 
     <div class="marquee-bar">
-        <div class="marquee-track">
+        <div class="marquee-track" data-key="marqueeText">
             أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات
         </div>
     </div>
@@ -563,28 +580,28 @@
     <div class="container">
         <div class="section-title-box">
             <h2 class="section-title">
-                <i class="fa-solid fa-building"></i> العقارات المتاحة حالياً
+                <i class="fa-solid fa-building"></i> <span data-key="sectionTitle">العقارات المتاحة حالياً</span>
             </h2>
         </div>
 
         <!-- الشقة الأولى -->
         <div class="property-card" id="property1">
-            <h3>الشقة الأولى - تصميم عائلي فاخر</h3>
+            <h3 data-key="prop1Title">الشقة الأولى - تصميم عائلي فاخر</h3>
             
             <div class="price-box">
                 <span class="current-price" id="price1">السعر: 850,000 ج.م</span>
                 <span class="old-price">900,000 ج.م</span>
             </div>
             
-            <div class="property-location-sub">
+            <div class="property-location-sub" data-key="addressText">
                 <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
             </div>
 
-            <p class="property-desc">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، شاهد صور المعرض والفيديو التفصيلي للوحدة.</p>
+            <p class="property-desc" data-key="prop1Desc">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، شاهد صور المعرض والفيديو التفصيلي للوحدة.</p>
 
             <div class="tabs-nav">
-                <button class="tab-btn active" onclick="openTab(event, 'video1', 'property1')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
-                <button class="tab-btn" onclick="openTab(event, 'photos1', 'property1')"><i class="fa-solid fa-images"></i> عرض الصور</button>
+                <button class="tab-btn active" onclick="openTab(event, 'video1', 'property1')" data-key="videoTab"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
+                <button class="tab-btn" onclick="openTab(event, 'photos1', 'property1')" data-key="photoTab"><i class="fa-solid fa-images"></i> عرض الصور</button>
             </div>
 
             <div id="video1" class="tab-content active">
@@ -613,7 +630,7 @@
                     <div class="spec-item">
                         <i class="fa-solid fa-ruler-combined"></i>
                         <div class="spec-content">
-                            <span class="spec-label">المساحة الإجمالية</span>
+                            <span class="spec-label" data-key="spaceLabel">المساحة الإجمالية</span>
                             <span class="spec-value" id="space1">120 متر</span>
                         </div>
                     </div>
@@ -621,7 +638,7 @@
                     <div class="spec-item">
                         <i class="fa-solid fa-tag"></i>
                         <div class="spec-content">
-                            <span class="spec-label">سعر المتر التقديري</span>
+                            <span class="spec-label" data-key="meterPriceLabel">سعر المتر التقديري</span>
                             <span class="spec-value" id="meterPrice1">7,080 ج.م</span>
                         </div>
                     </div>
@@ -629,20 +646,20 @@
                     <div class="spec-item">
                         <i class="fa-solid fa-door-open"></i>
                         <div class="spec-content">
-                            <span class="spec-label">التفاصيل الداخلية</span>
-                            <span class="spec-value">3 غرف + ريسبشن ومطبخ وحمام</span>
+                            <span class="spec-label" data-key="detailsLabel">التفاصيل الداخلية</span>
+                            <span class="spec-value" data-key="prop1Rooms">3 غرف + ريسبشن ومطبخ وحمام</span>
                         </div>
                     </div>
 
                     <div class="spec-item">
                         <i class="fa-solid fa-building-user"></i>
                         <div class="spec-content">
-                            <span class="spec-label">الدور والاتجاه</span>
+                            <span class="spec-label" data-key="floorLabel">الدور والاتجاه</span>
                             <select class="modern-select" id="floorSelect1" onchange="updatePropertyDetails('property1')">
-                                <option value="الدور الثالث - أمامي">الدور الثالث - أمامي (850,000 ج.م)</option>
-                                <option value="الدور الثالث - خلفي">الدور الثالث - خلفي (820,000 ج.م)</option>
-                                <option value="الدور الرابع - واجهة">الدور الرابع - واجهة (870,000 ج.م)</option>
-                                <option value="الدور الخامس - ناصية">الدور الخامس - ناصية (900,000 ج.م)</option>
+                                <option value="الدور الثالث - أمامي" data-key="opt1_1">الدور الثالث - أمامي (850,000 ج.م)</option>
+                                <option value="الدور الثالث - خلفي" data-key="opt1_2">الدور الثالث - خلفي (820,000 ج.م)</option>
+                                <option value="الدور الرابع - واجهة" data-key="opt1_3">الدور الرابع - واجهة (870,000 ج.م)</option>
+                                <option value="الدور الخامس - ناصية" data-key="opt1_4">الدور الخامس - ناصية (900,000 ج.م)</option>
                             </select>
                         </div>
                     </div>
@@ -650,18 +667,18 @@
                     <div class="spec-item">
                         <i class="fa-solid fa-money-bill-wave"></i>
                         <div class="spec-content">
-                            <span class="spec-label">طريقة الدفع</span>
-                            <span class="spec-value" style="color: #e74c3c;">كاش فقط (غير متاح تقسيط)</span>
+                            <span class="spec-label" data-key="payLabel">طريقة الدفع</span>
+                            <span class="spec-value" style="color: #e74c3c;" data-key="cashOnly">كاش فقط (غير متاح تقسيط)</span>
                         </div>
                     </div>
 
                     <div class="spec-item">
                         <i class="fa-solid fa-paint-roller"></i>
                         <div class="spec-content">
-                            <span class="spec-label">حالة التسليم</span>
+                            <span class="spec-label" data-key="finishLabel">حالة التسليم</span>
                             <select class="modern-select" id="finishSelect1" onchange="updatePropertyDetails('property1')">
-                                <option value="طوب أحمر">طوب أحمر</option>
-                                <option value="تشطيب فاخر">تشطيب فاخر (يبدأ من 3,500 ج.م للمتر)</option>
+                                <option value="طوب أحمر" data-key="redBrick">طوب أحمر</option>
+                                <option value="تشطيب فاخر" data-key="luxFinish">تشطيب فاخر (يبدأ من 3,500 ج.م للمتر)</option>
                             </select>
                         </div>
                     </div>
@@ -670,32 +687,32 @@
 
             <div class="property-actions">
                 <a id="whatsappBtn1" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الأولى" class="contact-btn" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
+                    <i class="fa-brands fa-whatsapp"></i> <span data-key="whatsappText">تواصل عبر واتساب</span>
                 </a>
                 <a href="tel:01032903926" class="call-btn">
-                    <i class="fa-solid fa-phone"></i> تواصل هاتفياً
+                    <i class="fa-solid fa-phone"></i> <span data-key="callText">تواصل هاتفياً</span>
                 </a>
             </div>
         </div>
 
         <!-- الشقة الثانية -->
         <div class="property-card" id="property2">
-            <h3>الشقة الثانية - إطلالة وموقع متميز</h3>
+            <h3 data-key="prop2Title">الشقة الثانية - إطلالة وموقع متميز</h3>
             
             <div class="price-box">
                 <span class="current-price" id="price2">السعر: 950,000 ج.م</span>
                 <span class="old-price">1,000,000 ج.م</span>
             </div>
 
-            <div class="property-location-sub">
+            <div class="property-location-sub" data-key="addressText">
                 <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
             </div>
 
-            <p class="property-desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
+            <p class="property-desc" data-key="prop2Desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
 
             <div class="tabs-nav">
-                <button class="tab-btn active" onclick="openTab(event, 'video2', 'property2')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
-                <button class="tab-btn" onclick="openTab(event, 'photos2', 'property2')"><i class="fa-solid fa-images"></i> عرض الصور</button>
+                <button class="tab-btn active" onclick="openTab(event, 'video2', 'property2')" data-key="videoTab"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
+                <button class="tab-btn" onclick="openTab(event, 'photos2', 'property2')" data-key="photoTab"><i class="fa-solid fa-images"></i> عرض الصور</button>
             </div>
 
             <div id="video2" class="tab-content active">
@@ -724,7 +741,7 @@
                     <div class="spec-item">
                         <i class="fa-solid fa-ruler-combined"></i>
                         <div class="spec-content">
-                            <span class="spec-label">المساحة الإجمالية</span>
+                            <span class="spec-label" data-key="spaceLabel">المساحة الإجمالية</span>
                             <span class="spec-value" id="space2">140 متر</span>
                         </div>
                     </div>
@@ -732,7 +749,7 @@
                     <div class="spec-item">
                         <i class="fa-solid fa-tag"></i>
                         <div class="spec-content">
-                            <span class="spec-label">سعر المتر التقديري</span>
+                            <span class="spec-label" data-key="meterPriceLabel">سعر المتر التقديري</span>
                             <span class="spec-value" id="meterPrice2">6,785 ج.م</span>
                         </div>
                     </div>
@@ -740,19 +757,19 @@
                     <div class="spec-item">
                         <i class="fa-solid fa-door-open"></i>
                         <div class="spec-content">
-                            <span class="spec-label">التفاصيل الداخلية</span>
-                            <span class="spec-value">4 غرف + ريسبشن كبير ومطبخ وحمام</span>
+                            <span class="spec-label" data-key="detailsLabel">التفاصيل الداخلية</span>
+                            <span class="spec-value" data-key="prop2Rooms">4 غرف + ريسبشن كبير ومطبخ وحمام</span>
                         </div>
                     </div>
 
                     <div class="spec-item">
                         <i class="fa-solid fa-building-user"></i>
                         <div class="spec-content">
-                            <span class="spec-label">الدور والاتجاه</span>
+                            <span class="spec-label" data-key="floorLabel">الدور والاتجاه</span>
                             <select class="modern-select" id="floorSelect2" onchange="updatePropertyDetails('property2')">
-                                <option value="الدور الرابع - مميز">الدور الرابع - مميز (950,000 ج.م)</option>
-                                <option value="الدور الثاني - أمامي">الدور الثاني - أمامي (920,000 ج.م)</option>
-                                <option value="الدور الخامس - ناصية بحري">الدور الخامس - ناصية بحري (980,000 ج.م)</option>
+                                <option value="الدور الرابع - مميز" data-key="opt2_1">الدور الرابع - مميز (950,000 ج.م)</option>
+                                <option value="الدور الثاني - أمامي" data-key="opt2_2">الدور الثاني - أمامي (920,000 ج.م)</option>
+                                <option value="الدور الخامس - ناصية بحري" data-key="opt2_3">الدور الخامس - ناصية بحري (980,000 ج.م)</option>
                             </select>
                         </div>
                     </div>
@@ -760,18 +777,18 @@
                     <div class="spec-item">
                         <i class="fa-solid fa-money-bill-wave"></i>
                         <div class="spec-content">
-                            <span class="spec-label">طريقة الدفع</span>
-                            <span class="spec-value" style="color: #e74c3c;">كاش فقط (غير متاح تقسيط)</span>
+                            <span class="spec-label" data-key="payLabel">طريقة الدفع</span>
+                            <span class="spec-value" style="color: #e74c3c;" data-key="cashOnly">كاش فقط (غير متاح تقسيط)</span>
                         </div>
                     </div>
 
                     <div class="spec-item">
                         <i class="fa-solid fa-paint-roller"></i>
                         <div class="spec-content">
-                            <span class="spec-label">حالة التسليم</span>
+                            <span class="spec-label" data-key="finishLabel">حالة التسليم</span>
                             <select class="modern-select" id="finishSelect2" onchange="updatePropertyDetails('property2')">
-                                <option value="طوب أحمر">طوب أحمر</option>
-                                <option value="تشطيب فاخر">تشطيب فاخر (يبدأ من 3,500 ج.م للمتر)</option>
+                                <option value="طوب أحمر" data-key="redBrick">طوب أحمر</option>
+                                <option value="تشطيب فاخر" data-key="luxFinish">تشطيب فاخر (يبدأ من 3,500 ج.م للمتر)</option>
                             </select>
                         </div>
                     </div>
@@ -780,10 +797,10 @@
 
             <div class="property-actions">
                 <a id="whatsappBtn2" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الثانية" class="contact-btn" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
+                    <i class="fa-brands fa-whatsapp"></i> <span data-key="whatsappText">تواصل عبر واتساب</span>
                 </a>
                 <a href="tel:01032903926" class="call-btn">
-                    <i class="fa-solid fa-phone"></i> تواصل هاتفياً
+                    <i class="fa-solid fa-phone"></i> <span data-key="callText">تواصل هاتفياً</span>
                 </a>
             </div>
         </div>
@@ -797,11 +814,122 @@
             <a href="https://www.facebook.com/share/1EPFC1xrhz/?mibextid=wwXIfr" class="facebook" target="_blank" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/my7sin_27?igsi=MTRvM3Ezdmc0MzJ6dQ%3D%3D&utm_source=qr" class="instagram" target="_blank" title="انستجرام"><i class="fa-brands fa-instagram"></i></a>
         </div>
-        <p class="footer-address"><i class="fa-solid fa-location-dot" style="color:#ff4757; margin-left: 5px;"></i> العنوان: المرج القديمة، ميدان أبو طالب، شارع الورشة الرئيسي، أولاد محسن للعقارات</p>
-        <p style="margin-top:15px; font-size: 0.85rem; color: #888;">جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري</p>
+        <p class="footer-address" data-key="footerAddress"><i class="fa-solid fa-location-dot" style="color:#ff4757; margin-left: 5px;"></i> العنوان: المرج القديمة، ميدان أبو طالب، شارع الورشة الرئيسي، أولاد محسن للعقارات</p>
+        <p style="margin-top:15px; font-size: 0.85rem; color: #888;" data-key="copyright">جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري</p>
     </footer>
 
     <script>
+        /* قاموس الترجمة (عربي / إنجليزي) */
+        const translations = {
+            ar: {
+                contactUs: "تواصل معنا:",
+                region: "مصر (EGP ج.م)",
+                langBtnText: "English",
+                headerTitle: "أولاد محسن للتطوير العقاري",
+                headerSub: "نمتلك أرقى الشقق السكنية لتناسب كافة الأذواق",
+                headerTag: "اشتري العقار من غير سمسار",
+                marqueeText: "أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات",
+                sectionTitle: "العقارات المتاحة حالياً",
+                prop1Title: "الشقة الأولى - تصميم عائلي فاخر",
+                addressText: "شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة",
+                prop1Desc: "شقة مميزة بتصميم مريح وتوزيع رائع للغرف، شاهد صور المعرض والفيديو التفصيلي للوحدة.",
+                videoTab: "عرض الفيديو",
+                photoTab: "عرض الصور",
+                spaceLabel: "المساحة الإجمالية",
+                meterPriceLabel: "سعر المتر التقديري",
+                detailsLabel: "التفاصيل الداخلية",
+                prop1Rooms: "3 غرف + ريسبشن ومطبخ وحمام",
+                floorLabel: "الدور والاتجاه",
+                payLabel: "طريقة الدفع",
+                cashOnly: "كاش فقط (غير متاح تقسيط)",
+                finishLabel: "حالة التسليم",
+                redBrick: "طوب أحمر",
+                luxFinish: "تشطيب فاخر (يبدأ من 3,500 ج.م للمتر)",
+                whatsappText: "تواصل عبر واتساب",
+                callText: "تواصل هاتفياً",
+                prop2Title: "الشقة الثانية - إطلالة وموقع متميز",
+                prop2Desc: "تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.",
+                prop2Rooms: "4 غرف + ريسبشن كبير ومطبخ وحمام",
+                opt1_1: "الدور الثالث - أمامي (850,000 ج.م)",
+                opt1_2: "الدور الثالث - خلفي (820,000 ج.م)",
+                opt1_3: "الدور الرابع - واجهة (870,000 ج.م)",
+                opt1_4: "الدور الخامس - ناصية (900,000 ج.م)",
+                opt2_1: "الدور الرابع - مميز (950,000 ج.م)",
+                opt2_2: "الدور الثاني - أمامي (920,000 ج.م)",
+                opt2_3: "الدور الخامس - ناصية بحري (980,000 ج.م)",
+                footerAddress: "العنوان: المرج القديمة، ميدان أبو طالب، شارع الورشة الرئيسي، أولاد محسن للعقارات",
+                copyright: "جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري"
+            },
+            en: {
+                contactUs: "Contact Us:",
+                region: "Egypt (EGP)",
+                langBtnText: "العربية",
+                headerTitle: "Awlad Mohsen Real Estate Development",
+                headerSub: "We own the finest residential apartments to suit all tastes",
+                headerTag: "Buy property directly without a broker",
+                marqueeText: "Awlad Mohsen Real Estate Development &nbsp; | &nbsp; Address: Al-Marg Al-Qadima - Abu Talib Square - Main Al-Warcha St. &nbsp; | &nbsp; Contact us now to own your residential unit at the best prices",
+                sectionTitle: "Available Properties",
+                prop1Title: "First Apartment - Luxury Family Design",
+                addressText: "Main Al-Warcha Street - Abu Talib Square - Al-Marg Al-Qadima",
+                prop1Desc: "A distinctive apartment with a comfortable design and great room distribution. Watch the gallery and video.",
+                videoTab: "Watch Video",
+                photoTab: "View Photos",
+                spaceLabel: "Total Area",
+                meterPriceLabel: "Estimated Price / m²",
+                detailsLabel: "Interior Details",
+                prop1Rooms: "3 Rooms + Reception, Kitchen & Bathroom",
+                floorLabel: "Floor & View",
+                payLabel: "Payment Method",
+                cashOnly: "Cash Only (No Installments)",
+                finishLabel: "Delivery Status",
+                redBrick: "Red Brick (Unfinished)",
+                luxFinish: "Luxury Finish (Starts from 3,500 EGP/m²)",
+                whatsappText: "Contact via WhatsApp",
+                callText: "Call Us",
+                prop2Title: "Second Apartment - Prime Location & View",
+                prop2Desc: "Check out the photos of the second apartment and explore the spacious rooms suitable for large families.",
+                prop2Rooms: "4 Rooms + Large Reception, Kitchen & Bathroom",
+                opt1_1: "3rd Floor - Front (850,000 EGP)",
+                opt1_2: "3rd Floor - Back (820,000 EGP)",
+                opt1_3: "4th Floor - Facade (870,000 EGP)",
+                opt1_4: "5th Floor - Corner (900,000 EGP)",
+                opt2_1: "4th Floor - Premium (950,000 EGP)",
+                opt2_2: "2nd Floor - Front (920,000 EGP)",
+                opt2_3: "5th Floor - North Corner (980,000 EGP)",
+                footerAddress: "Address: Al-Marg Al-Qadima, Abu Talib Square, Main Al-Warcha St., Awlad Mohsen Real Estate",
+                copyright: "All Rights Reserved © 2026 Awlad Mohsen Real Estate"
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const htmlTag = document.getElementById('htmlTag');
+            
+            if (currentLang === 'en') {
+                htmlTag.setAttribute('lang', 'en');
+                htmlTag.setAttribute('dir', 'ltr');
+            } else {
+                htmlTag.setAttribute('lang', 'ar');
+                htmlTag.setAttribute('dir', 'rtl');
+            }
+
+            // تحديث كل العناصر التي تحتوي على خاصية data-key
+            const elements = document.querySelectorAll('[data-key]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+
+            // تحديث النصوص الخاصة في الشريط العلوي
+            document.getElementById('t-contact').innerText = translations[currentLang].contactUs;
+            document.getElementById('t-region').innerHTML = `<i class="fa-solid fa-globe"></i> ${translations[currentLang].region}`;
+            document.getElementById('langBtn').innerHTML = `<i class="fa-solid fa-language"></i> ${translations[currentLang].langBtnText}`;
+        }
+
         function openTab(evt, tabId, propertyId) {
             const propertyCard = document.getElementById(propertyId);
             const contents = propertyCard.querySelectorAll('.tab-content');
@@ -815,7 +943,7 @@
         }
 
         function updatePropertyDetails(propertyId) {
-            const propertyAddress = "شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة";
+            const propertyAddress = currentLang === 'ar' ? "شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة" : "Main Al-Warcha St. - Abu Talib Square - Al-Marg Al-Qadima";
 
             if (propertyId === 'property1') {
                 const selectEl = document.getElementById('floorSelect1');
@@ -831,33 +959,35 @@
                 let currentPriceText = "";
                 let currentSpaceText = "";
 
-                if (selectVal === 'الدور الثالث - أمامي') {
-                    currentPriceText = "850,000 ج.م";
-                    currentSpaceText = "120 متر";
-                    priceEl.innerText = "السعر: " + currentPriceText;
+                if (selectVal.includes('الدور الثالث - أمامي') || selectVal.includes('3rd Floor - Front')) {
+                    currentPriceText = "850,000 EGP";
+                    currentSpaceText = currentLang === 'ar' ? "120 متر" : "120 m²";
+                    priceEl.innerText = (currentLang === 'ar' ? "السعر: " : "Price: ") + currentPriceText;
                     spaceEl.innerText = currentSpaceText;
-                    meterEl.innerText = "7,080 ج.م";
-                } else if (selectVal === 'الدور الثالث - خلفي') {
-                    currentPriceText = "820,000 ج.م";
-                    currentSpaceText = "120 متر";
-                    priceEl.innerText = "السعر: " + currentPriceText;
+                    meterEl.innerText = "7,080 EGP";
+                } else if (selectVal.includes('الدور الثالث - خلفي') || selectVal.includes('3rd Floor - Back')) {
+                    currentPriceText = "820,000 EGP";
+                    currentSpaceText = currentLang === 'ar' ? "120 متر" : "120 m²";
+                    priceEl.innerText = (currentLang === 'ar' ? "السعر: " : "Price: ") + currentPriceText;
                     spaceEl.innerText = currentSpaceText;
-                    meterEl.innerText = "6,833 ج.م";
-                } else if (selectVal === 'الدور الرابع - واجهة') {
-                    currentPriceText = "870,000 ج.م";
-                    currentSpaceText = "125 متر";
-                    priceEl.innerText = "السعر: " + currentPriceText;
+                    meterEl.innerText = "6,833 EGP";
+                } else if (selectVal.includes('الدور الرابع - واجهة') || selectVal.includes('4th Floor - Facade')) {
+                    currentPriceText = "870,000 EGP";
+                    currentSpaceText = currentLang === 'ar' ? "125 متر" : "125 m²";
+                    priceEl.innerText = (currentLang === 'ar' ? "السعر: " : "Price: ") + currentPriceText;
                     spaceEl.innerText = currentSpaceText;
-                    meterEl.innerText = "6,960 ج.م";
-                } else if (selectVal === 'الدور الخامس - ناصية') {
-                    currentPriceText = "900,000 ج.م";
-                    currentSpaceText = "130 متر";
-                    priceEl.innerText = "السعر: " + currentPriceText;
+                    meterEl.innerText = "6,960 EGP";
+                } else if (selectVal.includes('الدور الخامس - ناصية') || selectVal.includes('5th Floor - Corner')) {
+                    currentPriceText = "900,000 EGP";
+                    currentSpaceText = currentLang === 'ar' ? "130 متر" : "130 m²";
+                    priceEl.innerText = (currentLang === 'ar' ? "السعر: " : "Price: ") + currentPriceText;
                     spaceEl.innerText = currentSpaceText;
-                    meterEl.innerText = "6,923 ج.م";
+                    meterEl.innerText = "6,923 EGP";
                 }
 
-                let message = `السلام عليكم، مهتم بالشقة الأولى\n📍 العنوان: ${propertyAddress}\n🏢 الاختيار: ${selectVal}\n📏 المساحة: ${currentSpaceText}\n💰 السعر: ${currentPriceText}\n🛠️ التسليم: ${finishVal}`;
+                let message = currentLang === 'ar' 
+                    ? `السلام عليكم، مهتم بالشقة الأولى\n📍 العنوان: ${propertyAddress}\n🏢 الاختيار: ${selectVal}\n📏 المساحة: ${currentSpaceText}\n💰 السعر: ${currentPriceText}\n🛠️ التسليم: ${finishVal}`
+                    : `Hello, I'm interested in the first apartment\n📍 Address: ${propertyAddress}\n🏢 Option: ${selectVal}\n📏 Area: ${currentSpaceText}\n💰 Price: ${currentPriceText}\n🛠️ Delivery: ${finishVal}`;
                 whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
 
             } else if (propertyId === 'property2') {
@@ -874,27 +1004,29 @@
                 let currentPriceText = "";
                 let currentSpaceText = "";
 
-                if (selectVal === 'الدور الرابع - مميز') {
-                    currentPriceText = "950,000 ج.م";
-                    currentSpaceText = "140 متر";
-                    priceEl.innerText = "السعر: " + currentPriceText;
+                if (selectVal.includes('الدور الرابع - مميز') || selectVal.includes('4th Floor - Premium')) {
+                    currentPriceText = "950,000 EGP";
+                    currentSpaceText = currentLang === 'ar' ? "140 متر" : "140 m²";
+                    priceEl.innerText = (currentLang === 'ar' ? "السعر: " : "Price: ") + currentPriceText;
                     spaceEl.innerText = currentSpaceText;
-                    meterEl.innerText = "6,785 ج.م";
-                } else if (selectVal === 'الدور الثاني - أمامي') {
-                    currentPriceText = "920,000 ج.م";
-                    currentSpaceText = "140 متر";
-                    priceEl.innerText = "السعر: " + currentPriceText;
+                    meterEl.innerText = "6,785 EGP";
+                } else if (selectVal.includes('الدور الثاني - أمامي') || selectVal.includes('2nd Floor - Front')) {
+                    currentPriceText = "920,000 EGP";
+                    currentSpaceText = currentLang === 'ar' ? "140 متر" : "140 m²";
+                    priceEl.innerText = (currentLang === 'ar' ? "السعر: " : "Price: ") + currentPriceText;
                     spaceEl.innerText = currentSpaceText;
-                    meterEl.innerText = "6,570 ج.م";
-                } else if (selectVal === 'الدور الخامس - ناصية بحري') {
-                    currentPriceText = "980,000 ج.م";
-                    currentSpaceText = "145 متر";
-                    priceEl.innerText = "السعر: " + currentPriceText;
+                    meterEl.innerText = "6,570 EGP";
+                } else if (selectVal.includes('الدور الخامس - ناصية بحري') || selectVal.includes('5th Floor - North Corner')) {
+                    currentPriceText = "980,000 EGP";
+                    currentSpaceText = currentLang === 'ar' ? "145 متر" : "145 m²";
+                    priceEl.innerText = (currentLang === 'ar' ? "السعر: " : "Price: ") + currentPriceText;
                     spaceEl.innerText = currentSpaceText;
-                    meterEl.innerText = "6,758 ج.م";
+                    meterEl.innerText = "6,758 EGP";
                 }
 
-                let message = `السلام عليكم، مهتم بالشقة الثانية\n📍 العنوان: ${propertyAddress}\n🏢 الاختيار: ${selectVal}\n📏 المساحة: ${currentSpaceText}\n💰 السعر: ${currentPriceText}\n🛠️ التسليم: ${finishVal}`;
+                let message = currentLang === 'ar' 
+                    ? `السلام عليكم، مهتم بالشقة الثانية\n📍 العنوان: ${propertyAddress}\n🏢 الاختيار: ${selectVal}\n📏 المساحة: ${currentSpaceText}\n💰 السعر: ${currentPriceText}\n🛠️ التسليم: ${finishVal}`
+                    : `Hello, I'm interested in the second apartment\n📍 Address: ${propertyAddress}\n🏢 Option: ${selectVal}\n📏 Area: ${currentSpaceText}\n💰 Price: ${currentPriceText}\n🛠️ Delivery: ${finishVal}`;
                 whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
             }
         }
@@ -916,7 +1048,9 @@
         }
 
         function changeSlide(n, propertyId) {
-            showSlide(propertyId, n);
+            // عكس اتجاه الأسهم حسب اللغة تلقائياً
+            let direction = (currentLang === 'en') ? -n : n;
+            showSlide(propertyId, direction);
             resetAutoSlide(propertyId);
         }
 
