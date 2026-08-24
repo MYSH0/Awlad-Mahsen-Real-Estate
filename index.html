@@ -206,7 +206,7 @@
         }
         .section-title i { color: #f1c40f; }
 
-        /* كارت الشقة بتصميم احترافي جديد */
+        /* كارت الشقة */
         .property-card {
             background: white;
             border-radius: 16px;
@@ -221,12 +221,12 @@
             box-shadow: 0 12px 35px rgba(0,0,0,0.12);
         }
 
-        /* تنسيق هيدر الكارت الاحترافي الجديد */
+        /* تنسيق هيدر الكارت المتوافق تماماً مع الحاسوب والهاتف */
         .property-header-box {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
+            align-items: center;
+            flex-wrap: nowrap;
             gap: 15px;
             border-bottom: 2px solid #edf2f7;
             padding-bottom: 18px;
@@ -251,25 +251,53 @@
             color: #1e3c72;
         }
 
+        /* كارت السعر المحسن والمتناسق للجوال والحاسوب */
         .price-badge-container {
             background: linear-gradient(135deg, #fff5f5, #ffe3e3);
             border: 1px solid #feb2b2;
             padding: 8px 16px;
             border-radius: 12px;
-            text-align: left;
+            text-align: center;
             box-shadow: 0 2px 6px rgba(231, 76, 60, 0.08);
+            flex-shrink: 0;
+            min-width: 140px;
         }
         .current-price-tag {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             color: #c53030;
             font-weight: 800;
             display: block;
+            white-space: nowrap;
         }
         .old-price-tag {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #718096;
             text-decoration: line-through;
             font-weight: 600;
+            display: block;
+            white-space: nowrap;
+        }
+
+        /* تعديلات الموبايل لهيدر الكارت والسعر */
+        @media (max-width: 768px) {
+            .property-header-box {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+            .price-badge-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 15px;
+                width: 100%;
+            }
+            .current-price-tag, .old-price-tag {
+                display: inline-block;
+            }
+            .property-title-link {
+                font-size: 1.25rem;
+            }
         }
 
         .property-location-badge {
