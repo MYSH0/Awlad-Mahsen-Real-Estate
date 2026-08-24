@@ -210,15 +210,16 @@
         .property-card {
             background: white;
             border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             margin-bottom: 35px;
             overflow: hidden;
             padding: 30px;
-            border-top: 5px solid #1e3c72;
+            border-top: 6px solid #1e3c72;
             transition: all 0.3s ease;
         }
         .property-card:hover {
-            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
         }
 
         .property-header-box {
@@ -228,7 +229,7 @@
             flex-wrap: nowrap;
             gap: 15px;
             border-bottom: 2px solid #edf2f7;
-            padding-bottom: 18px;
+            padding-bottom: 20px;
             margin-bottom: 18px;
         }
 
@@ -250,28 +251,29 @@
             color: #1e3c72;
         }
 
-        /* تنسيق كارت السعر الجديد والمحسّن للشاشات الكبيرة والصغيرة */
+        /* تصميم كارت السعر الجديد الفاخر والمطور حسب الطلب */
         .price-badge-modern {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border: 2px solid #e2e8f0;
+            background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+            border: 2px solid #cbd5e1;
             border-radius: 14px;
-            padding: 12px 20px;
+            padding: 12px 18px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+            gap: 18px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             flex-shrink: 0;
         }
 
+        /* نسبة الخصم على الشمال */
         .price-badge-modern .discount-tag {
-            background-color: #ff4757;
+            background: linear-gradient(135deg, #ff4757, #ff6b81);
             color: #ffffff;
             font-size: 0.85rem;
-            font-weight: bold;
-            padding: 6px 10px;
+            font-weight: 800;
+            padding: 6px 12px;
             border-radius: 8px;
             white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(255, 71, 87, 0.3);
+            box-shadow: 0 3px 8px rgba(255, 71, 87, 0.35);
         }
 
         .price-badge-modern .price-content {
@@ -280,18 +282,11 @@
             align-items: flex-start;
         }
 
-        .price-badge-modern .old-price {
-            font-size: 0.9rem;
-            color: #a0aec0;
-            text-decoration: line-through;
-            white-space: nowrap;
-            font-weight: 600;
-        }
-
+        /* السعر المعروض الكبير في الأعلى */
         .price-badge-modern .new-price {
-            font-size: 1.5rem;
+            font-size: 1.55rem;
             font-weight: 900;
-            color: #1e293b;
+            color: #0f172a;
             white-space: nowrap;
             line-height: 1.2;
         }
@@ -299,7 +294,17 @@
         .price-badge-modern .new-price small {
             font-size: 0.95rem;
             font-weight: 700;
-            color: #64748b;
+            color: #475569;
+        }
+
+        /* السعر المشطوب تحت السعر المعروض */
+        .price-badge-modern .old-price {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+            white-space: nowrap;
+            font-weight: 700;
+            margin-top: 2px;
         }
 
         @media (max-width: 768px) {
@@ -311,13 +316,13 @@
             .price-badge-modern {
                 justify-content: space-between;
                 width: 100%;
-                padding: 15px 20px;
+                padding: 14px 18px;
             }
             .property-title-link {
-                font-size: 1.25rem;
+                font-size: 1.2rem;
             }
             .price-badge-modern .new-price {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
         }
 
@@ -642,13 +647,13 @@
                         <i class="fa-solid fa-building-shield"></i> <span data-key="prop1Title">الشقة الأولى - تصميم عائلي فاخر</span>
                     </a>
                 </div>
-                <!-- كارت السعر الجديد المحسّن -->
+                <!-- كارت السعر المطابق للطلب: السعر المعروض بالأعلى، تحته المشطوب، والنسبة على الشمال -->
                 <div class="price-badge-modern">
-                    <span class="discount-tag">خصم 9%</span>
                     <div class="price-content">
-                        <span class="old-price">900,000 ج.م</span>
                         <span class="new-price">820,000 <small>ج.م</small></span>
+                        <span class="old-price">900,000 ج.م</span>
                     </div>
+                    <span class="discount-tag">خصم 9%</span>
                 </div>
             </div>
             
@@ -685,13 +690,13 @@
                         <i class="fa-solid fa-building-shield"></i> <span data-key="prop2Title">الشقة الثانية - إطلالة وموقع متميز</span>
                     </a>
                 </div>
-                <!-- كارت السعر الجديد المحسّن -->
+                <!-- كارت السعر المطابق للطلب: السعر المعروض بالأعلى، تحته المشطوب، والنسبة على الشمال -->
                 <div class="price-badge-modern">
-                    <span class="discount-tag">خصم 8%</span>
                     <div class="price-content">
-                        <span class="old-price">1,000,000 ج.م</span>
                         <span class="new-price">920,000 <small>ج.م</small></span>
+                        <span class="old-price">1,000,000 ج.م</span>
                     </div>
+                    <span class="discount-tag">خصم 8%</span>
                 </div>
             </div>
 
@@ -1169,7 +1174,7 @@
             }
 
             const elements = document.querySelectorAll('[data-key]');
-            elements.format = elements.forEach(el => {
+            elements.forEach(el => {
                 const key = el.getAttribute('data-key');
                 if (translations[currentLang][key]) {
                     el.innerHTML = translations[currentLang][key];
