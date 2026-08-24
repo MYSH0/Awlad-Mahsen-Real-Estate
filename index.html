@@ -206,65 +206,95 @@
         }
         .section-title i { color: #f1c40f; }
 
-        /* كارت الشقة المختصر في الصفحة الرئيسية */
+        /* كارت الشقة بتصميم احترافي جديد */
         .property-card {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            margin-bottom: 35px;
             overflow: hidden;
-            padding: 25px;
-            border-top: 4px solid #2c5364;
+            padding: 30px;
+            border-top: 5px solid #1e3c72;
+            transition: all 0.3s ease;
+        }
+        .property-card:hover {
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
         }
 
-        /* تنسيق عنوان الشقة التفاعلي الاحترافي */
+        /* تنسيق هيدر الكارت الاحترافي الجديد */
+        .property-header-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 18px;
+            margin-bottom: 18px;
+        }
+
         .property-title-link {
-            color: #1e3c72;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            color: #0f172a;
+            font-size: 1.5rem;
             text-decoration: none;
-            display: inline-block;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .property-title-link i {
+            color: #d97706;
+            font-size: 1.3rem;
         }
         .property-title-link:hover {
-            color: #2a5298;
-            transform: translateX(-5px);
-            text-decoration: underline;
+            color: #1e3c72;
         }
 
-        .price-box {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
+        .price-badge-container {
+            background: linear-gradient(135deg, #fff5f5, #ffe3e3);
+            border: 1px solid #feb2b2;
+            padding: 8px 16px;
+            border-radius: 12px;
+            text-align: left;
+            box-shadow: 0 2px 6px rgba(231, 76, 60, 0.08);
         }
-        .current-price {
+        .current-price-tag {
             font-size: 1.35rem;
-            color: #e74c3c;
-            font-weight: bold;
+            color: #c53030;
+            font-weight: 800;
+            display: block;
         }
-        .old-price {
-            font-size: 1rem;
-            color: #999;
+        .old-price-tag {
+            font-size: 0.9rem;
+            color: #718096;
             text-decoration: line-through;
-        }
-        .property-location-sub {
-            font-size: 0.98rem;
-            color: #555;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
             font-weight: 600;
         }
-        .property-location-sub i { color: #e74c3c; }
-        .property-desc {
-            color: #555;
-            margin-bottom: 20px;
-            font-size: 1.02rem;
+
+        .property-location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f1f5f9;
+            color: #334155;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        .property-location-badge i { 
+            color: #e74c3c; 
+            font-size: 1.1rem;
+        }
+
+        .property-desc-text {
+            color: #475569;
+            margin-bottom: 22px;
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
 
         .specs-preview {
@@ -558,22 +588,24 @@
 
         <!-- الشقة الأولى -->
         <div class="property-card">
-            <h3>
-                <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal1', 'slider1')" data-key="prop1Title">
-                    الشقة الأولى - تصميم عائلي فاخر
-                </a>
-            </h3>
-            
-            <div class="price-box">
-                <span class="current-price">السعر يبدأ من: 820,000 ج.م</span>
-                <span class="old-price">900,000 ج.م</span>
+            <!-- هيدر الكارت الاحترافي -->
+            <div class="property-header-box">
+                <div>
+                    <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal1', 'slider1')">
+                        <i class="fa-solid fa-building-shield"></i> <span data-key="prop1Title">الشقة الأولى - تصميم عائلي فاخر</span>
+                    </a>
+                </div>
+                <div class="price-badge-container">
+                    <span class="current-price-tag">820,000 ج.م</span>
+                    <span class="old-price-tag">900,000 ج.م</span>
+                </div>
             </div>
             
-            <div class="property-location-sub" data-key="addressText">
+            <div class="property-location-badge" data-key="addressText">
                 <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
             </div>
 
-            <p class="property-desc" data-key="prop1Desc">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، اضغط على زر التفاصيل لمشاهدة المعرض الكامل، الفيديو، واختيار الدور المناسب.</p>
+            <p class="property-desc-text" data-key="prop1Desc">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، اضغط على زر التفاصيل لمشاهدة المعرض الكامل، الفيديو، واختيار الدور المناسب.</p>
 
             <div class="specs-preview">
                 <div class="spec-mini"><i class="fa-solid fa-ruler-combined"></i> 120 متر</div>
@@ -596,22 +628,24 @@
 
         <!-- الشقة الثانية -->
         <div class="property-card">
-            <h3>
-                <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal2', 'slider2')" data-key="prop2Title">
-                    الشقة الثانية - إطلالة وموقع متميز
-                </a>
-            </h3>
-            
-            <div class="price-box">
-                <span class="current-price">السعر يبدأ من: 920,000 ج.م</span>
-                <span class="old-price">1,000,000 ج.م</span>
+            <!-- هيدر الكارت الاحترافي -->
+            <div class="property-header-box">
+                <div>
+                    <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal2', 'slider2')">
+                        <i class="fa-solid fa-building-shield"></i> <span data-key="prop2Title">الشقة الثانية - إطلالة وموقع متميز</span>
+                    </a>
+                </div>
+                <div class="price-badge-container">
+                    <span class="current-price-tag">920,000 ج.م</span>
+                    <span class="old-price-tag">1,000,000 ج.م</span>
+                </div>
             </div>
 
-            <div class="property-location-sub" data-key="addressText">
+            <div class="property-location-badge" data-key="addressText">
                 <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
             </div>
 
-            <p class="property-desc" data-key="prop2Desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
+            <p class="property-desc-text" data-key="prop2Desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
 
             <div class="specs-preview">
                 <div class="spec-mini"><i class="fa-solid fa-ruler-combined"></i> 140 متر</div>
@@ -640,13 +674,13 @@
             
             <h2 style="color: #1e3c72; font-size: 1.6rem; margin-bottom: 10px;">الشقة الأولى - تصميم عائلي فاخر</h2>
             
-            <div class="price-box">
-                <span class="current-price" id="price1">السعر: 850,000 ج.م</span>
-                <span class="old-price">900,000 ج.م</span>
+            <div class="price-box" style="display:flex; align-items:center; gap:15px; margin-bottom:10px;">
+                <span class="current-price" id="price1" style="font-size:1.35rem; color:#e74c3c; font-weight:bold;">السعر: 850,000 ج.م</span>
+                <span class="old-price" style="font-size:1rem; color:#999; text-decoration:line-through;">900,000 ج.م</span>
             </div>
             
-            <div class="property-location-sub">
-                <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
+            <div class="property-location-sub" style="font-size:0.98rem; color:#555; margin-bottom:15px; display:flex; align-items:center; gap:8px; font-weight:600;">
+                <i class="fa-solid fa-location-dot" style="color:#e74c3c;"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
             </div>
 
             <p style="color: #555; margin-bottom: 15px; font-size: 0.95rem;">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، شاهد صور المعرض والفيديو التفصيلي للوحدة.</p>
@@ -756,13 +790,13 @@
             
             <h2 style="color: #1e3c72; font-size: 1.6rem; margin-bottom: 10px;">الشقة الثانية - إطلالة وموقع متميز</h2>
             
-            <div class="price-box">
-                <span class="current-price" id="price2">السعر: 950,000 ج.م</span>
-                <span class="old-price">1,000,000 ج.م</span>
+            <div class="price-box" style="display:flex; align-items:center; gap:15px; margin-bottom:10px;">
+                <span class="current-price" id="price2" style="font-size:1.35rem; color:#e74c3c; font-weight:bold;">السعر: 950,000 ج.م</span>
+                <span class="old-price" style="font-size:1rem; color:#999; text-decoration:line-through;">1,000,000 ج.م</span>
             </div>
             
-            <div class="property-location-sub">
-                <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
+            <div class="property-location-sub" style="font-size:0.98rem; color:#555; margin-bottom:15px; display:flex; align-items:center; gap:8px; font-weight:600;">
+                <i class="fa-solid fa-location-dot" style="color:#e74c3c;"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
             </div>
 
             <p style="color: #555; margin-bottom: 15px; font-size: 0.95rem;">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
