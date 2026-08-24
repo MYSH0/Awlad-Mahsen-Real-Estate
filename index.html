@@ -216,11 +216,24 @@
             padding: 25px;
             border-top: 4px solid #2c5364;
         }
-        .property-info h3 {
+
+        /* تنسيق عنوان الشقة التفاعلي الاحترافي */
+        .property-title-link {
             color: #1e3c72;
             font-size: 1.4rem;
             margin-bottom: 10px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
+        .property-title-link:hover {
+            color: #2a5298;
+            transform: translateX(-5px);
+            text-decoration: underline;
+        }
+
         .price-box {
             margin-bottom: 10px;
             display: flex;
@@ -376,7 +389,6 @@
         }
         .close-property-modal:hover { color: #e74c3c; }
 
-        /* تفاصيل داخلية للـ Modal (مثل المعرض والفيديو والـ Specs) */
         .specs-container {
             background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; margin: 20px 0;
         }
@@ -420,7 +432,6 @@
         .prev-btn { right: 15px; }
         .next-btn { left: 15px; }
 
-        /* نافذة عرض الصورة بالحجم الكامل */
         .img-modal { display: none; position: fixed; z-index: 4000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); }
         .img-modal-content { margin: auto; display: block; max-width: 90%; max-height: 80vh; border-radius: 8px; }
         .close-img-modal { position: absolute; top: 20px; left: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; }
@@ -547,7 +558,11 @@
 
         <!-- الشقة الأولى -->
         <div class="property-card">
-            <h3 data-key="prop1Title">الشقة الأولى - تصميم عائلي فاخر</h3>
+            <h3>
+                <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal1', 'slider1')" data-key="prop1Title">
+                    الشقة الأولى - تصميم عائلي فاخر
+                </a>
+            </h3>
             
             <div class="price-box">
                 <span class="current-price">السعر يبدأ من: 820,000 ج.م</span>
@@ -581,7 +596,11 @@
 
         <!-- الشقة الثانية -->
         <div class="property-card">
-            <h3 data-key="prop2Title">الشقة الثانية - إطلالة وموقع متميز</h3>
+            <h3>
+                <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal2', 'slider2')" data-key="prop2Title">
+                    الشقة الثانية - إطلالة وموقع متميز
+                </a>
+            </h3>
             
             <div class="price-box">
                 <span class="current-price">السعر يبدأ من: 920,000 ج.م</span>
@@ -632,13 +651,11 @@
 
             <p style="color: #555; margin-bottom: 15px; font-size: 0.95rem;">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، شاهد صور المعرض والفيديو التفصيلي للوحدة.</p>
 
-            <!-- التبويبات (فيديو / صور) -->
             <div class="tabs-nav">
                 <button class="tab-btn active" onclick="openTab(event, 'video1')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
                 <button class="tab-btn" onclick="openTab(event, 'photos1')"><i class="fa-solid fa-images"></i> عرض الصور</button>
             </div>
 
-            <!-- محتوى الفيديو -->
             <div id="video1" class="tab-content active">
                 <div class="property-media">
                     <video controls>
@@ -648,7 +665,6 @@
                 </div>
             </div>
 
-            <!-- محتوى الصور (Slider 1) -->
             <div id="photos1" class="tab-content">
                 <div class="slider-container" id="slider1">
                     <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
@@ -661,7 +677,6 @@
                 </div>
             </div>
 
-            <!-- المواصفات والاختيارات -->
             <div class="specs-container">
                 <div class="specs-grid">
                     <div class="spec-item">
@@ -722,7 +737,6 @@
                 </div>
             </div>
 
-            <!-- أزرار التواصل داخل المودال -->
             <div class="property-actions">
                 <a id="whatsappBtn1" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الأولى" class="contact-btn" target="_blank">
                     <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
@@ -753,13 +767,11 @@
 
             <p style="color: #555; margin-bottom: 15px; font-size: 0.95rem;">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
 
-            <!-- التبويبات (فيديو / صور) -->
             <div class="tabs-nav">
                 <button class="tab-btn active" onclick="openTab(event, 'video2')"><i class="fa-solid fa-video"></i> عرض الفيديو</button>
                 <button class="tab-btn" onclick="openTab(event, 'photos2')"><i class="fa-solid fa-images"></i> عرض الصور</button>
             </div>
 
-            <!-- محتوى الفيديو -->
             <div id="video2" class="tab-content active">
                 <div class="property-media">
                     <video controls>
@@ -769,7 +781,6 @@
                 </div>
             </div>
 
-            <!-- محتوى الصور (Slider 2) -->
             <div id="photos2" class="tab-content">
                 <div class="slider-container" id="slider2">
                     <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
@@ -780,7 +791,6 @@
                 </div>
             </div>
 
-            <!-- المواصفات والاختيارات -->
             <div class="specs-container">
                 <div class="specs-grid">
                     <div class="spec-item">
@@ -840,7 +850,6 @@
                 </div>
             </div>
 
-            <!-- أزرار التواصل داخل المودال -->
             <div class="property-actions">
                 <a id="whatsappBtn2" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الثانية" class="contact-btn" target="_blank">
                     <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
@@ -871,25 +880,22 @@
         <p style="margin-top:15px; font-size: 0.85rem; color: #888;" data-key="copyright">جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري</p>
     </footer>
 
-    <!-- أكواد الجافاسكريبت للتحكم بالنافذة والترجمة والمعرض -->
+    <!-- أكواد الجافاسكريبت -->
     <script>
         let slideIntervals = {};
 
-        // التحكم في فتح وغلق نافذة تفاصيل الشقة
         function openPropertyModal(modalId, sliderId) {
             document.getElementById(modalId).style.display = 'block';
             startAutoSlide(sliderId);
         }
         function closePropertyModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
-            // استخراج معرف السلايدر المرتبط وإيقافه
             const sliderId = modalId === 'propertyModal1' ? 'slider1' : 'slider2';
             if (slideIntervals[sliderId]) {
                 clearInterval(slideIntervals[sliderId]);
             }
         }
 
-        // إغلاق النافذة عند الضغط خارجها
         window.onclick = function(event) {
             const modal1 = document.getElementById('propertyModal1');
             const modal2 = document.getElementById('propertyModal2');
@@ -899,9 +905,7 @@
             if (event.target == imgModal) { closeImageModal(); }
         }
 
-        // التبويبات (فيديو / صور)
         function openTab(evt, tabId) {
-            // تحديد الحاوية الأب للتابات لنضمن التبديل داخل المودال الصحيح فقط
             const modalContent = evt.currentTarget.closest('.property-modal-content');
             const contents = modalContent.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
@@ -913,7 +917,6 @@
             evt.currentTarget.classList.add('active');
         }
 
-        // تحديث تفاصيل الشقة الأولى
         function updatePropertyDetails() {
             const selectEl = document.getElementById('floorSelect1');
             const finishEl = document.getElementById('finishSelect1');
@@ -946,7 +949,6 @@
             whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
         }
 
-        // تحديث تفاصيل الشقة الثانية
         function updatePropertyDetails2() {
             const selectEl = document.getElementById('floorSelect2');
             const finishEl = document.getElementById('finishSelect2');
@@ -976,14 +978,12 @@
             whatsappBtn.href = `https://wa.me/201032903926?text=${encodeURIComponent(message)}`;
         }
 
-        // معرض الصور المتحرك (Slider) لكل سلايدر مستقل
         function showSlide(sliderId, n) {
             const slider = document.getElementById(sliderId);
             if (!slider) return;
             const slides = slider.querySelectorAll('.slide');
             if (slides.length === 0) return;
 
-            // تخزين مؤشر الصورة الحالي لكل سلايدر
             if (!slider.dataset.index) slider.dataset.index = 0;
             let slideIndex = parseInt(slider.dataset.index);
 
@@ -1012,7 +1012,6 @@
             startAutoSlide(sliderId);
         }
 
-        // تكبير الصورة الفردية في معرض الصور
         function openImageModal(imgSrc) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImg');
@@ -1024,7 +1023,6 @@
             document.getElementById('imageModal').style.display = "none";
         }
 
-        // نظام الترجمة (عربي / إنجليزي)
         const translations = {
             ar: {
                 contactUs: "  تواصل معنا:",
