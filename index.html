@@ -221,7 +221,6 @@
             box-shadow: 0 12px 35px rgba(0,0,0,0.12);
         }
 
-        /* تنسيق هيدر الكارت المتوافق تماماً مع الحاسوب والهاتف */
         .property-header-box {
             display: flex;
             justify-content: space-between;
@@ -251,49 +250,63 @@
             color: #1e3c72;
         }
 
-        /* كارت السعر المحسن والمتناسق للجوال والحاسوب */
-        .price-badge-container {
-            background: linear-gradient(135deg, #fff5f5, #ffe3e3);
-            border: 1px solid #feb2b2;
-            padding: 8px 16px;
+        /* تنسيق كارت السعر الجديد والأنيق */
+        .price-badge-modern {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 1px solid #dee2e6;
             border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 2px 6px rgba(231, 76, 60, 0.08);
+            padding: 10px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
             flex-shrink: 0;
-            min-width: 140px;
         }
-        .current-price-tag {
-            font-size: 1.25rem;
-            color: #c53030;
-            font-weight: 800;
-            display: block;
-            white-space: nowrap;
-        }
-        .old-price-tag {
-            font-size: 0.85rem;
-            color: #718096;
-            text-decoration: line-through;
-            font-weight: 600;
-            display: block;
+
+        .price-badge-modern .discount-tag {
+            background-color: #ff4757;
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 7px;
+            border-radius: 6px;
             white-space: nowrap;
         }
 
-        /* تعديلات الموبايل لهيدر الكارت والسعر */
+        .price-badge-modern .price-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .price-badge-modern .old-price {
+            font-size: 0.8rem;
+            color: #8c8c8c;
+            text-decoration: line-through;
+            white-space: nowrap;
+        }
+
+        .price-badge-modern .new-price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #1e272e;
+            white-space: nowrap;
+        }
+
+        .price-badge-modern .new-price small {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
         @media (max-width: 768px) {
             .property-header-box {
                 flex-direction: column;
                 align-items: stretch;
                 gap: 12px;
             }
-            .price-badge-container {
-                display: flex;
+            .price-badge-modern {
                 justify-content: space-between;
-                align-items: center;
-                padding: 10px 15px;
                 width: 100%;
-            }
-            .current-price-tag, .old-price-tag {
-                display: inline-block;
             }
             .property-title-link {
                 font-size: 1.25rem;
@@ -410,7 +423,6 @@
         }
         .call-btn:hover { background: #006699; }
 
-        /* نافذة التفاصيل المنبثقة (Modal) */
         .property-modal {
             display: none;
             position: fixed;
@@ -616,16 +628,19 @@
 
         <!-- الشقة الأولى -->
         <div class="property-card">
-            <!-- هيدر الكارت الاحترافي -->
             <div class="property-header-box">
                 <div>
                     <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal1', 'slider1')">
                         <i class="fa-solid fa-building-shield"></i> <span data-key="prop1Title">الشقة الأولى - تصميم عائلي فاخر</span>
                     </a>
                 </div>
-                <div class="price-badge-container">
-                    <span class="current-price-tag">820,000 ج.م</span>
-                    <span class="old-price-tag">900,000 ج.م</span>
+                <!-- كارت السعر المحسن الجديد مع نسبة الخصم -->
+                <div class="price-badge-modern">
+                    <span class="discount-tag">خصم 9%</span>
+                    <div class="price-content">
+                        <span class="old-price">900,000 ج.م</span>
+                        <span class="new-price">820,000 <small>ج.م</small></span>
+                    </div>
                 </div>
             </div>
             
@@ -656,16 +671,19 @@
 
         <!-- الشقة الثانية -->
         <div class="property-card">
-            <!-- هيدر الكارت الاحترافي -->
             <div class="property-header-box">
                 <div>
                     <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal2', 'slider2')">
                         <i class="fa-solid fa-building-shield"></i> <span data-key="prop2Title">الشقة الثانية - إطلالة وموقع متميز</span>
                     </a>
                 </div>
-                <div class="price-badge-container">
-                    <span class="current-price-tag">920,000 ج.م</span>
-                    <span class="old-price-tag">1,000,000 ج.م</span>
+                <!-- كارت السعر المحسن الجديد للشقة الثانية -->
+                <div class="price-badge-modern">
+                    <span class="discount-tag">خصم 8%</span>
+                    <div class="price-content">
+                        <span class="old-price">1,000,000 ج.م</span>
+                        <span class="new-price">920,000 <small>ج.م</small></span>
+                    </div>
                 </div>
             </div>
 
@@ -703,7 +721,7 @@
             <h2 style="color: #1e3c72; font-size: 1.6rem; margin-bottom: 10px;">الشقة الأولى - تصميم عائلي فاخر</h2>
             
             <div class="price-box" style="display:flex; align-items:center; gap:15px; margin-bottom:10px;">
-                <span class="current-price" id="price1" style="font-size:1.35rem; color:#e74c3c; font-weight:bold;">السعر: 850,000 ج.م</span>
+                <span class="current-price" id="price1" style="font-size:1.35rem; color:#1e272e; font-weight:bold;">السعر: 820,000 ج.م</span>
                 <span class="old-price" style="font-size:1rem; color:#999; text-decoration:line-through;">900,000 ج.م</span>
             </div>
             
@@ -753,7 +771,7 @@
                         <i class="fa-solid fa-tag"></i>
                         <div class="spec-content">
                             <span class="spec-label">سعر المتر التقديري</span>
-                            <span class="spec-value" id="meterPrice1">7,080 ج.م</span>
+                            <span class="spec-value" id="meterPrice1">6,833 ج.م</span>
                         </div>
                     </div>
 
@@ -770,8 +788,8 @@
                         <div class="spec-content">
                             <span class="spec-label">الدور والاتجاه</span>
                             <select class="modern-select" id="floorSelect1" onchange="updatePropertyDetails()">
-                                <option value="الدور الثالث - أمامي">الدور الثالث - أمامي (850,000 ج.م)</option>
                                 <option value="الدور الثالث - خلفي">الدور الثالث - خلفي (820,000 ج.م)</option>
+                                <option value="الدور الثالث - أمامي">الدور الثالث - أمامي (850,000 ج.م)</option>
                                 <option value="الدور الرابع - واجهة">الدور الرابع - واجهة (870,000 ج.م)</option>
                                 <option value="الدور الخامس - ناصية">الدور الخامس - ناصية (900,000 ج.م)</option>
                             </select>
@@ -819,7 +837,7 @@
             <h2 style="color: #1e3c72; font-size: 1.6rem; margin-bottom: 10px;">الشقة الثانية - إطلالة وموقع متميز</h2>
             
             <div class="price-box" style="display:flex; align-items:center; gap:15px; margin-bottom:10px;">
-                <span class="current-price" id="price2" style="font-size:1.35rem; color:#e74c3c; font-weight:bold;">السعر: 950,000 ج.م</span>
+                <span class="current-price" id="price2" style="font-size:1.35rem; color:#1e272e; font-weight:bold;">السعر: 920,000 ج.م</span>
                 <span class="old-price" style="font-size:1rem; color:#999; text-decoration:line-through;">1,000,000 ج.م</span>
             </div>
             
@@ -867,7 +885,7 @@
                         <i class="fa-solid fa-tag"></i>
                         <div class="spec-content">
                             <span class="spec-label">سعر المتر التقديري</span>
-                            <span class="spec-value" id="meterPrice2">6,785 ج.م</span>
+                            <span class="spec-value" id="meterPrice2">6,571 ج.م</span>
                         </div>
                     </div>
 
@@ -884,9 +902,9 @@
                         <div class="spec-content">
                             <span class="spec-label">الدور والاتجاه</span>
                             <select class="modern-select" id="floorSelect2" onchange="updatePropertyDetails2()">
+                                <option value="الدور الأخير - واجهة">الدور الأخير - واجهة (920,000 ج.م)</option>
                                 <option value="الدور الثاني - أمامي">الدور الثاني - أمامي (950,000 ج.م)</option>
                                 <option value="الدور الثالث - ناصية">الدور الثالث - ناصية (980,000 ج.م)</option>
-                                <option value="الدور الأخير - واجهة">الدور الأخير - واجهة (920,000 ج.م)</option>
                             </select>
                         </div>
                     </div>
@@ -924,7 +942,7 @@
         </div>
     </div>
 
-    <!-- نافذة تكبير الصورة (Image Modal) -->
+    <!-- نافذة تكبير الصورة -->
     <div id="imageModal" class="img-modal">
         <span class="close-img-modal" onclick="closeImageModal()">&times;</span>
         <img class="img-modal-content" id="modalImg">
@@ -942,7 +960,7 @@
         <p style="margin-top:15px; font-size: 0.85rem; color: #888;" data-key="copyright">جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري</p>
     </footer>
 
-    <!-- أكواد الجافاسكريبت -->
+    <!-- الجافاسكريبت -->
     <script>
         let slideIntervals = {};
 
@@ -993,12 +1011,12 @@
             let currentPriceText = "";
             let currentSpaceText = "";
 
-            if (selectVal.includes('الدور الثالث - أمامي')) {
-                currentPriceText = "850,000 EGP"; currentSpaceText = "120 متر";
-                priceEl.innerText = "السعر: 850,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "7,080 ج.م";
-            } else if (selectVal.includes('الدور الثالث - خلفي')) {
+            if (selectVal.includes('الدور الثالث - خلفي')) {
                 currentPriceText = "820,000 EGP"; currentSpaceText = "120 متر";
                 priceEl.innerText = "السعر: 820,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "6,833 ج.م";
+            } else if (selectVal.includes('الدور الثالث - أمامي')) {
+                currentPriceText = "850,000 EGP"; currentSpaceText = "120 متر";
+                priceEl.innerText = "السعر: 850,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "7,080 ج.م";
             } else if (selectVal.includes('الدور الرابع - واجهة')) {
                 currentPriceText = "870,000 EGP"; currentSpaceText = "125 متر";
                 priceEl.innerText = "السعر: 870,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "6,960 ج.م";
@@ -1025,15 +1043,15 @@
             let currentPriceText = "";
             let currentSpaceText = "";
 
-            if (selectVal.includes('الدور الثاني - أمامي')) {
+            if (selectVal.includes('الدور الأخير - واجهة')) {
+                currentPriceText = "920,000 EGP"; currentSpaceText = "140 متر";
+                priceEl.innerText = "السعر: 920,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "6,571 ج.م";
+            } else if (selectVal.includes('الدور الثاني - أمامي')) {
                 currentPriceText = "950,000 EGP"; currentSpaceText = "140 متر";
                 priceEl.innerText = "السعر: 950,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "6,785 ج.م";
             } else if (selectVal.includes('الدور الثالث - ناصية')) {
                 currentPriceText = "980,000 EGP"; currentSpaceText = "145 متر";
                 priceEl.innerText = "السعر: 980,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "6,758 ج.م";
-            } else if (selectVal.includes('الدور الأخير - واجهة')) {
-                currentPriceText = "920,000 EGP"; currentSpaceText = "140 متر";
-                priceEl.innerText = "السعر: 920,000 ج.م"; spaceEl.innerText = currentSpaceText; meterEl.innerText = "6,571 ج.م";
             }
 
             let message = `السلام عليكم، مهتم بالشقة الثانية\n📍 العنوان: شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة\n🏢 الاختيار: ${selectVal}\n📏 المساحة: ${currentSpaceText}\n💰 السعر: ${currentPriceText}\n🛠️ التسليم: ${finishVal}`;
