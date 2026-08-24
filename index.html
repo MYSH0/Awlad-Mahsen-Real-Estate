@@ -189,7 +189,7 @@
 
         .section-title-box {
             text-align: center;
-            margin: 35px 0 30px 0;
+            margin: 35px 0 20px 0;
         }
         .section-title {
             display: inline-flex;
@@ -205,6 +205,53 @@
             border: 2px solid #f1c40f;
         }
         .section-title i { color: #f1c40f; }
+
+        /* أزرار الفلترة الجديدة */
+        .filter-buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: #ffffff;
+            color: #1e3c72;
+            border: 2px solid #1e3c72;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #1e3c72;
+            color: #ffffff;
+            box-shadow: 0 5px 12px rgba(30, 60, 114, 0.2);
+        }
+
+        /* رسالة عدم وجود عقارات في التصنيف */
+        .no-properties-msg {
+            display: none;
+            text-align: center;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px dashed #cbd5e1;
+            color: #64748b;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .no-properties-msg i {
+            font-size: 2rem;
+            color: #e67e22;
+            margin-bottom: 10px;
+            display: block;
+        }
 
         /* كارت الشقة */
         .property-card {
@@ -342,6 +389,24 @@
         .property-location-badge i { 
             color: #e74c3c; 
             font-size: 1.1rem;
+        }
+
+        /* تصنيف العقار المضاف تحت الموقع أو الوصف */
+        .property-category-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            border: 1px solid #bae6fd;
+        }
+        .property-category-indicator i {
+            color: #0284c7;
         }
 
         .property-desc-text {
@@ -639,8 +704,21 @@
             </h2>
         </div>
 
+        <!-- أزرار الفلترة (التصنيفات) -->
+        <div class="filter-buttons-container">
+            <button class="filter-btn active" onclick="filterProperties('all', this)">الكل</button>
+            <button class="filter-btn" onclick="filterProperties('apartments', this)">شقق تمليك للبيع</button>
+            <button class="filter-btn" onclick="filterProperties('shops', this)">محلات تمليك للبيع</button>
+        </div>
+
+        <!-- رسالة تنبيه لو مفيش محلات -->
+        <div id="noShopsMsg" class="no-properties-msg">
+            <i class="fa-solid fa-store-slash"></i>
+            قريباً محلات تمليك متاحة للعرض، تابعنا باستمرار!
+        </div>
+
         <!-- الشقة الأولى -->
-        <div class="property-card">
+        <div class="property-card" data-category="apartments">
             <div class="property-header-box">
                 <div>
                     <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal1', 'slider1')">
@@ -659,6 +737,10 @@
             
             <div class="property-location-badge" data-key="addressText">
                 <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
+            </div>
+
+            <div>
+                <span class="property-category-indicator"><i class="fa-solid fa-tag"></i> تصنيف: شقق تمليك للبيع</span>
             </div>
 
             <p class="property-desc-text" data-key="prop1Desc">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، اضغط على زر التفاصيل لمشاهدة المعرض الكامل، الفيديو، واختيار الدور المناسب.</p>
@@ -683,7 +765,7 @@
         </div>
 
         <!-- الشقة الثانية -->
-        <div class="property-card">
+        <div class="property-card" data-category="apartments">
             <div class="property-header-box">
                 <div>
                     <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal2', 'slider2')">
@@ -702,6 +784,10 @@
 
             <div class="property-location-badge" data-key="addressText">
                 <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
+            </div>
+
+            <div>
+                <span class="property-category-indicator"><i class="fa-solid fa-tag"></i> تصنيف: شقق تمليك للبيع</span>
             </div>
 
             <p class="property-desc-text" data-key="prop2Desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
@@ -976,6 +1062,36 @@
     <!-- الجافاسكريبت -->
     <script>
         let slideIntervals = {};
+
+        // وظيفة فلترة العقارات (شقق ومحلات)
+        function filterProperties(category, btnElement) {
+            // تحديث الأزرار النشطة
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // إحضار كروت العقارات ورسالة المحلات
+            const properties = document.querySelectorAll('.property-card');
+            const noShopsMsg = document.getElementById('noShopsMsg');
+            let visibleCount = 0;
+
+            properties.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                if (category === 'all' || cardCategory === category) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // إظهار أو إخفاء رسالة المحلات لو تم اختيار المحلات ومفيش محلات معروضة
+            if (category === 'shops') {
+                noShopsMsg.style.display = 'block';
+            } else {
+                noShopsMsg.style.display = 'none';
+            }
+        }
 
         function openPropertyModal(modalId, sliderId) {
             document.getElementById(modalId).style.display = 'block';
