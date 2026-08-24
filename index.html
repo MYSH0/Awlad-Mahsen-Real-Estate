@@ -23,19 +23,20 @@
         .top-bar {
             background: #0b141b;
             color: #cbd5e1;
-            padding: 8px 20px;
+            padding: 10px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.9rem;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
         .top-bar-socials {
             display: flex;
             gap: 12px;
             align-items: center;
+            flex-wrap: wrap;
         }
         .top-bar-socials a {
             color: #cbd5e1;
@@ -50,14 +51,15 @@
 
         .top-bar-options {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
+            flex-wrap: wrap;
         }
         .lang-switcher, .global-btn {
             background: rgba(255,255,255,0.1);
             border: 1px solid rgba(255,255,255,0.2);
             color: white;
-            padding: 3px 10px;
+            padding: 4px 10px;
             border-radius: 4px;
             font-size: 0.85rem;
             cursor: pointer;
@@ -70,6 +72,20 @@
         .lang-switcher:hover, .global-btn:hover {
             background: #2c5364;
             border-color: #2c5364;
+        }
+
+        /* تنسيق استجابة الشريط العلوي للموبايل */
+        @media (max-width: 600px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 12px 10px;
+            }
+            .top-bar-socials, .top-bar-options {
+                justify-content: center;
+                width: 100%;
+            }
         }
 
         /* الهيدر وتصميم الألوان الاحترافي */
@@ -134,7 +150,6 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-        /* تعديل اتجاه الأنشطة المتحركة في الإنجليزية */
         html[dir="ltr"] .marquee-track {
             animation: smoothMarqueeLeftToRight 18s linear infinite;
         }
@@ -379,7 +394,6 @@
             z-index: 10;
         }
         .slider-btn:hover { background: rgba(44, 83, 100, 0.9); }
-        /* انعكاس اتجاه أزرار السلايدر حسب اللغة */
         html[dir="rtl"] .prev-btn { right: 15px; }
         html[dir="rtl"] .next-btn { left: 15px; }
         html[dir="ltr"] .prev-btn { left: 15px; }
@@ -819,7 +833,6 @@
     </footer>
 
     <script>
-        /* قاموس الترجمة (عربي / إنجليزي) */
         const translations = {
             ar: {
                 contactUs: "تواصل معنا:",
@@ -915,7 +928,6 @@
                 htmlTag.setAttribute('dir', 'rtl');
             }
 
-            // تحديث كل العناصر التي تحتوي على خاصية data-key
             const elements = document.querySelectorAll('[data-key]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-key');
@@ -924,7 +936,6 @@
                 }
             });
 
-            // تحديث النصوص الخاصة في الشريط العلوي
             document.getElementById('t-contact').innerText = translations[currentLang].contactUs;
             document.getElementById('t-region').innerHTML = `<i class="fa-solid fa-globe"></i> ${translations[currentLang].region}`;
             document.getElementById('langBtn').innerHTML = `<i class="fa-solid fa-language"></i> ${translations[currentLang].langBtnText}`;
@@ -1048,7 +1059,6 @@
         }
 
         function changeSlide(n, propertyId) {
-            // عكس اتجاه الأسهم حسب اللغة تلقائياً
             let direction = (currentLang === 'en') ? -n : n;
             showSlide(propertyId, direction);
             resetAutoSlide(propertyId);
