@@ -180,6 +180,15 @@
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
+        .marquee-track a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .marquee-track a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
 
         .container {
             max-width: 900px;
@@ -192,7 +201,6 @@
             margin: 35px 0 15px 0;
         }
 
-        /* زرار "العقارات المتاحة حالياً" القابل للضغط لإظهار الفلترة */
         .section-title-btn {
             display: inline-flex;
             align-items: center;
@@ -216,7 +224,6 @@
         .section-title-btn i.arrow-icon { font-size: 1.1rem; transition: transform 0.3s ease; margin-right: 5px; }
         .section-title-btn.active i.arrow-icon { transform: rotate(180deg); }
 
-        /* أزرار الفلترة تظهر وتخفى عند الضغط على العنوان */
         .filter-buttons-container {
             display: none;
             justify-content: center;
@@ -252,7 +259,6 @@
             box-shadow: 0 5px 12px rgba(30, 60, 114, 0.2);
         }
 
-        /* رسالة عدم وجود عقارات في التصنيف */
         .no-properties-msg {
             display: none;
             text-align: center;
@@ -273,7 +279,6 @@
             display: block;
         }
 
-        /* كارت الشقة */
         .property-card {
             background: white;
             border-radius: 16px;
@@ -318,7 +323,6 @@
             color: #1e3c72;
         }
 
-        /* تصميم كارت السعر المطابق */
         .price-badge-modern {
             background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
             border: 2px solid #cbd5e1;
@@ -390,6 +394,7 @@
             }
         }
 
+        /* زر العنوان القابل للضغط ليفتح خرائط جوجل */
         .property-location-badge {
             display: inline-flex;
             align-items: center;
@@ -402,13 +407,20 @@
             font-weight: 700;
             margin-bottom: 10px;
             border: 1px solid #e2e8f0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .property-location-badge:hover {
+            background: #e2e8f0;
+            color: #1e3c72;
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
         }
         .property-location-badge i { 
             color: #e74c3c; 
             font-size: 1.1rem;
         }
 
-        /* اسم التصنيف بدون كلمة تصنيف حسب الطلب */
         .property-category-indicator {
             display: inline-flex;
             align-items: center;
@@ -660,10 +672,20 @@
         .footer-links a.facebook:hover { background: #1877F2; }
         .footer-links a.instagram:hover { background: #E4405F; }
         .footer-links a.phone:hover { background: #0088cc; }
+        
         .footer-address {
             margin-top: 10px;
             color: #cbd5e1;
             font-size: 0.95rem;
+        }
+        .footer-address a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-address a:hover {
+            color: #f1c40f;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -708,15 +730,17 @@
 
     <!-- شريط المتحركة الإخباري -->
     <div class="marquee-bar">
-        <div class="marquee-track" data-key="marqueeText">
-            أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات
+        <div class="marquee-track">
+            <a href="https://maps.app.goo.gl/Sf4GawtxQ7M9nZ3v7" target="_blank">
+                أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات
+            </a>
         </div>
     </div>
 
     <!-- المحتوى الرئيسي -->
     <div class="container">
         <div class="section-title-box">
-            <!-- زر العقارات المتاحة حالياً (عند الضغط عليه تظهر أزرار الفلترة) -->
+            <!-- زر العقارات المتاحة حالياً -->
             <button class="section-title-btn" id="mainFilterToggleBtn" onclick="toggleFilterMenu()">
                 <i class="fa-solid fa-building"></i> 
                 <span data-key="sectionTitle">العقارات المتاحة حالياً</span>
@@ -724,7 +748,7 @@
             </button>
         </div>
 
-        <!-- أزرار الفلترة (تظهر وتخفى عند الضغط على العنوان أعلاه) -->
+        <!-- أزرار الفلترة -->
         <div class="filter-buttons-container" id="filterMenu">
             <button class="filter-btn active" onclick="filterProperties('all', this)">الكل</button>
             <button class="filter-btn" onclick="filterProperties('apartments', this)">شقق تمليك للبيع</button>
@@ -745,7 +769,7 @@
                         <i class="fa-solid fa-building-shield"></i> <span data-key="prop1Title">الشقة الأولى - تصميم عائلي فاخر</span>
                     </a>
                 </div>
-                <!-- كارت السعر المطابق -->
+                <!-- كارت السعر -->
                 <div class="price-badge-modern">
                     <div class="price-content">
                         <span class="new-price">820,000 <small>ج.م</small></span>
@@ -755,12 +779,12 @@
                 </div>
             </div>
             
-            <div class="property-location-badge" data-key="addressText">
-                <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
-            </div>
+            <!-- زر العنوان يفتح الخريطة -->
+            <a href="https://maps.app.goo.gl/Sf4GawtxQ7M9nZ3v7" class="property-location-badge" target="_blank" title="اضغط لفتح الموقع على خرائط جوجل">
+                <i class="fa-solid fa-location-dot"></i> <span data-key="addressText">شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة</span>
+            </a>
 
             <div>
-                <!-- تم إزالة كلمة "تصنيف:" وبقت واضحة مباشرة -->
                 <span class="property-category-indicator"><i class="fa-solid fa-tag"></i> شقق تمليك للبيع</span>
             </div>
 
@@ -793,7 +817,7 @@
                         <i class="fa-solid fa-building-shield"></i> <span data-key="prop2Title">الشقة الثانية - إطلالة وموقع متميز</span>
                     </a>
                 </div>
-                <!-- كارت السعر المطابق -->
+                <!-- كارت السعر -->
                 <div class="price-badge-modern">
                     <div class="price-content">
                         <span class="new-price">920,000 <small>ج.م</small></span>
@@ -803,12 +827,12 @@
                 </div>
             </div>
 
-            <div class="property-location-badge" data-key="addressText">
-                <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
-            </div>
+            <!-- زر العنوان يفتح الخريطة -->
+            <a href="https://maps.app.goo.gl/Sf4GawtxQ7M9nZ3v7" class="property-location-badge" target="_blank" title="اضغط لفتح الموقع على خرائط جوجل">
+                <i class="fa-solid fa-location-dot"></i> <span data-key="addressText">شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة</span>
+            </a>
 
             <div>
-                <!-- تم إزالة كلمة "تصنيف:" وبقت واضحة مباشرة -->
                 <span class="property-category-indicator"><i class="fa-solid fa-tag"></i> شقق تمليك للبيع</span>
             </div>
 
@@ -834,7 +858,7 @@
         </div>
     </div>
 
-    <!-- نافذة تفاصيل الشقة الأولى المنبثقة (Modal 1) -->
+    <!-- نافذة تفاصيل الشقة الأولى المنبثقة -->
     <div id="propertyModal1" class="property-modal">
         <div class="property-modal-content">
             <span class="close-property-modal" onclick="closePropertyModal('propertyModal1')">&times;</span>
@@ -846,9 +870,9 @@
                 <span class="old-price" style="font-size:1rem; color:#999; text-decoration:line-through;">900,000 ج.م</span>
             </div>
             
-            <div class="property-location-sub" style="font-size:0.98rem; color:#555; margin-bottom:15px; display:flex; align-items:center; gap:8px; font-weight:600;">
-                <i class="fa-solid fa-location-dot" style="color:#e74c3c;"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
-            </div>
+            <a href="https://maps.app.goo.gl/Sf4GawtxQ7M9nZ3v7" class="property-location-sub" target="_blank" style="font-size:0.98rem; color:#e74c3c; margin-bottom:15px; display:inline-flex; align-items:center; gap:8px; font-weight:600; text-decoration:none;">
+                <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة (اضغط لفتح الخريطة)
+            </a>
 
             <p style="color: #555; margin-bottom: 15px; font-size: 0.95rem;">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، شاهد صور المعرض والفيديو التفصيلي للوحدة.</p>
 
@@ -950,7 +974,7 @@
         </div>
     </div>
 
-    <!-- نافذة تفاصيل الشقة الثانية المنبثقة (Modal 2) -->
+    <!-- نافذة تفاصيل الشقة الثانية المنبثقة -->
     <div id="propertyModal2" class="property-modal">
         <div class="property-modal-content">
             <span class="close-property-modal" onclick="closePropertyModal('propertyModal2')">&times;</span>
@@ -962,9 +986,9 @@
                 <span class="old-price" style="font-size:1rem; color:#999; text-decoration:line-through;">1,000,000 ج.م</span>
             </div>
             
-            <div class="property-location-sub" style="font-size:0.98rem; color:#555; margin-bottom:15px; display:flex; align-items:center; gap:8px; font-weight:600;">
-                <i class="fa-solid fa-location-dot" style="color:#e74c3c;"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة
-            </div>
+            <a href="https://maps.app.goo.gl/Sf4GawtxQ7M9nZ3v7" class="property-location-sub" target="_blank" style="font-size:0.98rem; color:#e74c3c; margin-bottom:15px; display:inline-flex; align-items:center; gap:8px; font-weight:600; text-decoration:none;">
+                <i class="fa-solid fa-location-dot"></i> شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة (اضغط لفتح الخريطة)
+            </a>
 
             <p style="color: #555; margin-bottom: 15px; font-size: 0.95rem;">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
 
@@ -1077,7 +1101,11 @@
             <a href="https://www.facebook.com/share/1EPFC1xrhz/?mibextid=wwXIfr" class="facebook" target="_blank" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/my7sin_27?igsi=MTRvM3Ezdmc0MzJ6dQ%3D%3D&utm_source=qr" class="instagram" target="_blank" title="انستجرام"><i class="fa-brands fa-instagram"></i></a>
         </div>
-        <p class="footer-address" data-key="footerAddress"><i class="fa-solid fa-location-dot" style="color:#ff4757; margin-left: 5px;"></i> العنوان: المرج القديمة، ميدان أبو طالب، شارع الورشة الرئيسي، أولاد محسن للعقارات</p>
+        <p class="footer-address">
+            <a href="https://maps.app.goo.gl/Sf4GawtxQ7M9nZ3v7" target="_blank" title="اضغط لفتح الخريطة">
+                <i class="fa-solid fa-location-dot" style="color:#ff4757; margin-left: 5px;"></i> العنوان: المرج القديمة، ميدان أبو طالب، شارع الورشة الرئيسي، أولاد محسن للعقارات (اضغط لفتح الخريطة)
+            </a>
+        </p>
         <p style="margin-top:15px; font-size: 0.85rem; color: #888;" data-key="copyright">جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري</p>
     </footer>
 
@@ -1085,7 +1113,6 @@
     <script>
         let slideIntervals = {};
 
-        // فتح وإغلاق قائمة الفلترة عند الضغط على زر "العقارات المتاحة حالياً"
         function toggleFilterMenu() {
             const menu = document.getElementById('filterMenu');
             const btn = document.getElementById('mainFilterToggleBtn');
@@ -1093,7 +1120,6 @@
             btn.classList.toggle('active');
         }
 
-        // وظيفة فلترة العقارات (شقق ومحلات)
         function filterProperties(category, btnElement) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
@@ -1265,7 +1291,6 @@
                 headerTitle: "أولاد محسن للتطوير العقاري",
                 headerSub: "نمتلك أرقى الشقق السكنية لتناسب كافة الأذواق",
                 headerTag: "اشتري العقار من غير سمسار",
-                marqueeText: "أولاد محسن للتطوير العقاري &nbsp; | &nbsp; العنوان: المرج القديمة - ميدان أبو طالب - شارع الورشة الرئيسي &nbsp; | &nbsp; تواصل معنا الآن لامتلاك وحدتك السكنية بأفضل الأسعار وبدون إضافات",
                 sectionTitle: "العقارات المتاحة حالياً",
                 prop1Title: "الشقة الأولى - تصميم عائلي فاخر",
                 addressText: "شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة",
@@ -1275,7 +1300,6 @@
                 callText: "اتصال",
                 prop2Title: "الشقة الثانية - إطلالة وموقع متميز",
                 prop2Desc: "تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.",
-                footerAddress: "العنوان: المرج القديمة، ميدان أبو طالب، شارع الورشة الرئيسي، أولاد محسن للعقارات",
                 copyright: "جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري"
             },
             en: {
@@ -1285,7 +1309,6 @@
                 headerTitle: "Awlad Mohsen Real Estate Development",
                 headerSub: "We own the finest residential apartments to suit all tastes",
                 headerTag: "Buy property directly without a broker",
-                marqueeText: "Awlad Mohsen Real Estate Development &nbsp; | &nbsp; Address: Al-Marg Al-Qadima - Abu Talib Square - Main Al-Warcha St. &nbsp; | &nbsp; Contact us now to own your residential unit at the best prices",
                 sectionTitle: "Available Properties",
                 prop1Title: "First Apartment - Luxury Family Design",
                 addressText: "Main Al-Warcha Street - Abu Talib Square - Al-Marg Al-Qadima",
@@ -1295,7 +1318,6 @@
                 callText: "Call",
                 prop2Title: "Second Apartment - Prime Location & View",
                 prop2Desc: "Check out the photos of the second apartment and explore the spacious rooms suitable for large families.",
-                footerAddress: "Address: Al-Marg Al-Qadima, Abu Talib Square, Main Al-Warcha St., Awlad Mohsen Real Estate",
                 copyright: "All Rights Reserved © 2026 Awlad Mohsen Real Estate"
             }
         };
