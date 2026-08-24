@@ -17,26 +17,31 @@
             background-color: #f4f6f9;
             color: #333;
             line-height: 1.6;
+            padding-top: 70px; /* مسافة أعلى الصفحة عشان المحتوى ميتدزش تحت الشريط الثابت */
         }
         
-        /* الشريط العلوي الاحترافي (Top Bar) */
+        /* الشريط العلوي الثابت والاحترافي (Top Bar / Header) */
         .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             background: #0b141b;
             color: #cbd5e1;
-            padding: 10px 15px;
+            padding: 8px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.9rem;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            flex-wrap: wrap;
-            gap: 12px;
+            z-index: 2000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
+
         .top-bar-socials {
             display: flex;
             gap: 12px;
             align-items: center;
-            flex-wrap: wrap;
         }
         .top-bar-socials a {
             color: #cbd5e1;
@@ -49,11 +54,29 @@
         .top-bar-socials a.instagram:hover { color: #E4405F; }
         .top-bar-socials a.phone:hover { color: #0088cc; }
 
+        /* اللوجو في منتصف الشريط العلوي */
+        .top-bar-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .top-bar-logo img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f1c40f;
+            transition: 0.3s;
+        }
+        .top-bar-logo img:hover {
+            transform: scale(1.08);
+        }
+
         .top-bar-options {
             display: flex;
             gap: 12px;
             align-items: center;
-            flex-wrap: wrap;
         }
         .lang-switcher, .global-btn {
             background: rgba(255,255,255,0.1);
@@ -74,25 +97,34 @@
             border-color: #2c5364;
         }
 
-        /* تنسيق استجابة الشريط العلوي للموبايل */
-        @media (max-width: 600px) {
-            .top-bar {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 12px 10px;
+        /* تنسيق الشريط العلوي للموبايل */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 115px; /* زيادة المساحة في الموبايل لأن الشريط هيبقى سطرين */
             }
-            .top-bar-socials, .top-bar-options {
+            .top-bar {
+                flex-wrap: wrap;
                 justify-content: center;
-                width: 100%;
+                gap: 8px;
+                padding: 8px 10px;
+            }
+            .top-bar-logo {
+                order: 1;
+            }
+            .top-bar-socials {
+                order: 2;
+                gap: 15px;
+            }
+            .top-bar-options {
+                order: 3;
             }
         }
 
-        /* الهيدر وتصميم الألوان الاحترافي */
+        /* الهيدر الرئيسي وتصميم الألوان */
         header {
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             color: white;
-            padding: 30px 15px 20px 15px;
+            padding: 35px 15px 25px 15px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
@@ -445,7 +477,7 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 2000;
+            z-index: 3000;
             padding-top: 50px;
             left: 0;
             top: 0;
@@ -550,17 +582,25 @@
 </head>
 <body>
 
-    <!-- الشريط العلوي الاحترافي -->
+    <!-- الشريط العلوي الثابت مع اللوجو في المنتصف -->
     <div class="top-bar">
+        <!-- التواصل على اليمين -->
         <div class="top-bar-socials">
-            <span id="t-contact" style="font-size: 0.85rem; color: #94a3b8; margin-left: 5px;">تواصل معنا:</span>
+            <span id="t-contact" style="font-size: 0.85rem; color: #94a3b8;">تواصل:</span>
             <a href="https://wa.me/201032903926" class="whatsapp" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
             <a href="https://www.facebook.com/share/1EPFC1xrhz/?mibextid=wwXIfr" class="facebook" target="_blank" title="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/my7sin_27?igsi=MTRvM3Ezdmc0MzJ6dQ%3D%3D&utm_source=qr" class="instagram" target="_blank" title="انستجرام"><i class="fa-brands fa-instagram"></i></a>
             <a href="tel:01032903926" class="phone" title="اتصل بنا"><i class="fa-solid fa-phone"></i></a>
         </div>
+
+        <!-- اللوجو في المنتصف يرجع للصفحة الرئيسية -->
+        <a href="index.html" class="top-bar-logo" title="الصفحة الرئيسية - أولاد محسن">
+            <img src="MSLOGO.jpeg" alt="لوجو أولاد محسن">
+        </a>
+
+        <!-- اللغة والعملة على اليسار -->
         <div class="top-bar-options">
-            <span class="global-btn" id="t-region"><i class="fa-solid fa-globe"></i> مصر (EGP ج.م)</span>
+            <span class="global-btn" id="t-region"><i class="fa-solid fa-globe"></i> مصر (EGP)</span>
             <button class="lang-switcher" id="langBtn" onclick="toggleLanguage()"><i class="fa-solid fa-language"></i> English</button>
         </div>
     </div>
@@ -835,8 +875,8 @@
     <script>
         const translations = {
             ar: {
-                contactUs: "تواصل معنا:",
-                region: "مصر (EGP ج.م)",
+                contactUs: "تواصل:",
+                region: "مصر (EGP)",
                 langBtnText: "English",
                 headerTitle: "أولاد محسن للتطوير العقاري",
                 headerSub: "نمتلك أرقى الشقق السكنية لتناسب كافة الأذواق",
@@ -874,7 +914,7 @@
                 copyright: "جميع الحقوق محفوظة © 2026 أولاد محسن للتطوير العقاري"
             },
             en: {
-                contactUs: "Contact Us:",
+                contactUs: "Contact:",
                 region: "Egypt (EGP)",
                 langBtnText: "العربية",
                 headerTitle: "Awlad Mohsen Real Estate Development",
