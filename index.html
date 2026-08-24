@@ -250,27 +250,28 @@
             color: #1e3c72;
         }
 
-        /* تنسيق كارت السعر الجديد والأنيق */
+        /* تنسيق كارت السعر الجديد والمحسّن للشاشات الكبيرة والصغيرة */
         .price-badge-modern {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border: 1px solid #dee2e6;
-            border-radius: 12px;
-            padding: 10px 16px;
-            display: inline-flex;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 12px 20px;
+            display: flex;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+            gap: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
             flex-shrink: 0;
         }
 
         .price-badge-modern .discount-tag {
             background-color: #ff4757;
             color: #ffffff;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: bold;
-            padding: 4px 7px;
-            border-radius: 6px;
+            padding: 6px 10px;
+            border-radius: 8px;
             white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(255, 71, 87, 0.3);
         }
 
         .price-badge-modern .price-content {
@@ -280,36 +281,43 @@
         }
 
         .price-badge-modern .old-price {
-            font-size: 0.8rem;
-            color: #8c8c8c;
+            font-size: 0.9rem;
+            color: #a0aec0;
             text-decoration: line-through;
             white-space: nowrap;
+            font-weight: 600;
         }
 
         .price-badge-modern .new-price {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: #1e272e;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #1e293b;
             white-space: nowrap;
+            line-height: 1.2;
         }
 
         .price-badge-modern .new-price small {
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #64748b;
         }
 
         @media (max-width: 768px) {
             .property-header-box {
                 flex-direction: column;
                 align-items: stretch;
-                gap: 12px;
+                gap: 15px;
             }
             .price-badge-modern {
                 justify-content: space-between;
                 width: 100%;
+                padding: 15px 20px;
             }
             .property-title-link {
                 font-size: 1.25rem;
+            }
+            .price-badge-modern .new-price {
+                font-size: 1.6rem;
             }
         }
 
@@ -634,7 +642,7 @@
                         <i class="fa-solid fa-building-shield"></i> <span data-key="prop1Title">الشقة الأولى - تصميم عائلي فاخر</span>
                     </a>
                 </div>
-                <!-- كارت السعر المحسن الجديد مع نسبة الخصم -->
+                <!-- كارت السعر الجديد المحسّن -->
                 <div class="price-badge-modern">
                     <span class="discount-tag">خصم 9%</span>
                     <div class="price-content">
@@ -677,7 +685,7 @@
                         <i class="fa-solid fa-building-shield"></i> <span data-key="prop2Title">الشقة الثانية - إطلالة وموقع متميز</span>
                     </a>
                 </div>
-                <!-- كارت السعر المحسن الجديد للشقة الثانية -->
+                <!-- كارت السعر الجديد المحسّن -->
                 <div class="price-badge-modern">
                     <span class="discount-tag">خصم 8%</span>
                     <div class="price-content">
@@ -1136,7 +1144,7 @@
                 prop1Title: "First Apartment - Luxury Family Design",
                 addressText: "Main Al-Warcha Street - Abu Talib Square - Al-Marg Al-Qadima",
                 prop1Desc: "A distinctive apartment with a comfortable design and great room distribution. Click for full gallery and details.",
-                detailsBtnText: "View Apartment Details & Gallery",
+                detailsBtnTitle: "View Apartment Details & Gallery",
                 whatsappText: "WhatsApp",
                 callText: "Call",
                 prop2Title: "Second Apartment - Prime Location & View",
@@ -1161,7 +1169,7 @@
             }
 
             const elements = document.querySelectorAll('[data-key]');
-            elements.forEach(el => {
+            elements.format = elements.forEach(el => {
                 const key = el.getAttribute('data-key');
                 if (translations[currentLang][key]) {
                     el.innerHTML = translations[currentLang][key];
