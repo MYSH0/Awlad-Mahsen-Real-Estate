@@ -315,9 +315,15 @@
         .prev-btn { right: 15px; }
         .next-btn { left: 15px; }
 
+        /* حاوية أزرار التواصل تحت كل شقة (واتساب + اتصال) */
+        .property-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
         .contact-btn {
-            display: block;
-            width: 100%;
+            flex: 1;
             text-align: center;
             background: #25D366;
             color: white;
@@ -328,10 +334,33 @@
             font-size: 1.05rem;
             transition: 0.3s;
             box-shadow: 0 3px 8px rgba(37, 211, 102, 0.3);
-            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         .contact-btn:hover {
             background: #1ebe5d;
+        }
+        .call-btn {
+            flex: 1;
+            text-align: center;
+            background: #0088cc;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.05rem;
+            transition: 0.3s;
+            box-shadow: 0 3px 8px rgba(0, 136, 204, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .call-btn:hover {
+            background: #006699;
         }
         
         /* نافذة تكبير الصورة (Lightbox Modal) */
@@ -439,7 +468,6 @@
             .property-card { padding: 30px; }
             .property-info h3 { font-size: 1.6rem; }
             .current-price { font-size: 1.5rem; }
-            .contact-btn { width: auto; display: inline-block; padding: 10px 25px; }
             .section-title { font-size: 1.7rem; padding: 14px 35px; }
         }
     </style>
@@ -580,8 +608,14 @@
                 </div>
             </div>
 
-            <div>
-                <a id="whatsappBtn1" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الأولى%20-%20الدور%20الثالث%20-%20أمامي%20بسعر%20850,000%20ج.م" class="contact-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
+            <!-- أزرار التواصل (واتساب + اتصال هاتفياً) -->
+            <div class="property-actions">
+                <a id="whatsappBtn1" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الأولى%20-%20الدور%20الثالث%20-%20أمامي%20بسعر%20850,000%20ج.م" class="contact-btn" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
+                </a>
+                <a href="tel:01032903926" class="call-btn">
+                    <i class="fa-solid fa-phone"></i> تواصل هاتفياً
+                </a>
             </div>
         </div>
 
@@ -681,8 +715,14 @@
                 </div>
             </div>
 
-            <div>
-                <a id="whatsappBtn2" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الثانية%20-%20الدور%20الرابع%20-%20مميز%20بسعر%20950,000%20ج.م" class="contact-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
+            <!-- أزرار التواصل (واتساب + اتصال هاتفياً) -->
+            <div class="property-actions">
+                <a id="whatsappBtn2" href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الثانية%20-%20الدور%20الرابع%20-%20مميز%20بسعر%20950,000%20ج.م" class="contact-btn" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب
+                </a>
+                <a href="tel:01032903926" class="call-btn">
+                    <i class="fa-solid fa-phone"></i> تواصل هاتفياً
+                </a>
             </div>
         </div>
 
