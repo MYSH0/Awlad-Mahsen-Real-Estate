@@ -877,7 +877,8 @@
                 <button class="tab-btn" onclick="openTab(event, 'photos1')"><i class="fa-solid fa-images"></i> <span data-key="photosTab">عرض الصور</span></button>
             </div>
 
-            <div id="video1" class="tab-content active">
+            <!-- تم جعل الفيديو وصور المعرض يظهران افتراضياً بدون إخفاء -->
+            <div id="video1" class="tab-content active" style="display: block;">
                 <div class="property-media">
                     <video controls>
                         <source src="MSV1.mp4" type="video/mp4">
@@ -886,7 +887,7 @@
                 </div>
             </div>
 
-            <div id="photos1" class="tab-content">
+            <div id="photos1" class="tab-content active" style="display: block; margin-top: 20px;">
                 <div class="slider-container" id="slider1">
                     <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
                     <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
@@ -993,7 +994,8 @@
                 <button class="tab-btn" onclick="openTab(event, 'photos2')"><i class="fa-solid fa-images"></i> <span data-key="photosTab">عرض الصور</span></button>
             </div>
 
-            <div id="video2" class="tab-content active">
+            <!-- تم جعل الفيديو وصور المعرض للشقة الثانية يظهران افتراضياً -->
+            <div id="video2" class="tab-content active" style="display: block;">
                 <div class="property-media">
                     <video controls>
                         <source src="MSV2.mp4" type="video/mp4">
@@ -1002,7 +1004,7 @@
                 </div>
             </div>
 
-            <div id="photos2" class="tab-content">
+            <div id="photos2" class="tab-content active" style="display: block; margin-top: 20px;">
                 <div class="slider-container" id="slider2">
                     <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
                     <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
@@ -1164,12 +1166,11 @@
         function openTab(evt, tabId) {
             const modalContent = evt.currentTarget.closest('.property-modal-content');
             const contents = modalContent.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
+            contents.forEach(content => content.classList.add('active')); // تم تعديلها لضمان بقائها ظاهرة
 
             const buttons = modalContent.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            modalContent.querySelector('#' + tabId).classList.add('active');
             evt.currentTarget.classList.add('active');
         }
 
@@ -1410,7 +1411,6 @@
             document.getElementById('t-region').innerHTML = `<i class="fa-solid fa-globe"></i> ${translations[currentLang].region}`;
             document.getElementById('langBtn').innerHTML = `<i class="fa-solid fa-language"></i> ${translations[currentLang].langBtnText}`;
 
-            // تحديث قوائم اختيار الدور فى النوافذ المنبثقة للغة الحالية
             updateFloorDropdowns();
         }
 
