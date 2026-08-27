@@ -1002,8 +1002,8 @@
                         <div class="spec-content">
                             <span class="spec-label" data-key="labelFinish">حالة التسليم</span>
                             <select class="modern-select" id="finishSelect1" onchange="updatePropertyDetails()">
-                                <option value="طوب أحمر" data-key="optRedBrick">طوب أحمر</option>
-                                <option value="تشطيب فاخر" data-key="optLuxury">تشطيب فاخر</option>
+                                <option value="طوب أحمر" selected data-key="optRedBrick">طوب أحمر</option>
+                                <option value="تشطيب يبدأ من 3500 ج" data-key="optFinish3500">تشطيب يبدأ من 3500 ج</option>
                             </select>
                         </div>
                     </div>
@@ -1115,8 +1115,8 @@
                         <div class="spec-content">
                             <span class="spec-label" data-key="labelFinish">حالة التسليم</span>
                             <select class="modern-select" id="finishSelect2" onchange="updatePropertyDetails2()">
-                                <option value="طوب أحمر" data-key="optRedBrick">طوب أحمر</option>
-                                <option value="تشطيب فاخر" data-key="optLuxury">تشطيب فاخر</option>
+                                <option value="طوب أحمر" selected data-key="optRedBrick">طوب أحمر</option>
+                                <option value="تشطيب يبدأ من 3500 ج" data-key="optFinish3500">تشطيب يبدأ من 3500 ج</option>
                             </select>
                         </div>
                     </div>
@@ -1161,7 +1161,6 @@
     <script>
         let slideIntervals = {};
 
-        // بدء السلايدر التلقائي لمعارض الصفحة الرئيسية عند التحميل
         window.addEventListener('DOMContentLoaded', () => {
             startAutoSlide('homeSlider1');
             startAutoSlide('homeSlider2');
@@ -1219,7 +1218,6 @@
             if (event.target == imgModal) { closeImageModal(); }
         }
 
-        // دالة تبديل التبويبات في الصفحة الرئيسية
         function openHomeTab(evt, tabId) {
             const cardEl = evt.currentTarget.closest('.property-card');
             const contents = cardEl.querySelectorAll('.tab-content');
@@ -1231,7 +1229,6 @@
             cardEl.querySelector('#' + tabId).classList.add('active');
             evt.currentTarget.classList.add('active');
 
-            // إذا فتح تبويب الصور في الصفحة الرئيسية، نقوم بتشغيل السلايدر الخاص به
             if (tabId.includes('homePhotos')) {
                 const sliderId = tabId === 'homePhotos1' ? 'homeSlider1' : 'homeSlider2';
                 resetAutoSlide(sliderId);
@@ -1405,7 +1402,7 @@
                 payVal: "كاش فقط (غير متاح تقسيط)",
                 labelFinish: "حالة التسليم",
                 optRedBrick: "طوب أحمر",
-                optLuxury: "تشطيب فاخر",
+                optFinish3500: "تشطيب يبدأ من 3500 ج",
                 whatsappContact: "تواصل عبر واتساب",
                 callContact: "تواصل هاتفياً",
                 footerAddress: "العنوان: المرج القديمة، ميدان أبو طالب، شارع الورشة الرئيسي، أولاد محسن للعقارات (اضغط لفتح الخريطة)",
@@ -1453,7 +1450,7 @@
                 payVal: "Cash Only (No installments)",
                 labelFinish: "Finish Status",
                 optRedBrick: "Red Brick",
-                optLuxury: "Luxury Finish",
+                optFinish3500: "Finishing starts from 3500 EGP",
                 whatsappContact: "Contact via WhatsApp",
                 callContact: "Call Phone",
                 footerAddress: "Address: Al-Marg Al-Qadima, Abu Talib Square, Main Al-Warcha Street, Awlad Mohsen Real Estate (Click to open map)",
@@ -1510,8 +1507,8 @@
                     <option value="2nd Floor - Front">2nd Floor - Front (950,000 ${currSymbol})</option>
                     <option value="3rd Floor - Corner">3rd Floor - Corner (980,000 ${currSymbol})</option>
                 `;
-                finish1.innerHTML = `<option value="Red Brick">Red Brick</option><option value="Luxury Finish">Luxury Finish (from 3,500 ${currSymbol}/sqm)</option>`;
-                finish2.innerHTML = `<option value="Red Brick">Red Brick</option><option value="Luxury Finish">Luxury Finish (from 3,500 ${currSymbol}/sqm)</option>`;
+                finish1.innerHTML = `<option value="Red Brick" selected>Red Brick</option><option value="Finishing starts from 3500 EGP">Finishing starts from 3500 EGP</option>`;
+                finish2.innerHTML = `<option value="Red Brick" selected>Red Brick</option><option value="Finishing starts from 3500 EGP">Finishing starts from 3500 EGP</option>`;
             } else {
                 floor1.innerHTML = `
                     <option value="الدور الثالث - خلفي">الدور الثالث - خلفي (820,000 ج.م)</option>
@@ -1524,8 +1521,8 @@
                     <option value="الدور الثاني - أمامي">الدور الثاني - أمامي (950,000 ج.م)</option>
                     <option value="الدور الثالث - ناصية">الدور الثالث - ناصية (980,000 ج.م)</option>
                 `;
-                finish1.innerHTML = `<option value="طوب أحمر">طوب أحمر</option><option value="تشطيب فاخر">تشطيب فاخر (يبدأ من 3,500 ج.م للمتر)</option>`;
-                finish2.innerHTML = `<option value="طوب أحمر">طوب أحمر</option><option value="تشطيب فاخر">تشطيب فاخر (يبدأ من 3,500 ج.م للمتر)</option>`;
+                finish1.innerHTML = `<option value="طوب أحمر" selected>طوب أحمر</option><option value="تشطيب يبدأ من 3500 ج">تشطيب يبدأ من 3500 ج</option>`;
+                finish2.innerHTML = `<option value="طوب أحمر" selected>طوب أحمر</option><option value="تشطيب يبدأ من 3500 ج">تشطيب يبدأ من 3500 ج</option>`;
             }
         }
     </script>
