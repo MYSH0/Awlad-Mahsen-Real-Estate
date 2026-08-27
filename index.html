@@ -785,9 +785,36 @@
                 <span class="property-category-indicator"><i class="fa-solid fa-tag"></i> <span data-key="filterApts">شقق تمليك للبيع</span></span>
             </div>
 
-            <p class="property-desc-text" data-key="prop1Desc">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، اضغط على زر التفاصيل لمشاهدة المعرض الكامل، الفيديو، واختيار الدور المناسب.</p>
+            <p class="property-desc-text" data-key="prop1Desc">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، شاهد الصور والفيديو التفصيلي أدناه أو اضغط على التفاصيل لاختيار الدور المناسب.</p>
 
-            <div class="specs-preview">
+            <!-- معاينة الصور والفيديو مباشرة تحت الديسكربشن في الصفحة الرئيسية -->
+            <div class="tabs-nav" style="margin-top: 15px;">
+                <button class="tab-btn active" onclick="openHomeTab(event, 'homeVideo1')"><i class="fa-solid fa-video"></i> <span data-key="videoTab">عرض الفيديو</span></button>
+                <button class="tab-btn" onclick="openHomeTab(event, 'homePhotos1')"><i class="fa-solid fa-images"></i> <span data-key="photosTab">عرض الصور</span></button>
+            </div>
+
+            <div id="homeVideo1" class="tab-content active">
+                <div class="property-media">
+                    <video controls>
+                        <source src="MSV1.mp4" type="video/mp4">
+                        متصفحك لا يدعم عرض الفيديو
+                    </video>
+                </div>
+            </div>
+
+            <div id="homePhotos1" class="tab-content">
+                <div class="slider-container" id="homeSlider1">
+                    <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI4.jpeg" alt="صورة 4" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI5.jpeg" alt="صورة 5" onclick="openImageModal(this.src)"></div>
+                    <button class="slider-btn prev-btn" onclick="changeSlide('homeSlider1', 1)">&#10095;</button>
+                    <button class="slider-btn next-btn" onclick="changeSlide('homeSlider1', -1)">&#10094;</button>
+                </div>
+            </div>
+
+            <div class="specs-preview" style="margin-top: 20px;">
                 <div class="spec-mini"><i class="fa-solid fa-ruler-combined"></i> <span data-key="space1Val">120 متر</span></div>
                 <div class="spec-mini"><i class="fa-solid fa-door-open"></i> <span data-key="rooms1Val">3 غرف + ريسبشن</span></div>
                 <div class="spec-mini"><i class="fa-solid fa-money-bill-wave"></i> <span data-key="cashOnly">كاش فقط</span></div>
@@ -832,9 +859,34 @@
                 <span class="property-category-indicator"><i class="fa-solid fa-tag"></i> <span data-key="filterApts">شقق تمليك للبيع</span></span>
             </div>
 
-            <p class="property-desc-text" data-key="prop2Desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
+            <p class="property-desc-text" data-key="prop2Desc">تفقد صور الشقة الثانية والفيديو أدناه وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
 
-            <div class="specs-preview">
+            <!-- معاينة الصور والفيديو مباشرة تحت الديسكربشن في الصفحة الرئيسية -->
+            <div class="tabs-nav" style="margin-top: 15px;">
+                <button class="tab-btn active" onclick="openHomeTab(event, 'homeVideo2')"><i class="fa-solid fa-video"></i> <span data-key="videoTab">عرض الفيديو</span></button>
+                <button class="tab-btn" onclick="openHomeTab(event, 'homePhotos2')"><i class="fa-solid fa-images"></i> <span data-key="photosTab">عرض الصور</span></button>
+            </div>
+
+            <div id="homeVideo2" class="tab-content active">
+                <div class="property-media">
+                    <video controls>
+                        <source src="MSV2.mp4" type="video/mp4">
+                        متصفحك لا يدعم عرض الفيديو
+                    </video>
+                </div>
+            </div>
+
+            <div id="homePhotos2" class="tab-content">
+                <div class="slider-container" id="homeSlider2">
+                    <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
+                    <div class="slide"><img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)"></div>
+                    <button class="slider-btn prev-btn" onclick="changeSlide('homeSlider2', 1)">&#10095;</button>
+                    <button class="slider-btn next-btn" onclick="changeSlide('homeSlider2', -1)">&#10094;</button>
+                </div>
+            </div>
+
+            <div class="specs-preview" style="margin-top: 20px;">
                 <div class="spec-mini"><i class="fa-solid fa-ruler-combined"></i> <span data-key="space2Val">140 متر</span></div>
                 <div class="spec-mini"><i class="fa-solid fa-door-open"></i> <span data-key="rooms2Val">4 غرف + ريسبشن</span></div>
                 <div class="spec-mini"><i class="fa-solid fa-money-bill-wave"></i> <span data-key="cashOnly">كاش فقط</span></div>
@@ -1109,6 +1161,12 @@
     <script>
         let slideIntervals = {};
 
+        // بدء السلايدر التلقائي لمعارض الصفحة الرئيسية عند التحميل
+        window.addEventListener('DOMContentLoaded', () => {
+            startAutoSlide('homeSlider1');
+            startAutoSlide('homeSlider2');
+        });
+
         function toggleFilterMenu() {
             const menu = document.getElementById('filterMenu');
             const btn = document.getElementById('mainFilterToggleBtn');
@@ -1159,6 +1217,25 @@
             if (event.target == modal1) { closePropertyModal('propertyModal1'); }
             if (event.target == modal2) { closePropertyModal('propertyModal2'); }
             if (event.target == imgModal) { closeImageModal(); }
+        }
+
+        // دالة تبديل التبويبات في الصفحة الرئيسية
+        function openHomeTab(evt, tabId) {
+            const cardEl = evt.currentTarget.closest('.property-card');
+            const contents = cardEl.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = cardEl.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            cardEl.querySelector('#' + tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+
+            // إذا فتح تبويب الصور في الصفحة الرئيسية، نقوم بتشغيل السلايدر الخاص به
+            if (tabId.includes('homePhotos')) {
+                const sliderId = tabId === 'homePhotos1' ? 'homeSlider1' : 'homeSlider2';
+                resetAutoSlide(sliderId);
+            }
         }
 
         function openTab(evt, tabId) {
@@ -1304,7 +1381,7 @@
                 discount1: "خصم 9%",
                 discount2: "خصم 8%",
                 addressText: "شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة",
-                prop1Desc: "شقة مميزة بتصميم مريح وتوزيع رائع للغرف، اضغط على زر التفاصيل لمشاهدة المعرض الكامل، الفيديو، واختيار الدور المناسب.",
+                prop1Desc: "شقة مميزة بتصميم مريح وتوزيع رائع للغرف، شاهد الصور والفيديو التفصيلي أدناه أو اضغط على التفاصيل لاختيار الدور المناسب.",
                 space1Val: "120 متر",
                 rooms1Val: "3 غرف + ريسبشن",
                 space2Val: "140 متر",
@@ -1314,7 +1391,7 @@
                 whatsappText: "واتساب",
                 callText: "اتصال",
                 prop2Title: "الشقة الثانية - إطلالة وموقع متميز",
-                prop2Desc: "تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.",
+                prop2Desc: "تفقد صور الشقة الثانية والفيديو أدناه وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.",
                 mapClickText: "اضغط لفتح الخريطة",
                 videoTab: "عرض الفيديو",
                 photosTab: "عرض الصور",
@@ -1352,7 +1429,7 @@
                 discount1: "9% Off",
                 discount2: "8% Off",
                 addressText: "Main Al-Warcha Street - Abu Talib Square - Al-Marg Al-Qadima",
-                prop1Desc: "A distinctive apartment with a comfortable design and great room distribution. Click for full gallery and details.",
+                prop1Desc: "A distinctive apartment with a comfortable design and great room distribution. Check photos and video below.",
                 space1Val: "120 sqm",
                 rooms1Val: "3 Rooms + Reception",
                 space2Val: "140 sqm",
@@ -1362,7 +1439,7 @@
                 whatsappText: "WhatsApp",
                 callText: "Call",
                 prop2Title: "Second Apartment - Prime Location & View",
-                prop2Desc: "Check out the photos of the second apartment and explore the spacious rooms suitable for large families.",
+                prop2Desc: "Check out the photos and video of the second apartment below and explore the spacious rooms.",
                 mapClickText: "Click to open map",
                 videoTab: "View Video",
                 photosTab: "View Photos",
@@ -1410,7 +1487,6 @@
             document.getElementById('t-region').innerHTML = `<i class="fa-solid fa-globe"></i> ${translations[currentLang].region}`;
             document.getElementById('langBtn').innerHTML = `<i class="fa-solid fa-language"></i> ${translations[currentLang].langBtnText}`;
 
-            // تحديث قوائم اختيار الدور فى النوافذ المنبثقة للغة الحالية
             updateFloorDropdowns();
         }
 
