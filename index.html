@@ -439,10 +439,96 @@
 
         .property-desc-text {
             color: #475569;
-            margin-bottom: 22px;
+            margin-bottom: 20px;
             font-size: 1.05rem;
             line-height: 1.7;
         }
+
+        /* تنسيقات عرض الوسائط مباشرة تحت الوصف في الصفحة الرئيسية */
+        .home-media-section {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tabs-nav { 
+            display: flex; 
+            gap: 8px; 
+            margin-bottom: 12px; 
+            border-bottom: 2px solid #e2e8f0; 
+            padding-bottom: 8px; 
+        }
+        .tab-btn {
+            background: #e2e8f0; 
+            border: none; 
+            padding: 6px 14px; 
+            border-radius: 6px; 
+            cursor: pointer;
+            font-size: 0.9rem; 
+            font-weight: bold; 
+            color: #475569; 
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tab-btn.active { background: #1e3c72; color: white; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .property-media video { 
+            width: 100%; 
+            height: 300px; 
+            border-radius: 8px; 
+            background: #000; 
+            object-fit: contain; 
+        }
+
+        .slider-container {
+            position: relative; 
+            width: 100%; 
+            height: 300px; 
+            margin: auto; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            background: #111;
+        }
+        .slide { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            opacity: 0; 
+            transition: opacity 0.6s ease-in-out; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .slide.active-slide { opacity: 1; z-index: 2; }
+        .slide img { width: 100%; height: 100%; object-fit: contain; cursor: pointer; background-color: #000; }
+        .slider-btn {
+            position: absolute; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            background: rgba(0, 0, 0, 0.6);
+            color: white; 
+            width: 36px; 
+            height: 36px; 
+            border: none; 
+            cursor: pointer; 
+            font-size: 1rem;
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            z-index: 10;
+        }
+        .prev-btn { right: 15px; }
+        .next-btn { left: 15px; }
 
         .specs-preview {
             display: flex;
@@ -582,31 +668,6 @@
             width: 100%; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 6px;
             background-color: #fff; color: #1e3c72; font-weight: bold; font-size: 0.9rem; outline: none; cursor: pointer;
         }
-
-        .tabs-nav { display: flex; gap: 8px; margin-bottom: 15px; border-bottom: 2px solid #ddd; padding-bottom: 8px; }
-        .tab-btn {
-            background: #e4e9f0; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer;
-            font-size: 0.95rem; font-weight: bold; color: #444; transition: 0.3s;
-        }
-        .tab-btn.active { background: #2c5364; color: white; }
-        .tab-content { display: none; margin-bottom: 20px; }
-        .tab-content.active { display: block; }
-
-        .property-media video { width: 100%; height: 350px; border-radius: 8px; background: #000; object-fit: contain; }
-
-        .slider-container {
-            position: relative; width: 100%; height: 350px; margin: auto; border-radius: 8px; overflow: hidden; background: #111;
-        }
-        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.6s ease-in-out; display: flex; align-items: center; justify-content: center; }
-        .slide.active-slide { opacity: 1; z-index: 2; }
-        .slide img { width: 100%; height: 100%; object-fit: contain; cursor: pointer; background-color: #000; }
-        .slider-btn {
-            position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.6);
-            color: white; width: 40px; height: 40px; border: none; cursor: pointer; font-size: 1.1rem;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10;
-        }
-        .prev-btn { right: 15px; }
-        .next-btn { left: 15px; }
 
         .img-modal { display: none; position: fixed; z-index: 4000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); }
         .img-modal-content { margin: auto; display: block; max-width: 90%; max-height: 80vh; border-radius: 8px; }
@@ -763,7 +824,7 @@
         <div class="property-card" data-category="apartments">
             <div class="property-header-box">
                 <div>
-                    <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal1', 'slider1')">
+                    <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal1', 'slider1_modal')">
                         <i class="fa-solid fa-building-shield"></i> <span data-key="prop1Title">الشقة الأولى - تصميم عائلي فاخر</span>
                     </a>
                 </div>
@@ -785,7 +846,34 @@
                 <span class="property-category-indicator"><i class="fa-solid fa-tag"></i> <span data-key="filterApts">شقق تمليك للبيع</span></span>
             </div>
 
-            <p class="property-desc-text" data-key="prop1Desc">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، اضغط على زر التفاصيل لمشاهدة المعرض الكامل، الفيديو، واختيار الدور المناسب.</p>
+            <p class="property-desc-text" data-key="prop1Desc">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، شاهد صور المعرض والفيديو التفصيلي مباشرة أدناه.</p>
+
+            <!-- قسم عرض الوسائط مباشرة تحت الوصف في الصفحة الرئيسية -->
+            <div class="home-media-section">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" onclick="switchHomeTab(event, 'home-video1')"><i class="fa-solid fa-video"></i> <span data-key="videoTab">عرض الفيديو</span></button>
+                    <button class="tab-btn" onclick="switchHomeTab(event, 'home-photos1')"><i class="fa-solid fa-images"></i> <span data-key="photosTab">عرض الصور</span></button>
+                </div>
+
+                <div id="home-video1" class="tab-content active">
+                    <video controls>
+                        <source src="MSV1.mp4" type="video/mp4">
+                        متصفحك لا يدعم عرض الفيديو
+                    </video>
+                </div>
+
+                <div id="home-photos1" class="tab-content">
+                    <div class="slider-container" id="slider1_home">
+                        <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
+                        <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
+                        <div class="slide"><img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)"></div>
+                        <div class="slide"><img src="MSI4.jpeg" alt="صورة 4" onclick="openImageModal(this.src)"></div>
+                        <div class="slide"><img src="MSI5.jpeg" alt="صورة 5" onclick="openImageModal(this.src)"></div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('slider1_home', 1)">&#10095;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('slider1_home', -1)">&#10094;</button>
+                    </div>
+                </div>
+            </div>
 
             <div class="specs-preview">
                 <div class="spec-mini"><i class="fa-solid fa-ruler-combined"></i> <span data-key="space1Val">120 متر</span></div>
@@ -794,8 +882,8 @@
             </div>
 
             <div class="property-actions">
-                <button class="details-btn" onclick="openPropertyModal('propertyModal1', 'slider1')">
-                    <i class="fa-solid fa-circle-info"></i> <span data-key="detailsBtnText">عرض تفاصيل الشقة والمعرض</span>
+                <button class="details-btn" onclick="openPropertyModal('propertyModal1', 'slider1_modal')">
+                    <i class="fa-solid fa-circle-info"></i> <span data-key="detailsBtnText">عرض تفاصيل الشقة واختيار الدور</span>
                 </button>
                 <a href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الأولى" class="contact-btn" target="_blank">
                     <i class="fa-brands fa-whatsapp"></i> <span data-key="whatsappText">واتساب</span>
@@ -810,7 +898,7 @@
         <div class="property-card" data-category="apartments">
             <div class="property-header-box">
                 <div>
-                    <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal2', 'slider2')">
+                    <a href="javascript:void(0);" class="property-title-link" onclick="openPropertyModal('propertyModal2', 'slider2_modal')">
                         <i class="fa-solid fa-building-shield"></i> <span data-key="prop2Title">الشقة الثانية - إطلالة وموقع متميز</span>
                     </a>
                 </div>
@@ -832,7 +920,32 @@
                 <span class="property-category-indicator"><i class="fa-solid fa-tag"></i> <span data-key="filterApts">شقق تمليك للبيع</span></span>
             </div>
 
-            <p class="property-desc-text" data-key="prop2Desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
+            <p class="property-desc-text" data-key="prop2Desc">تفقد صور الشقة الثانية والفيديو أدناه وتعرف على دقة التشطيبات والمساحات الواسعة.</p>
+
+            <!-- قسم عرض الوسائط مباشرة تحت الوصف في الصفحة الرئيسية للشقة الثانية -->
+            <div class="home-media-section">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" onclick="switchHomeTab(event, 'home-video2')"><i class="fa-solid fa-video"></i> <span data-key="videoTab">عرض الفيديو</span></button>
+                    <button class="tab-btn" onclick="switchHomeTab(event, 'home-photos2')"><i class="fa-solid fa-images"></i> <span data-key="photosTab">عرض الصور</span></button>
+                </div>
+
+                <div id="home-video2" class="tab-content active">
+                    <video controls>
+                        <source src="MSV2.mp4" type="video/mp4">
+                        متصفحك لا يدعم عرض الفيديو
+                    </video>
+                </div>
+
+                <div id="home-photos2" class="tab-content">
+                    <div class="slider-container" id="slider2_home">
+                        <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
+                        <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
+                        <div class="slide"><img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)"></div>
+                        <button class="slider-btn prev-btn" onclick="changeSlide('slider2_home', 1)">&#10095;</button>
+                        <button class="slider-btn next-btn" onclick="changeSlide('slider2_home', -1)">&#10094;</button>
+                    </div>
+                </div>
+            </div>
 
             <div class="specs-preview">
                 <div class="spec-mini"><i class="fa-solid fa-ruler-combined"></i> <span data-key="space2Val">140 متر</span></div>
@@ -841,8 +954,8 @@
             </div>
 
             <div class="property-actions">
-                <button class="details-btn" onclick="openPropertyModal('propertyModal2', 'slider2')">
-                    <i class="fa-solid fa-circle-info"></i> <span data-key="detailsBtnText">عرض تفاصيل الشقة والمعرض</span>
+                <button class="details-btn" onclick="openPropertyModal('propertyModal2', 'slider2_modal')">
+                    <i class="fa-solid fa-circle-info"></i> <span data-key="detailsBtnText">عرض تفاصيل الشقة واختيار الدور</span>
                 </button>
                 <a href="https://wa.me/201032903926?text=%Dالسلام%20عليكم،%20مهتم%20بالشقة%20الثانية" class="contact-btn" target="_blank">
                     <i class="fa-brands fa-whatsapp"></i> <span data-key="whatsappText">واتساب</span>
@@ -854,7 +967,7 @@
         </div>
     </div>
 
-    <!-- نافذة تفاصيل الشقة الأولى المنبثقة -->
+    <!-- نافذة تفاصيل الشقة الأولى المنبثقة (لاختيار الدور والحالة فقط) -->
     <div id="propertyModal1" class="property-modal">
         <div class="property-modal-content">
             <span class="close-property-modal" onclick="closePropertyModal('propertyModal1')">&times;</span>
@@ -870,33 +983,14 @@
                 <i class="fa-solid fa-location-dot"></i> <span data-key="addressText">شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة</span> (<span data-key="mapClickText">اضغط لفتح الخريطة</span>)
             </a>
 
-            <p style="color: #555; margin-bottom: 15px; font-size: 0.95rem;" data-key="prop1Desc">شقة مميزة بتصميم مريح وتوزيع رائع للغرف، شاهد صور المعرض والفيديو التفصيلي للوحدة.</p>
-
-            <div class="tabs-nav">
-                <button class="tab-btn active" onclick="openTab(event, 'video1')"><i class="fa-solid fa-video"></i> <span data-key="videoTab">عرض الفيديو</span></button>
-                <button class="tab-btn" onclick="openTab(event, 'photos1')"><i class="fa-solid fa-images"></i> <span data-key="photosTab">عرض الصور</span></button>
-            </div>
-
-            <!-- تم جعل الفيديو وصور المعرض يظهران افتراضياً بدون إخفاء -->
-            <div id="video1" class="tab-content active" style="display: block;">
-                <div class="property-media">
-                    <video controls>
-                        <source src="MSV1.mp4" type="video/mp4">
-                        متصفحك لا يدعم عرض الفيديو
-                    </video>
-                </div>
-            </div>
-
-            <div id="photos1" class="tab-content active" style="display: block; margin-top: 20px;">
-                <div class="slider-container" id="slider1">
-                    <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
-                    <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
-                    <div class="slide"><img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)"></div>
-                    <div class="slide"><img src="MSI4.jpeg" alt="صورة 4" onclick="openImageModal(this.src)"></div>
-                    <div class="slide"><img src="MSI5.jpeg" alt="صورة 5" onclick="openImageModal(this.src)"></div>
-                    <button class="slider-btn prev-btn" onclick="changeSlide('slider1', 1)">&#10095;</button>
-                    <button class="slider-btn next-btn" onclick="changeSlide('slider1', -1)">&#10094;</button>
-                </div>
+            <div class="slider-container" id="slider1_modal" style="margin-bottom: 20px;">
+                <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
+                <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
+                <div class="slide"><img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)"></div>
+                <div class="slide"><img src="MSI4.jpeg" alt="صورة 4" onclick="openImageModal(this.src)"></div>
+                <div class="slide"><img src="MSI5.jpeg" alt="صورة 5" onclick="openImageModal(this.src)"></div>
+                <button class="slider-btn prev-btn" onclick="changeSlide('slider1_modal', 1)">&#10095;</button>
+                <button class="slider-btn next-btn" onclick="changeSlide('slider1_modal', -1)">&#10094;</button>
             </div>
 
             <div class="specs-container">
@@ -987,31 +1081,12 @@
                 <i class="fa-solid fa-location-dot"></i> <span data-key="addressText">شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة</span> (<span data-key="mapClickText">اضغط لفتح الخريطة</span>)
             </a>
 
-            <p style="color: #555; margin-bottom: 15px; font-size: 0.95rem;" data-key="prop2Desc">تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.</p>
-
-            <div class="tabs-nav">
-                <button class="tab-btn active" onclick="openTab(event, 'video2')"><i class="fa-solid fa-video"></i> <span data-key="videoTab">عرض الفيديو</span></button>
-                <button class="tab-btn" onclick="openTab(event, 'photos2')"><i class="fa-solid fa-images"></i> <span data-key="photosTab">عرض الصور</span></button>
-            </div>
-
-            <!-- تم جعل الفيديو وصور المعرض للشقة الثانية يظهران افتراضياً -->
-            <div id="video2" class="tab-content active" style="display: block;">
-                <div class="property-media">
-                    <video controls>
-                        <source src="MSV2.mp4" type="video/mp4">
-                        متصفحك لا يدعم عرض الفيديو
-                    </video>
-                </div>
-            </div>
-
-            <div id="photos2" class="tab-content active" style="display: block; margin-top: 20px;">
-                <div class="slider-container" id="slider2">
-                    <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
-                    <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
-                    <div class="slide"><img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)"></div>
-                    <button class="slider-btn prev-btn" onclick="changeSlide('slider2', 1)">&#10095;</button>
-                    <button class="slider-btn next-btn" onclick="changeSlide('slider2', -1)">&#10094;</button>
-                </div>
+            <div class="slider-container" id="slider2_modal" style="margin-bottom: 20px;">
+                <div class="slide active-slide"><img src="MSI1.jpeg" alt="صورة 1" onclick="openImageModal(this.src)"></div>
+                <div class="slide"><img src="MSI2.jpeg" alt="صورة 2" onclick="openImageModal(this.src)"></div>
+                <div class="slide"><img src="MSI3.jpeg" alt="صورة 3" onclick="openImageModal(this.src)"></div>
+                <button class="slider-btn prev-btn" onclick="changeSlide('slider2_modal', 1)">&#10095;</button>
+                <button class="slider-btn next-btn" onclick="changeSlide('slider2_modal', -1)">&#10094;</button>
             </div>
 
             <div class="specs-container">
@@ -1111,6 +1186,12 @@
     <script>
         let slideIntervals = {};
 
+        // بدء السلايدرات التلقائية في الصفحة الرئيسية عند التحميل
+        window.onload = function() {
+            startAutoSlide('slider1_home');
+            startAutoSlide('slider2_home');
+        };
+
         function toggleFilterMenu() {
             const menu = document.getElementById('filterMenu');
             const btn = document.getElementById('mainFilterToggleBtn');
@@ -1148,7 +1229,7 @@
         }
         function closePropertyModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
-            const sliderId = modalId === 'propertyModal1' ? 'slider1' : 'slider2';
+            const sliderId = modalId === 'propertyModal1' ? 'slider1_modal' : 'slider2_modal';
             if (slideIntervals[sliderId]) {
                 clearInterval(slideIntervals[sliderId]);
             }
@@ -1163,14 +1244,16 @@
             if (event.target == imgModal) { closeImageModal(); }
         }
 
-        function openTab(evt, tabId) {
-            const modalContent = evt.currentTarget.closest('.property-modal-content');
-            const contents = modalContent.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.add('active')); // تم تعديلها لضمان بقائها ظاهرة
+        // تبديل التبويبات (فيديو / صور) داخل الصفحة الرئيسية
+        function switchHomeTab(evt, contentId) {
+            const section = evt.currentTarget.closest('.home-media-section');
+            const contents = section.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
 
-            const buttons = modalContent.querySelectorAll('.tab-btn');
+            const buttons = section.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
+            section.querySelector('#' + contentId).classList.add('active');
             evt.currentTarget.classList.add('active');
         }
 
@@ -1305,17 +1388,17 @@
                 discount1: "خصم 9%",
                 discount2: "خصم 8%",
                 addressText: "شارع الورشة الرئيسي - ميدان أبو طالب - المرج القديمة",
-                prop1Desc: "شقة مميزة بتصميم مريح وتوزيع رائع للغرف، اضغط على زر التفاصيل لمشاهدة المعرض الكامل، الفيديو، واختيار الدور المناسب.",
+                prop1Desc: "شقة مميزة بتصميم مريح وتوزيع رائع للغرف، شاهد صور المعرض والفيديو التفصيلي مباشرة أدناه.",
                 space1Val: "120 متر",
                 rooms1Val: "3 غرف + ريسبشن",
                 space2Val: "140 متر",
                 rooms2Val: "4 غرف + ريسبشن",
                 cashOnly: "كاش فقط",
-                detailsBtnText: "عرض تفاصيل الشقة والمعرض",
+                detailsBtnText: "عرض تفاصيل الشقة واختيار الدور",
                 whatsappText: "واتساب",
                 callText: "اتصال",
                 prop2Title: "الشقة الثانية - إطلالة وموقع متميز",
-                prop2Desc: "تفقد صور الشقة الثانية وتعرف على دقة التشطيبات والمساحات الواسعة التي تناسب العائلات الكبيرة.",
+                prop2Desc: "تفقد صور الشقة الثانية والفيديو أدناه وتعرف على دقة التشطيبات والمساحات الواسعة.",
                 mapClickText: "اضغط لفتح الخريطة",
                 videoTab: "عرض الفيديو",
                 photosTab: "عرض الصور",
@@ -1353,17 +1436,17 @@
                 discount1: "9% Off",
                 discount2: "8% Off",
                 addressText: "Main Al-Warcha Street - Abu Talib Square - Al-Marg Al-Qadima",
-                prop1Desc: "A distinctive apartment with a comfortable design and great room distribution. Click for full gallery and details.",
+                prop1Desc: "A distinctive apartment with comfortable design and great room distribution. Watch the video and photos below.",
                 space1Val: "120 sqm",
                 rooms1Val: "3 Rooms + Reception",
                 space2Val: "140 sqm",
                 rooms2Val: "4 Rooms + Reception",
                 cashOnly: "Cash Only",
-                detailsBtnText: "View Apartment Details & Gallery",
+                detailsBtnText: "View Details & Choose Floor",
                 whatsappText: "WhatsApp",
                 callText: "Call",
                 prop2Title: "Second Apartment - Prime Location & View",
-                prop2Desc: "Check out the photos of the second apartment and explore the spacious rooms suitable for large families.",
+                prop2Desc: "Check out the photos and video of the second apartment below and explore the spacious rooms.",
                 mapClickText: "Click to open map",
                 videoTab: "View Video",
                 photosTab: "View Photos",
